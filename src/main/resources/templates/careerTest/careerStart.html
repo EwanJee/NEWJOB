@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/survey1.css">
+</head>
+
+<body>
+<main>
+    <form id="survey" th:object="${consultant}" method="post" th:action="@{/consultant/{id}/test/career/location (id=${consultant.id})}">
+
+        <header>
+            <h1 id="title">경력 진단 (Career Assessment)</h1>
+            <p id="description">본 테스트는 15분이 소요 됩니다 </p>
+        </header>
+
+        <div class="form-group">
+            <label id="name-label" for="name">이름</label>
+            <input type="text" id="name" placeholder="이름을 입력하세요" th:field="${form.memberName}" required>
+        </div>
+        <div class="form-group">
+            <label for="organization">소속</label>
+            <input type="text" id="organization" placeholder="소속을 입력하세요" th:field="${form.organization}">
+        </div>
+        <div class="form-group">
+            <label>담당 컨설턴트 이름 </label>
+            <input type="text" placeholder="컨설턴트 이름을 입력하세요" th:field="${form.consultantName}" required>
+        </div>
+        <div class="form-group">
+            <label>컨설팅 담당 기관 </label>
+            <input type="text" placeholder="컨설팅 담당 기관 이름을 입력하세요" th:field="${form.consultantCompany}">
+        </div>
+        <div class="form-group">
+            <button type="submit" id="submit" class="submit-button">
+                진단 시작하기
+            </button>
+        </div>
+    </form>
+</main>
+<script>
+    function validateForm() {
+        const form = document.getElementById("survey");
+        const radioGroups = form.querySelectorAll('input[type="radio"]');
+        let isAllAnswered = true;
+
+        radioGroups.forEach((radio) => {
+            const groupName = radio.getAttribute("name");
+            const group = form.querySelectorAll(`input[name="${groupName}"]`);
+            let isChecked = false;
+
+            group.forEach((radio) => {
+                if (radio.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (!isChecked) {
+                isAllAnswered = false;
+            }
+        });
+
+        return isAllAnswered;
+    }
+    document.getElementById("survey").addEventListener("submit", function (event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if not all questions are answered
+            alert("모든 문항에 답을 해주세요");
+        }
+    });
+</script>
+</body>
+</html>

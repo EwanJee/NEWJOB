@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>리멤버 상담센터</title>
+</head>
+<body>
+<main>
+  <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/{testId}/track3 (id=${id} , testId=${testId})}">
+    <div class="form-group">
+      <h2>직업을 조금 더 세분화 해보겠습니다</h2>
+      <h4 class="h1" style="display:none;">직무 : 가장 작은 일의 단위</h4>
+      <h4 class="h2" style="display:none;">전문 영역 : 전문성 (예 : 치료, 조제, 교육, 정치, 제사 상담 등) 업의 의미와 흡사함</h4>
+      <h4 class="h3" style="display:none;">조직 : 회사</h4>
+      <h4 class="h4" style="display:none;">업계 : 조직이 속한 산업군 / 비슷한 경영활동이나 아이템을 가진 회사들의 집합</h4>
+      <br>
+      <br>
+
+      <div class="h9" style="display:none; border: 1px solid rgb(255, 255, 255); padding: 10px; line-height:30px">직업의 구성 요소 중에서 전문영역이란 말이 생소하게 들릴 수 있으나 내가 하고 있는 일(직업 에서 인간의 기본적인 욕구를 서포트 하면서 업계에서 통용되는 핵심적인 업무라고 이해하면 좋습니다. <br> 거의 모든 직업에는 이런 전문영역의 요소가 들어가 있으며 그 요소로 인하여 그 직업은 생존과 발전을 하고 있습니다. 내 직무의 핵심 요소, 모든 직업은 전문영역을 가지고 있습니다</div>
+
+      <br>
+
+      <button type="submit" style="width: 20%; display:none;" id="submit" class="submit-button" >
+        다음으로
+      </button>
+    </div>
+  </form>
+</main>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $( document ).ready( function() {
+    $('h4.h1').fadeIn( 1000 );
+    $('h4.h2').fadeIn( 1000 );
+    $('h4.h3').fadeIn( 1000 );
+    $('h4.h4').fadeIn( 1000 );
+    $('div.h9').fadeIn( 1000 );
+    $('button.submit-button').fadeIn( 1000 );
+  } );
+</script>
+</body>
+</html>

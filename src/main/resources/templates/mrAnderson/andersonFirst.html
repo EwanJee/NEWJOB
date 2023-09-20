@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>리멤버 상담센터</title>
+</head>
+<body>
+<main>
+  <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/{testId}/track2 (id=${id} , testId=${testId})}">
+    <div class="form-group">
+      <h2>What do you do? 무슨 일을 하십니까> 직업이 뭐에요?</h2>
+      <h4 class="h1" style="display:none;">저는 마케팅 부장입니다</h4>
+      <h4 class="h2" style="display:none;">XX 그룹에 다니고 있습니다</h4>
+      <h4 class="h3" style="display:none;">수학 교사입니다</h4>
+      <h4 class="h4" style="display:none;">로펌에 근무합니다</h4>
+      <h4 class="h5" style="display:none;">반도체 쪽 회사 다녀요</h4>
+      <h4 class="h6" style="display:none;">보험업계에 있습니다</h4>
+      <h4 class="h7" style="display:none;">은퇴 후, 서예학원에서 아이들을 가르칩니다</h4>
+      <h4 class="h8" style="display:none;">자동차를 검사하는 일을 하고 있습니다</h4>
+      <br>
+      <br>
+
+      <div class="h9" style="display:none; border: 1px solid rgb(255, 255, 255); padding: 10px; line-height: 30px">일을 묻는 질문에는 어떤 사람은 회사를 말하고, 어떤 사람을 구체적으로 하는 일을, 어떤 사람은 속한 조직을 말합니다. <br> 직업에는 이런 요소가 모두 들어가 있어서 이처럼 다양한 방식의 답변이 나올 수 있는 겁니다 </div>
+
+      <br>
+
+      <button type="submit" style="width: 20%; display:none;" id="submit" class="submit-button" >
+        다음으로
+      </button>
+    </div>
+  </form>
+</main>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $( document ).ready( function() {
+    $('h4.h1').fadeIn( 3000 );
+    $('h4.h2').fadeIn( 3000 );
+    $('h4.h3').fadeIn( 3000 );
+    $('h4.h4').fadeIn( 3000 );
+    $('h4.h5').fadeIn( 3000 );
+    $('h4.h6').fadeIn( 3000 );
+    $('h4.h7').fadeIn( 3000 );
+    $('h4.h8').fadeIn( 3000 );
+    $('div.h9').fadeIn( 3000 );
+    $('button.submit-button').fadeIn( 3000 );
+  } );
+</script>
+</body>
+</html>

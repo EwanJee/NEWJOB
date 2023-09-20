@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/location.css">
+    <title>리멤버 상담센터</title>
+</head>
+<body>
+<main>
+    <form id="survey" th:object="${consultant}" method="post" th:action="@{/consultant/{id}/test/career/{testId}/second (id=${consultant.id} , testId=${testId})}">
+        <div class="form-group">
+            <h2>당신의 현재 경력 등고선 위치는 어디인가요?</h2>
+            <img src="/assets/img/career_contour_line.jpg" alt="careerLocation">
+            <label> <input type="radio" class="radio-btn"  th:field="${form.careerLocation}"
+                           value="A">
+                A - 입직 5년 전후 경력, 초급 사원 ~ 초급 관리자
+            </label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}"
+                           value="B">
+                B – 근무한 지 10년 이상, 과장, 차장 등 중간 매니저</label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}"
+                           value="C">
+                C – 부장, 임원급, 근무년 수 15년 이상, 책임자 지위</label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}" value="D">
+                D – 변화 선택 직면, 내적 / 외적 동기로 전직 필요</label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}" value="E">
+                E – 정년까지 변동 없음. 임금피크제, 촉탁 근무 등 </label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}" value="F">
+                F – 새로운 곳에 전직을 한 상태, 새롭게 출발함 </label>
+            <label> <input type="radio" class="radio-btn" th:field="${form.careerLocation}" value="T">
+                T – 이미 퇴직함, 현재 속한 조직이 없는 상태임</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="submit" class="submit-button" >
+                다음으로
+            </button>
+        </div>
+    </form>
+</main>
+<script>
+    function validateForm() {
+        const form = document.getElementById("survey");
+        const radioGroups = form.querySelectorAll('input[type="radio"]');
+        let isAllAnswered = true;
+
+        radioGroups.forEach((radio) => {
+            const groupName = radio.getAttribute("name");
+            const group = form.querySelectorAll(`input[name="${groupName}"]`);
+            let isChecked = false;
+
+            group.forEach((radio) => {
+                if (radio.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (!isChecked) {
+                isAllAnswered = false;
+            }
+        });
+
+        return isAllAnswered;
+    }
+    document.getElementById("survey").addEventListener("submit", function (event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if not all questions are answered
+            alert("아직 답을 하지 않으셨습니다");
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>리멤버 상담센터</title>
+</head>
+<body>
+<main>
+  <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/{testId}/test1 (id=${id} , testId=${testId})}">
+    <div class="form-group">
+      <h2>스스로의 직업을 구성요소로 분류해 보겠습니다</h2>
+      <h4 class="h1" style="text-align: left;" >직무 : 가장 작은 일의 단위. ~~하기로 표기</h4>
+      <p style="text-align: left; font-size: 13px;"> ex) 상담사의 직무 - 상담하기, 기록하기, 일지쓰기, 홍보하기, 연구하기, 상담실 청소하기, 정부지원금 신청하기, 사업 제안하기 등등</p>
+        <input type="text" placeholder="나의 직무는?" th:field="${form.job}" required>
+      </div>
+    <div class="form-group">
+      <h4 class="h1" style="text-align: left;" >조직: 회사이름</h4>
+        <input type="text" placeholder="내가 근무하고 있는 조직은?" th:field="${form.organization2}" required>
+    </div>
+
+    <div class="form-group">
+      <h4 class="h1" style="text-align: left;" >전문영역: 전문성 (예: 치료, 조제, 교육, 정치, 제사, 상담 등) 업의 의미와 흡사함</h4>
+      <p style="text-align: left; font-size: 13px;"> ex) 내가 하고 있는 많은 직무와 업무 중에서 가장 핵심이 되면서 업계에서 통용될 수 있는 일은? 나의 전문성은?</p>
+        <input type="text" placeholder="나의 전문성은? 전문영역은?" th:field="${form.profession}" required>
+    </div>
+
+    <div class="form-group">
+      <h4 class="h1" style="text-align: left;" >업계: 조직이 속한 산업군 / 비슷한 경영활동을 하거나 비슷한 아이템을 가진 회사들의 집합</h4>
+      <p style="text-align: left; font-size: 13px;"> ex) 금융업계, 보험업계</p>
+        <input type="text" placeholder="내가 속한 업계는?" th:field="${form.industry}" required>
+
+      <br>
+      <br>
+    </div>
+    <div class="form-group">
+      <div class="h9" style="display:none; border: 1px solid rgb(255, 255, 255); padding: 10px;">일을 묻는 질문에는 어떤 사람은 회사를 말하고, 어떤 사람을 구체적으로 하는 일을, 어떤 사람은 속한 조직을 말합니다. 직업에는 이런 요소가 모두 들어가 있어서 이처럼 다양한 방식의 답변이 나올 수 있는 겁니다 </div>
+      <br>
+      <button type="submit" style="width: 20%;" id="submit" class="submit-button" >
+        다음으로
+      </button>
+    </div>
+  </form>
+</main>
+</body>
+</html>

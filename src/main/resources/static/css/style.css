@@ -1,0 +1,112 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: var(--color-darkblue);
+    background-image: linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7)), url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+form .form-group input.radio-btn {
+    display: inline-block; /* inline-block으로 변경하여 가로로 정렬 */
+    width: auto; /* 너비 자동 조절 */
+    margin: 10px; /* 간격을 조절하고 필요한 경우 수정 */
+}
+main {
+    text-align: center;
+    width: 40vw;
+
+}
+p{
+    font-weight: bolder;
+    color: #ff9b04;
+}
+
+form#survey {
+    background-color: rgba(27, 27, 50, 0.8);
+    padding: 1.5rem;
+    display: block;
+    border-radius: 0.5rem;
+    width:1600px;
+    height:900px;
+    margin: 0 auto;
+}
+@media (max-width: 600px) {
+    form#survey {
+        width: 90%; /* 뷰포트 너비의 90% */
+        height: auto; /* 높이 자동 조절 */
+    }
+}
+form .form-group {
+    text-align: center;
+    display: block;
+    align-items: center;
+    color: #ffffff;
+    font-size: 14pt;
+    font-weight: 400;
+    margin: 2%;
+}
+
+form .form-group label,
+form .form-group input {
+    padding-top: 5px;
+}
+
+form .form-group input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 0.5rem;
+}
+
+form .form-group input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+label {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label .optional {
+    font-size: 12pt;
+}
+
+.form-group select {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-group input.radio-btn {
+    display: block;
+    width: inherit;
+    margin: auto 10px auto 0;
+}
+
+#comments {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    background-color:#37af65;
+    padding: 1rem;
+    color:white;
+    border-style: none;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
