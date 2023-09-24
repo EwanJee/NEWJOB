@@ -126,12 +126,13 @@ public class MrAndersonTestController {
     @PostMapping("/{id}/test/mrAnderson/{testId}/result")
     public String andersonResult(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") MrAndersonTestResultForm mrAndersonTestResultForm, Model model){
         mrAndersonTestService.updateScore6(testId,mrAndersonTestResultForm.getScore41(),mrAndersonTestResultForm.getScore42(),mrAndersonTestResultForm.getScore43(),mrAndersonTestResultForm.getScore44(),mrAndersonTestResultForm.getScore45(),mrAndersonTestResultForm.getScore46(),mrAndersonTestResultForm.getScore47(),mrAndersonTestResultForm.getScore48());
-        return "redirect:/consultant" + id + "test/mrAnderson/finish" + testId;
+        return "redirect:/consultant/" + id + "/test/mrAnderson/finish/" + testId;
     }
     @GetMapping("/{id}/test/mrAnderson/finish/{testId}")
     public String andersonPage(@PathVariable("id")Long id, @PathVariable("testId")Long testId,Model model){
-        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestService.findById(id).orElse(null);
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestService.findById(testId).orElse(null);
         model.addAttribute("result",mrAndersonTestResult);
+        model.addAttribute("list",mrAndersonTestService.getMyBlackBox(mrAndersonTestResult));
         model.addAttribute("consultantId",id);
         return "mrAnderson/andersonPage";
     }

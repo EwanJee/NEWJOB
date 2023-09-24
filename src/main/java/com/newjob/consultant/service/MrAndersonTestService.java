@@ -1,6 +1,5 @@
 package com.newjob.consultant.service;
 
-import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.JdbcMrAndersonTestRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
@@ -8,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,13 +111,13 @@ public class MrAndersonTestService {
         careerTestResult.matchColorD();
         careerTestResult.matchColorE();
         careerTestResult.matchColorF();
-        getMyBlackBox(careerTestResult);
 
     }
     public List<String> getMrAndersonQuestions() {
         return jdbcMrAndersonTestRepository.getMrAndersonQuestions();
     }
-    public void getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
+    public List<String> getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
+        List<String> list = new ArrayList<>();
         int levelA = fieldLevel(mrAndersonTestResult.getScoreAs());
         int levelB = fieldLevel(mrAndersonTestResult.getScoreBs());
         int levelC = fieldLevel(mrAndersonTestResult.getScoreCs());
@@ -149,6 +149,92 @@ public class MrAndersonTestService {
 
         mrAndersonTestResult.setBlackBoxF_letters(blackboxF.get(0));
         mrAndersonTestResult.setBlackboxF_comment(blackboxF.get(1));
+
+        if(levelA <= 3){
+            list.add(blackboxA.get(1));
+            list.add("");
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add(blackboxA.get(1));
+            list.add("");
+        }
+        if(levelB <= 3){
+            list.add(blackboxB.get(1));
+            list.add("");
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add(blackboxB.get(1));
+            list.add("");
+        }
+        if(levelC <= 2){
+            list.add(blackboxC.get(1));
+            list.add("");
+            list.add("");
+        }
+        else if(levelC <=4){
+            list.add("");
+            list.add(blackboxC.get(1));
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add("");
+            list.add(blackboxC.get(1));
+
+        }
+        if(levelD <= 2){
+            list.add(blackboxD.get(1));
+            list.add("");
+            list.add("");
+        }
+        else if(levelD <=4){
+            list.add("");
+            list.add(blackboxD.get(1));
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add("");
+            list.add(blackboxD.get(1));
+        }
+
+        if(levelE <= 2){
+            list.add(blackboxE.get(1));
+            list.add("");
+            list.add("");
+        }
+        else if(levelE <=4){
+            list.add("");
+            list.add(blackboxE.get(1));
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add("");
+            list.add(blackboxE.get(1));
+        }
+
+        if(levelF <= 2){
+            list.add(blackboxF.get(1));
+            list.add("");
+            list.add("");
+        }
+        else if(levelD <=4){
+            list.add("");
+            list.add(blackboxF.get(1));
+            list.add("");
+        }
+        else{
+            list.add("");
+            list.add("");
+            list.add(blackboxF.get(1));
+        }
+
+        return list;
     }
     private int fieldLevel(int score){
         if(score<11){
@@ -161,7 +247,7 @@ public class MrAndersonTestService {
             return 3;
         }
         else if(score < 27){
-            return 3;
+            return 4;
         }
         else if(score < 33){
             return 5;
