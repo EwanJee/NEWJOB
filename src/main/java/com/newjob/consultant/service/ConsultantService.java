@@ -2,8 +2,10 @@ package com.newjob.consultant.service;
 
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.entity.Consultant;
+import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.CareerTestResultRepository;
 import com.newjob.consultant.repository.ConsultantRepository;
+import com.newjob.consultant.repository.MrAndersonTestResultRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,14 @@ import java.util.Optional;
 public class ConsultantService{
     private final ConsultantRepository consultantRepository;
     private final CareerTestResultRepository careerTestResultRepository;
+    private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
+
+    public List<CareerTestResult> getCareerList(){
+        return consultantRepository.getCareerList();
+    }
+    public List<MrAndersonTestResult> getMrAndersonList(){
+        return consultantRepository.getMrAndersonList();
+    }
 
     @Transactional
     public Long join(Consultant consultant){
@@ -25,12 +35,20 @@ public class ConsultantService{
         return consultant.getId();
     }
     @Transactional
-    public void addCareerTest(Long consultantId, CareerTestResult careerTestResult){
-        Optional<Consultant> optionalConsultant = consultantRepository.findById(consultantId);
-        Consultant consultant = optionalConsultant.orElse(null);
-        if(consultant != null){
-            consultant.getCareerTestResultList().add(careerTestResult);
-        }
+    public void addCareerTest(Long consultantId, Long testId){
+        Consultant consultant = consultantRepository.findById(consultantId).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(testId).orElse(null);
+        consultant.putCareerTestResult(careerTestResult);
+        consultantRepository.save(consultant);
+        careerTestResultRepository.save(careerTestResult);
+    }
+    @Transactional
+    public void addMrAndersonTest(Long id, Long testId){
+        Consultant consultant = consultantRepository.findById(id).orElse(null);
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId).orElse(null);
+        consultant.putMrAndersonTestResult(mrAndersonTestResult);
+        consultantRepository.save(consultant);
+        mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
     public Consultant findByConsultant(String skey, String consultantName){
         Optional<Consultant> consultant = consultantRepository.findBySkeyAndName(skey,consultantName);
@@ -59,5 +77,23 @@ public class ConsultantService{
     public boolean isValid4Test(Consultant consultant){
         int isApproved = consultant.getIsApproved();
         return isApproved != 0;
+    }
+
+    @Transactional
+    public void updateNumberOfUsedCareerTests(Long id) {
+        Consultant consultant = consultantRepository.findById(id).orElse(null);
+        int used = consultant.getNumberOfUsedCarerTests();
+        consultant.setNumberOfUsedCarerTests(used+1);
+        int available = consultant.getNumberOfAvailableCareerTests();
+        consultant.setNumberOfAvailableCareerTests(available-1);
+    }
+
+    @Transactional
+    public void updateNumberOfUsedMrAndersonTests(Long id) {
+        Consultant consultant = consultantRepository.findById(id).orElse(null);
+        int used = consultant.getNumberOfUsedMrAndersonTests();
+        consultant.setNumberOfUsedMrAndersonTests(used+1);
+        int available = consultant.getNumberOfAvailableMrAndersonTests();
+        consultant.setNumberOfAvailableMrAndersonTests(available-1);
     }
 }

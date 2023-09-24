@@ -51,4 +51,16 @@ public class ConsultantController {
         model.addAttribute("consultant",c);
         return "consultant/mypage";
     }
+    @GetMapping("/{id}/client")
+    public String myClientList(@PathVariable("id")Long id, Model model){
+        Consultant consultant = consultantService.findById(id).orElse(null);
+        model.addAttribute("careerTest",
+                consultantService.getCareerList());
+        //consultantService.findCareerTestResultList(id)
+        model.addAttribute("mrAndersonTest",
+                consultantService.getMrAndersonList());
+        //consultantService.findMrAndersonTestResultList(id)
+        model.addAttribute("id",id);
+        return "consultant/clientList";
+    }
 }

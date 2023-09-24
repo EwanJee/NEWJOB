@@ -182,9 +182,10 @@ public class CareerTestController {
         model.addAttribute("form",careerTestResultForm);
         //model.addAttribute("questions",careerTestService.getCareerQuestions());
         //CareerTestResult careerTestResult = careerTestService.mapQuestions(careerTestResultForm);
-        CareerTestResult careerTestResult = careerTestService.findById(testId).orElse(null);
-        consultantService.addCareerTest(id, careerTestResult);
-        return "redirect:/consultant/" + id + "/test/career/finish/" + careerTestResult.getId();
+        consultantService.addCareerTest(id, testId);
+        Consultant consultant1 = consultantService.findById(id).orElse(null);
+        consultantService.updateNumberOfUsedCareerTests(id);
+        return "redirect:/consultant/" + id + "/test/career/finish/" + testId;
     }
     @GetMapping("/{id}/test/career/finish/{testId}")
     public String careerTestFinish(@PathVariable("id") Long id, @PathVariable("testId")Long testId, Model model){

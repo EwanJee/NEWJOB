@@ -60,12 +60,19 @@ public class Consultant{
 
     private int isApproved = 0;
 
-    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CareerTestResult> careerTestResultList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
     @OneToMany(mappedBy = "consultant" ,fetch = FetchType.LAZY)
     private List<MemberConsultant> memberConsultantList = new ArrayList<>();
+
+    public void putCareerTestResult(CareerTestResult careerTestResult){
+        this.careerTestResultList.add(careerTestResult);
+    }
+    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult){
+        this.mrAndersonTestResultList.add(mrAndersonTestResult);
+    }
 }

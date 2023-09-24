@@ -30,6 +30,8 @@ public class CareerTestResult {
     private String consultantCompany; //중경카 업체 이름
     private String skey;
 
+    private String phoneNumber;
+
     private String careerLocation;
 
     public CareerTestResult(String memberName, String consultantName, String organization, String consultantCompany) {

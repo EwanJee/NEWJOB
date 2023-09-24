@@ -24,6 +24,7 @@ public class MrAndersonTestResult {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+    public String phoneNumber;
 
     private String memberName;
     private String consultantName;

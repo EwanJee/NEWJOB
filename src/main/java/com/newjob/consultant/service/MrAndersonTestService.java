@@ -116,6 +116,7 @@ public class MrAndersonTestService {
     public List<String> getMrAndersonQuestions() {
         return jdbcMrAndersonTestRepository.getMrAndersonQuestions();
     }
+    @Transactional
     public List<String> getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
         List<String> list = new ArrayList<>();
         int levelA = fieldLevel(mrAndersonTestResult.getScoreAs());
