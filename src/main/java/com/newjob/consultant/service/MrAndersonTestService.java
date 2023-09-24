@@ -111,6 +111,7 @@ public class MrAndersonTestService {
         careerTestResult.matchColorD();
         careerTestResult.matchColorE();
         careerTestResult.matchColorF();
+        getMyBlackBox(careerTestResult);
 
     }
     public List<String> getMrAndersonQuestions() {

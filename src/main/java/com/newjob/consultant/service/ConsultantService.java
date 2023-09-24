@@ -39,6 +39,7 @@ public class ConsultantService{
         Consultant consultant = consultantRepository.findById(consultantId).orElse(null);
         CareerTestResult careerTestResult = careerTestResultRepository.findById(testId).orElse(null);
         consultant.putCareerTestResult(careerTestResult);
+        careerTestResult.setConsultant(consultant);
         consultantRepository.save(consultant);
         careerTestResultRepository.save(careerTestResult);
     }
@@ -47,6 +48,7 @@ public class ConsultantService{
         Consultant consultant = consultantRepository.findById(id).orElse(null);
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId).orElse(null);
         consultant.putMrAndersonTestResult(mrAndersonTestResult);
+        mrAndersonTestResult.setConsultant(consultant);
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
