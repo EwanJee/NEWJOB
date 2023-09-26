@@ -49,6 +49,10 @@
     </div>
     <!-- Masthead Subheading-->
     <p class="masthead-subheading font-weight-light mb-0"> 안녕하세요 ! 마이 페이지로 이동해 진단테스트 링크를 고객에게 공유하세요</p>
+    <p class="masthead-subheading font-weight-light mb-0"> 경력진단 사용 완료한 횟수 : <span th:text="*{numberOfUsedCarerTests}"></span></p>
+    <p class="masthead-subheading font-weight-light mb-0"> 경력진단 사용 가능한 횟수 : <span th:text="*{numberOfAvailableCareerTests}"></span></p>
+    <p class="masthead-subheading font-weight-light mb-0"> 미스터 앤더슨 진단 사용 완료한 횟수 : <span th:text="*{numberOfUsedMrAndersonTests}"></span></p>
+    <p class="masthead-subheading font-weight-light mb-0"> 미스터 앤더슨 사용 가능한 횟수 : <span th:text="*{numberOfAvailableMrAndersonTests}"></span></p>
   </div>
 </header>
 </form>
