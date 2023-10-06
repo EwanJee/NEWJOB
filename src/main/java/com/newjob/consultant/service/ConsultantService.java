@@ -31,6 +31,9 @@ public class ConsultantService{
     @Transactional
     public Long join(Consultant consultant){
         isValidated(consultant);
+        long id = (consultant.getId() + consultant.getId() * 77 - consultant.getId()*13);
+        id /= 13;
+        consultant.setId(id);
         consultantRepository.save(consultant);
         return consultant.getId();
     }
