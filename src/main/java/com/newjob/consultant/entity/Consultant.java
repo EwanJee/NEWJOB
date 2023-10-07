@@ -12,13 +12,13 @@ import java.util.List;
 @Entity @Getter
 @NoArgsConstructor
 public class Consultant{
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
+
+    private String encoded;
+
     @Column(nullable = false, unique = true)
     private String email;
     private String name;

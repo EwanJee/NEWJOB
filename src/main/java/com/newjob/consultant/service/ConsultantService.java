@@ -27,13 +27,20 @@ public class ConsultantService{
     public List<MrAndersonTestResult> getMrAndersonList(){
         return consultantRepository.getMrAndersonList();
     }
+    public List<CareerTestResult> getCList(long id){
+        Consultant c = consultantRepository.findById(id).orElse(null);
+        List<CareerTestResult> list = c.getCareerTestResultList();
+        return list;
+    }
+    public List<MrAndersonTestResult> getMList(long id){
+        Consultant c = consultantRepository.findById(id).orElse(null);
+        List<MrAndersonTestResult> list = c.getMrAndersonTestResultList();
+        return list;
+    }
 
     @Transactional
     public Long join(Consultant consultant){
         isValidated(consultant);
-        long id = (consultant.getId() + consultant.getId() * 77 - consultant.getId()*13);
-        id /= 13;
-        consultant.setId(id);
         consultantRepository.save(consultant);
         return consultant.getId();
     }

@@ -3,6 +3,7 @@ package com.newjob.consultant.repository;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.entity.MrAndersonTestResult;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
