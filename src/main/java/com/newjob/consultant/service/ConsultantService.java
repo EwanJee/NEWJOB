@@ -20,13 +20,6 @@ public class ConsultantService{
     private final ConsultantRepository consultantRepository;
     private final CareerTestResultRepository careerTestResultRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
-
-    public List<CareerTestResult> getCareerList(){
-        return consultantRepository.getCareerList();
-    }
-    public List<MrAndersonTestResult> getMrAndersonList(){
-        return consultantRepository.getMrAndersonList();
-    }
     public List<CareerTestResult> getCList(long id){
         Consultant c = consultantRepository.findById(id).orElse(null);
         List<CareerTestResult> list = c.getCareerTestResultList();
