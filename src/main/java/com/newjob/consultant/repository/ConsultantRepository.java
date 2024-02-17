@@ -14,10 +14,4 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
     Optional<Consultant> findBySkeyAndName(String skey, String Name);
     Optional<Consultant> findByEmail(String email);
     Optional<Consultant> findByEmailAndPassword(String email, String password);
-
-    @Query("SELECT ctr from CareerTestResult ctr inner join Consultant c ON c.id = ctr.consultant.id")
-    List<CareerTestResult> getCareerList();
-
-    @Query("SELECT mtr from MrAndersonTestResult mtr inner join Consultant c ON c.id = mtr.consultant.id")
-    List<MrAndersonTestResult> getMrAndersonList();
 }
