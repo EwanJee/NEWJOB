@@ -4,8 +4,8 @@
 컨설턴트에게 경력/퇴직 진단 링크가 주어집니다. 
 컨설턴트는 고객들에게 링크를 보내 진단 테스트를 받게하고, 웹 사이트내에서 진단 결과를 확인하게 해주는 서비스입니다.
 
-# Tech:
-Spring MVC, Spring JPA, JDBC Thymeleaf, lombok, MariaDB
+# 사용 기술:
+Spring MVC, Spring JPA, JDBC Thymeleaf, lombok, MariaDB, bdakld;asd
 
 # Plans:
 Spring MVC를 이용한 레이어드 아키텍처를 구현하였습니다.
