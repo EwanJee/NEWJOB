@@ -1,6 +1,7 @@
 package com.newjob.consultant.service;
 
 import com.newjob.consultant.entity.Consultant;
+import com.newjob.consultant.repository.AdminRepository;
 import com.newjob.consultant.repository.ConsultantRepository;
 import com.newjob.consultant.repository.JdbcAdminRepository;
 import lombok.AllArgsConstructor;
@@ -13,9 +14,10 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AdminService {
     private final JdbcAdminRepository jdbcAdminRepository;
+    private final AdminRepository adminRepository;
     private final ConsultantRepository consultantRepository;
     public boolean isAdmin(String id){
-        return jdbcAdminRepository.checkById(id);
+        return adminRepository.existsById(id);
     }
     @Transactional
     public void updateForm(Long id, int anderson, int career, int approved) {
