@@ -13,7 +13,6 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class AdminService {
-    private final JdbcAdminRepository jdbcAdminRepository;
     private final AdminRepository adminRepository;
     private final ConsultantRepository consultantRepository;
     public boolean isAdmin(String id){
