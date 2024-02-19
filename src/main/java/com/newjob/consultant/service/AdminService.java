@@ -3,7 +3,6 @@ package com.newjob.consultant.service;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.repository.AdminRepository;
 import com.newjob.consultant.repository.ConsultantRepository;
-import com.newjob.consultant.repository.JdbcAdminRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
