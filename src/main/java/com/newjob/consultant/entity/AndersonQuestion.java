@@ -2,11 +2,13 @@ package com.newjob.consultant.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Table(name = "anderson_questions")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class AndersonQuestion {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type1")
