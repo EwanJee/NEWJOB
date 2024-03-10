@@ -31,7 +31,6 @@ public class MrAndersonTestResult {
     private String consultantName;
     private String organization; //소속
     private String consultantCompany; //중경카 업체 이름
-    private String skey;
 
     private String job;
 
@@ -117,54 +116,6 @@ public class MrAndersonTestResult {
     private String blackBoxB_letters;
     private String blackBoxC_letters;
 
-    public void setBlackBoxA_letters(String blackBoxA_letters) {
-        this.blackBoxA_letters = blackBoxA_letters;
-    }
-
-    public void setBlackBoxB_letters(String blackBoxB_letters) {
-        this.blackBoxB_letters = blackBoxB_letters;
-    }
-
-    public void setBlackBoxC_letters(String blackBoxC_letters) {
-        this.blackBoxC_letters = blackBoxC_letters;
-    }
-
-    public void setBlackBoxD_letters(String blackBoxD_letters) {
-        this.blackBoxD_letters = blackBoxD_letters;
-    }
-
-    public void setBlackBoxE_letters(String blackBoxE_letters) {
-        this.blackBoxE_letters = blackBoxE_letters;
-    }
-
-    public void setBlackBoxF_letters(String blackBoxF_letters) {
-        this.blackBoxF_letters = blackBoxF_letters;
-    }
-
-    public void setBlackboxA_comment(String blackboxA_comment) {
-        this.blackboxA_comment = blackboxA_comment;
-    }
-
-    public void setBlackboxB_comment(String blackboxB_comment) {
-        this.blackboxB_comment = blackboxB_comment;
-    }
-
-    public void setBlackboxC_comment(String blackboxC_comment) {
-        this.blackboxC_comment = blackboxC_comment;
-    }
-
-    public void setBlackboxD_comment(String blackboxD_comment) {
-        this.blackboxD_comment = blackboxD_comment;
-    }
-
-    public void setBlackboxE_comment(String blackboxE_comment) {
-        this.blackboxE_comment = blackboxE_comment;
-    }
-
-    public void setBlackboxF_comment(String blackboxF_comment) {
-        this.blackboxF_comment = blackboxF_comment;
-    }
-
     private String blackBoxD_letters;
     private String blackBoxE_letters;
     private String blackBoxF_letters;
@@ -177,9 +128,8 @@ public class MrAndersonTestResult {
     private String blackboxF_comment;
 
     @CreatedDate
-    @Column(updatable = false , nullable = true)
+    @Column(updatable = false)
     private LocalDateTime createdAt;
-
     public void matchScoreGroup(){
         this.scoreAs = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8;
         this.scoreBs = score9 + score10 + score11 + score12 + score13 + score14 + score15 + score16;
