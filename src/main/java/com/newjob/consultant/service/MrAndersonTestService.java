@@ -134,6 +134,8 @@ public class MrAndersonTestService {
         List<String> blackboxE = jdbcMrAndersonTestRepository.getAndersonBlackBoxE(levelE);
         List<String> blackboxF = jdbcMrAndersonTestRepository.getAndersonBlackBoxF(levelF);
 
+//        String typeForA =
+
         mrAndersonTestResult.setBlackBoxA_letters(blackboxA.get(0));
         mrAndersonTestResult.setBlackboxA_comment(blackboxA.get(1));
 
