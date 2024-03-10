@@ -9,9 +9,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Entity @Getter @Setter
-@NoArgsConstructor
+@Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+@Entity
 public class MrAndersonTestResult {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

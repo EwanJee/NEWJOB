@@ -9,8 +9,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Entity @Getter @Setter
+@Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
+@Entity
 public class CareerTestResult {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)

@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Entity @Getter
+@Getter
 @NoArgsConstructor
+@Entity
 public class Consultant{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
