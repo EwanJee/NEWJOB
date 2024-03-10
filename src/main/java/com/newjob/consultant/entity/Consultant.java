@@ -23,7 +23,21 @@ public class Consultant{
     private String password;
     private String company; //중경카 회사 소속
 
+    public void setNumberOfUsedCarerTests(int numberOfUsedCarerTests) {
+        this.numberOfUsedCarerTests = numberOfUsedCarerTests;
+    }
 
+    public void setNumberOfUsedMrAndersonTests(int numberOfUsedMrAndersonTests) {
+        this.numberOfUsedMrAndersonTests = numberOfUsedMrAndersonTests;
+    }
+
+    public void setNumberOfAvailableCareerTests(int numberOfAvailableCareerTests) {
+        this.numberOfAvailableCareerTests = numberOfAvailableCareerTests;
+    }
+
+    public void setNumberOfAvailableMrAndersonTests(int numberOfAvailableMrAndersonTests) {
+        this.numberOfAvailableMrAndersonTests = numberOfAvailableMrAndersonTests;
+    }
 
     public Consultant(String email, String name, String phoneNumber, String password, String company) {
         this.email = email;
@@ -46,13 +60,13 @@ public class Consultant{
     private int isApproved = 0;
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private final List<CareerTestResult> careerTestResultList = new ArrayList<>();
+    private List<CareerTestResult> careerTestResultList = new ArrayList<>();
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private final List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
+    private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
     @OneToMany(mappedBy = "consultant" ,fetch = FetchType.LAZY)
-    private final List<MemberConsultant> memberConsultantList = new ArrayList<>();
+    private List<MemberConsultant> memberConsultantList = new ArrayList<>();
 
     public void putCareerTestResult(CareerTestResult careerTestResult){
         this.careerTestResultList.add(careerTestResult);
