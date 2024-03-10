@@ -1,6 +1,8 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.entity.AndersonBlackbox;
 import com.newjob.consultant.entity.MrAndersonTestResult;
+import com.newjob.consultant.repository.AndersonBlackboxRepository;
 import com.newjob.consultant.repository.JdbcMrAndersonTestRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class MrAndersonTestService {
     private final JdbcMrAndersonTestRepository jdbcMrAndersonTestRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
+    private final AndersonBlackboxRepository andersonBlackboxRepository;
 
     @Transactional
     public void join(MrAndersonTestResult mrAndersonTestResult){
@@ -127,115 +130,120 @@ public class MrAndersonTestService {
         int levelE = fieldLevel(mrAndersonTestResult.getScoreEs());
         int levelF = fieldLevel(mrAndersonTestResult.getScoreFs());
 
-        List<String> blackboxA = jdbcMrAndersonTestRepository.getAndersonBlackBoxA(levelA);
-        List<String> blackboxB = jdbcMrAndersonTestRepository.getAndersonBlackBoxB(levelB);
-        List<String> blackboxC = jdbcMrAndersonTestRepository.getAndersonBlackBoxC(levelC);
-        List<String> blackboxD = jdbcMrAndersonTestRepository.getAndersonBlackBoxD(levelD);
-        List<String> blackboxE = jdbcMrAndersonTestRepository.getAndersonBlackBoxE(levelE);
-        List<String> blackboxF = jdbcMrAndersonTestRepository.getAndersonBlackBoxF(levelF);
+//        List<String> blackboxA = jdbcMrAndersonTestRepository.getAndersonBlackBoxA(levelA);
+//        List<String> blackboxB = jdbcMrAndersonTestRepository.getAndersonBlackBoxB(levelB);
+//        List<String> blackboxC = jdbcMrAndersonTestRepository.getAndersonBlackBoxC(levelC);
+//        List<String> blackboxD = jdbcMrAndersonTestRepository.getAndersonBlackBoxD(levelD);
+//        List<String> blackboxE = jdbcMrAndersonTestRepository.getAndersonBlackBoxE(levelE);
+//        List<String> blackboxF = jdbcMrAndersonTestRepository.getAndersonBlackBoxF(levelF);
 
-//        String typeForA =
+        AndersonBlackbox blackboxA = andersonBlackboxRepository.findById(levelA).get();
+        AndersonBlackbox blackboxB = andersonBlackboxRepository.findById(levelB).get();
+        AndersonBlackbox blackboxC = andersonBlackboxRepository.findById(levelC).get();
+        AndersonBlackbox blackboxD = andersonBlackboxRepository.findById(levelD).get();
+        AndersonBlackbox blackboxE = andersonBlackboxRepository.findById(levelE).get();
+        AndersonBlackbox blackboxF = andersonBlackboxRepository.findById(levelF).get();
 
-        mrAndersonTestResult.setBlackBoxA_letters(blackboxA.get(0));
-        mrAndersonTestResult.setBlackboxA_comment(blackboxA.get(1));
+        mrAndersonTestResult.setBlackBoxA_letters(blackboxA.getType());
+        mrAndersonTestResult.setBlackboxA_comment(blackboxA.getFieldA());
 
-        mrAndersonTestResult.setBlackBoxB_letters(blackboxB.get(0));
-        mrAndersonTestResult.setBlackboxB_comment(blackboxB.get(1));
+        mrAndersonTestResult.setBlackBoxB_letters(blackboxB.getType());
+        mrAndersonTestResult.setBlackboxB_comment(blackboxB.getFieldB());
 
-        mrAndersonTestResult.setBlackBoxC_letters(blackboxC.get(0));
-        mrAndersonTestResult.setBlackboxC_comment(blackboxC.get(1));
+        mrAndersonTestResult.setBlackBoxC_letters(blackboxC.getType());
+        mrAndersonTestResult.setBlackboxC_comment(blackboxC.getFieldC());
 
-        mrAndersonTestResult.setBlackBoxD_letters(blackboxD.get(0));
-        mrAndersonTestResult.setBlackboxD_comment(blackboxD.get(1));
+        mrAndersonTestResult.setBlackBoxD_letters(blackboxD.getType());
+        mrAndersonTestResult.setBlackboxD_comment(blackboxD.getFieldD());
 
-        mrAndersonTestResult.setBlackBoxE_letters(blackboxE.get(0));
-        mrAndersonTestResult.setBlackboxE_comment(blackboxE.get(1));
+        mrAndersonTestResult.setBlackBoxE_letters(blackboxE.getType());
+        mrAndersonTestResult.setBlackboxE_comment(blackboxE.getFieldE());
 
-        mrAndersonTestResult.setBlackBoxF_letters(blackboxF.get(0));
-        mrAndersonTestResult.setBlackboxF_comment(blackboxF.get(1));
+        mrAndersonTestResult.setBlackBoxF_letters(blackboxF.getType());
+        mrAndersonTestResult.setBlackboxF_comment(blackboxF.getFieldF());
 
         if(levelA <= 3){
-            list.add(blackboxA.get(1));
+            list.add(blackboxA.getFieldA());
             list.add("");
             list.add("");
         }
         else{
             list.add("");
-            list.add(blackboxA.get(1));
+            list.add(blackboxA.getFieldA());
             list.add("");
         }
         if(levelB <= 3){
-            list.add(blackboxB.get(1));
+            list.add(blackboxB.getFieldB());
             list.add("");
             list.add("");
         }
         else{
             list.add("");
-            list.add(blackboxB.get(1));
+            list.add(blackboxB.getFieldB());
             list.add("");
         }
         if(levelC <= 2){
-            list.add(blackboxC.get(1));
+            list.add(blackboxC.getFieldC());
             list.add("");
             list.add("");
         }
         else if(levelC <=4){
             list.add("");
-            list.add(blackboxC.get(1));
+            list.add(blackboxC.getFieldC());
             list.add("");
         }
         else{
             list.add("");
             list.add("");
-            list.add(blackboxC.get(1));
+            list.add(blackboxC.getFieldC());
 
         }
         if(levelD <= 2){
-            list.add(blackboxD.get(1));
+            list.add(blackboxD.getFieldD());
             list.add("");
             list.add("");
         }
         else if(levelD <=4){
             list.add("");
-            list.add(blackboxD.get(1));
+            list.add(blackboxD.getFieldD());
             list.add("");
         }
         else{
             list.add("");
             list.add("");
-            list.add(blackboxD.get(1));
+            list.add(blackboxD.getFieldD());
         }
 
         if(levelE <= 2){
-            list.add(blackboxE.get(1));
+            list.add(blackboxE.getFieldE());
             list.add("");
             list.add("");
         }
         else if(levelE <=4){
             list.add("");
-            list.add(blackboxE.get(1));
+            list.add(blackboxE.getFieldE());
             list.add("");
         }
         else{
             list.add("");
             list.add("");
-            list.add(blackboxE.get(1));
+            list.add(blackboxE.getFieldE());
         }
 
         if(levelF <= 2){
-            list.add(blackboxF.get(1));
+            list.add(blackboxF.getFieldF());
             list.add("");
             list.add("");
         }
         else if(levelD <=4){
             list.add("");
-            list.add(blackboxF.get(1));
+            list.add(blackboxF.getFieldF());
             list.add("");
         }
         else{
             list.add("");
             list.add("");
-            list.add(blackboxF.get(1));
+            list.add(blackboxF.getFieldF());
         }
 
         return list;
