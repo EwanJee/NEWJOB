@@ -1,21 +1,16 @@
 package com.newjob.consultant.service;
 
-import com.newjob.consultant.controller.CareerTestResultForm;
 import com.newjob.consultant.entity.CareerQuestion;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.repository.CareerQuestionRepository;
 import com.newjob.consultant.repository.CareerTestResultRepository;
 import com.newjob.consultant.repository.JdbcCareerTestRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -168,53 +163,44 @@ public class CareerTestService {
         return questionList;
     }
     public List<String> findLowest2(CareerTestResult careerTestResult){
-        List<Integer> scores = new ArrayList<Integer>();
-        scores.add(careerTestResult.getScoreA());
-        scores.add(careerTestResult.getScoreB());
-        scores.add(careerTestResult.getScoreC());
-        scores.add(careerTestResult.getScoreD());
-        scores.add(careerTestResult.getScoreE());
-        scores.add(careerTestResult.getScoreF());
-        scores.add(careerTestResult.getScoreG());
-        scores.add(careerTestResult.getScoreH());
-        scores.add(careerTestResult.getScoreI());
-        scores.add(careerTestResult.getScoreJ());
-        scores.add(careerTestResult.getScoreK());
-        scores.add(careerTestResult.getScoreL());
-        scores.add(careerTestResult.getScoreM());
-        scores.add(careerTestResult.getScoreN());
-        scores.add(careerTestResult.getScoreO());
+        Map<String,Integer> map = new HashMap<>();
+        map.put("What",careerTestResult.getScoreO());
+        map.put("Why",careerTestResult.getScoreI());
+        map.put("성과/평가",careerTestResult.getScoreE());
+        map.put("네트워크",careerTestResult.getScoreL());
+        map.put("팀웍/동료",careerTestResult.getScoreN());
+        map.put("조직",careerTestResult.getScoreF());
+        map.put("업계",careerTestResult.getScoreA());
+        map.put("전문분야",careerTestResult.getScoreJ());
+        map.put("영역확장",careerTestResult.getScoreB());
+        map.put("영역개발",careerTestResult.getScoreM());
+        map.put("업무재조성",careerTestResult.getScoreG());
+        map.put("지원개발",careerTestResult.getScoreH());
+        map.put("학습계획",careerTestResult.getScoreC());
+        map.put("실천",careerTestResult.getScoreK());
+        map.put("월드지수",careerTestResult.getScoreW());
 
-        int smallest1 = Integer.MAX_VALUE;
-        int smallest2 = Integer.MAX_VALUE;
-        int index1 = 0;
-        int index2 = 0;
+        List<String> lowestTwo =
+                map.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue())
+                        .limit(2)
+                        .map(Map.Entry::getKey)
+                        .toList();
 
-        for(int i=0; i<scores.size(); i++){
-            if(scores.get(i) < smallest1){
-                smallest2 = smallest1;
-                smallest1 = scores.get(i);
-                index1 = i+1;
-            }
-            else if(scores.get(i) < smallest2){
-                smallest2 = scores.get(i);
-                index2 = i+1;
-            }
+        String firstLowest = lowestTwo.get(0);
+        String secondLowest = lowestTwo.get(1);
+
+        List<CareerQuestion> questionList = careerQuestionRepository.findAll();
+        List<String> questionsForLowest2 = new ArrayList<>();
+
+        for(CareerQuestion careerQuestion : questionList){
+            if(careerQuestion.getCareerQuestionsType().equals(firstLowest))
+                questionsForLowest2.add(careerQuestion.getCareerQuestionsDescription());
         }
-        List<String> Lowest2 = new ArrayList<>();
-        List<String> first = jdbcCareerTestRepository.getQuestionsMappedByType(index1);
-        List<String> second = jdbcCareerTestRepository.getQuestionsMappedByType(index2);
-        Lowest2.add(first.get(0));
-        Lowest2.add(first.get(1));
-        Lowest2.add(first.get(2));
-        Lowest2.add(first.get(3));
-        Lowest2.add(first.get(4));
-
-        Lowest2.add(second.get(0));
-        Lowest2.add(second.get(1));
-        Lowest2.add(second.get(2));
-        Lowest2.add(second.get(3));
-        Lowest2.add(second.get(4));
-        return Lowest2;
+        for(CareerQuestion careerQuestion : questionList){
+            if(careerQuestion.getCareerQuestionsType().equals(secondLowest))
+                questionsForLowest2.add(careerQuestion.getCareerQuestionsDescription());
+        }
+        return questionsForLowest2;
     }
 }
