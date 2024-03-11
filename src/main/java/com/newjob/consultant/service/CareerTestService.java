@@ -1,7 +1,9 @@
 package com.newjob.consultant.service;
 
 import com.newjob.consultant.controller.CareerTestResultForm;
+import com.newjob.consultant.entity.CareerQuestion;
 import com.newjob.consultant.entity.CareerTestResult;
+import com.newjob.consultant.repository.CareerQuestionRepository;
 import com.newjob.consultant.repository.CareerTestResultRepository;
 import com.newjob.consultant.repository.JdbcCareerTestRepository;
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class CareerTestService {
     private final JdbcCareerTestRepository jdbcCareerTestRepository;
     private final CareerTestResultRepository careerTestResultRepository;
+    private final CareerQuestionRepository careerQuestionRepository;
     @Transactional
     public void join(CareerTestResult careerTestResult){
         careerTestResultRepository.save(careerTestResult);
@@ -245,7 +248,12 @@ public class CareerTestService {
         return JdbcCareerTestRepository.findAll(pageable);
     }*/
     public List<String> getCareerQuestions(){
-        return jdbcCareerTestRepository.getCareerQuestions();
+        List<CareerQuestion> all = careerQuestionRepository.findAll();
+        List<String> questionList = new ArrayList<>();
+        for(CareerQuestion careerQuestion : all){
+            questionList.add(careerQuestion.getCareerQuestionsDescription());
+        }
+        return questionList;
     }
     public List<String> findLowest2(CareerTestResult careerTestResult){
         List<Integer> scores = new ArrayList<Integer>();
