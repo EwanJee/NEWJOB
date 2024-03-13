@@ -130,13 +130,6 @@ public class MrAndersonTestService {
         int levelE = fieldLevel(mrAndersonTestResult.getScoreEs());
         int levelF = fieldLevel(mrAndersonTestResult.getScoreFs());
 
-//        List<String> blackboxA = jdbcMrAndersonTestRepository.getAndersonBlackBoxA(levelA);
-//        List<String> blackboxB = jdbcMrAndersonTestRepository.getAndersonBlackBoxB(levelB);
-//        List<String> blackboxC = jdbcMrAndersonTestRepository.getAndersonBlackBoxC(levelC);
-//        List<String> blackboxD = jdbcMrAndersonTestRepository.getAndersonBlackBoxD(levelD);
-//        List<String> blackboxE = jdbcMrAndersonTestRepository.getAndersonBlackBoxE(levelE);
-//        List<String> blackboxF = jdbcMrAndersonTestRepository.getAndersonBlackBoxF(levelF);
-
         AndersonBlackbox blackboxA = andersonBlackboxRepository.findById(levelA).get();
         AndersonBlackbox blackboxB = andersonBlackboxRepository.findById(levelB).get();
         AndersonBlackbox blackboxC = andersonBlackboxRepository.findById(levelC).get();
