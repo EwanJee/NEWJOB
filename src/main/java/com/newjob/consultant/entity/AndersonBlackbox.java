@@ -4,10 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Table(name = "anderson_blackbox")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class AndersonBlackbox {
     @Id
