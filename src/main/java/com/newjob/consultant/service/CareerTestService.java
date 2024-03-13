@@ -155,12 +155,10 @@ public class CareerTestService {
         return careerTestResultRepository.findById(id);
     }
     public List<String> getCareerQuestions(){
-        List<CareerQuestion> all = careerQuestionRepository.findAll();
-        List<String> questionList = new ArrayList<>();
-        for(CareerQuestion careerQuestion : all){
-            questionList.add(careerQuestion.getCareerQuestionsDescription());
-        }
-        return questionList;
+        return careerQuestionRepository.findAll()
+                .stream()
+                .map(CareerQuestion::getCareerQuestionsDescription)
+                .toList();
     }
     public List<String> findLowest2(CareerTestResult careerTestResult){
         Map<String,Integer> map = new HashMap<>();
