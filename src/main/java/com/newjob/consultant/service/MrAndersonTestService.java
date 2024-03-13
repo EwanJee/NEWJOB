@@ -118,8 +118,10 @@ public class MrAndersonTestService {
 
     }
     public List<String> getMrAndersonQuestions() {
-        List<AndersonQuestion> all = andersonQuestionsRepository.findAll();
-        return all.stream().map(AndersonQuestion::getQuestions_description).toList();
+        return andersonQuestionsRepository.findAll()
+                .stream()
+                .map(AndersonQuestion::getQuestions_description)
+                .toList();
     }
     @Transactional
     public List<String> getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
