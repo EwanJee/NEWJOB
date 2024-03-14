@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 public class Admin {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sequence")
-    private Long id;
+    private Long sequence;
     @Column(name = "id")
-    private String adminId;
+    private String id;
     @Column(name = "password")
     private String password;
 }
