@@ -10,13 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 @Transactional(readOnly = true)
 public class CareerTestService {
-    private final JdbcCareerTestRepository jdbcCareerTestRepository;
     private final CareerTestResultRepository careerTestResultRepository;
     private final CareerQuestionRepository careerQuestionRepository;
     @Transactional
