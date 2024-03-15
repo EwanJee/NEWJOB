@@ -1,6 +1,7 @@
 package com.newjob.consultant.admin;
 
 import com.newjob.consultant.entity.Admin;
+import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.repository.AdminRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -26,5 +27,9 @@ public class AdminTests {
         //Then
         assert admin1 != null;
         Assertions.assertEquals(admin.getId(), admin1.getId());
+    }
+    @Test
+    void ei(){
+
     }
 }
