@@ -1,5 +1,6 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.entity.Admin;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.repository.AdminRepository;
 import com.newjob.consultant.repository.ConsultantRepository;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,7 +17,10 @@ public class AdminService {
     private final AdminRepository adminRepository;
     private final ConsultantRepository consultantRepository;
     public boolean isAdmin(String id){
-        return adminRepository.existsById(id);
+        return (1 == adminRepository.findAll()
+                .stream()
+                .filter(e -> e.getId().equals(id))
+                .count());
     }
     @Transactional
     public void updateForm(Long id, int anderson, int career, int approved) {
