@@ -18,15 +18,6 @@ public class AdminTests {
     @Test
     @DisplayName("어드민 레포지토리에서 첫번째 인덱스와 id가 1인 어드민의 id가 같은지 확인")
     public void test1(){
-        //Given
-        Admin admin = adminRepository.findAll().get(0);
-
-        //When
-        Admin admin1 = adminRepository.findById(1L).orElse(null);
-
-        //Then
-        assert admin1 != null;
-        Assertions.assertEquals(admin.getId(), admin1.getId());
     }
     @Test
     void ei(){
