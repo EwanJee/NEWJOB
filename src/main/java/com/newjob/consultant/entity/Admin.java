@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Admin {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sequence")
-    private Long sequence;
+    private Long seq;
     @Column(name = "id")
     private String id;
     @Column(name = "password")
