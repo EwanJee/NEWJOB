@@ -1,6 +1,8 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.entity.AndersonQuestion;
 import com.newjob.consultant.entity.MrAndersonTestResult;
+import com.newjob.consultant.repository.AndersonQuestionsRepository;
 import com.newjob.consultant.repository.JdbcMrAndersonTestRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class MrAndersonTestService {
     private final JdbcMrAndersonTestRepository jdbcMrAndersonTestRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
+    private final AndersonQuestionsRepository andersonQuestionsRepository;
 
     @Transactional
     public void join(MrAndersonTestResult mrAndersonTestResult){
@@ -115,7 +118,10 @@ public class MrAndersonTestService {
 
     }
     public List<String> getMrAndersonQuestions() {
-        return jdbcMrAndersonTestRepository.getMrAndersonQuestions();
+        return andersonQuestionsRepository.findAll()
+                .stream()
+                .map(AndersonQuestion::getQuestions_description)
+                .toList();
     }
     @Transactional
     public List<String> getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
