@@ -1,8 +1,14 @@
 package com.newjob.consultant.service;
 
+<<<<<<< HEAD
 import com.newjob.consultant.entity.AndersonBlackbox;
 import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.AndersonBlackboxRepository;
+=======
+import com.newjob.consultant.entity.AndersonQuestion;
+import com.newjob.consultant.entity.MrAndersonTestResult;
+import com.newjob.consultant.repository.AndersonQuestionsRepository;
+>>>>>>> master
 import com.newjob.consultant.repository.JdbcMrAndersonTestRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
 import lombok.AllArgsConstructor;
@@ -19,7 +25,11 @@ import java.util.Optional;
 public class MrAndersonTestService {
     private final JdbcMrAndersonTestRepository jdbcMrAndersonTestRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
+<<<<<<< HEAD
     private final AndersonBlackboxRepository andersonBlackboxRepository;
+=======
+    private final AndersonQuestionsRepository andersonQuestionsRepository;
+>>>>>>> master
 
     @Transactional
     public void join(MrAndersonTestResult mrAndersonTestResult){
@@ -118,7 +128,10 @@ public class MrAndersonTestService {
 
     }
     public List<String> getMrAndersonQuestions() {
-        return jdbcMrAndersonTestRepository.getMrAndersonQuestions();
+        return andersonQuestionsRepository.findAll()
+                .stream()
+                .map(AndersonQuestion::getQuestions_description)
+                .toList();
     }
     @Transactional
     public List<String> getMyBlackBox(MrAndersonTestResult mrAndersonTestResult){
