@@ -253,27 +253,27 @@ public class CareerTestResult {
     }
 
     public void matchingScore(){
-        this.scoreO = score1 + score16 + score31 + score46 + score61;
-        this.scoreD = score2 + score17 + score32 + score47 + score62;
-        this.scoreI = score3 + score18 + score33 + score48 + score63;
+        this.scoreO = score1 + score16 + score31 + score46 + score61; // What
+        this.scoreD = score2 + score17 + score32 + score47 + score62; // How
+        this.scoreI = score3 + score18 + score33 + score48 + score63; // Why
 
-        this.scoreE = score4 + score19 + score34 + score49 + score64;
-        this.scoreL = score5 + score20 + score35 + score50 + score65;
-        this.scoreN = score6 + score21 + score36 + score51 + score66;
+        this.scoreE = score4 + score19 + score34 + score49 + score64; // 성과/평가
+        this.scoreL = score5 + score20 + score35 + score50 + score65; // 네트워크
+        this.scoreN = score6 + score21 + score36 + score51 + score66; // 팀웍/동료
 
-        this.scoreF = score7 + score22 + score37 + score52 + score67;
-        this.scoreA = score8 + score23 + score38 + score53 + score68;
-        this.scoreJ = score9 + score24 + score39 + score54 + score69;
+        this.scoreF = score7 + score22 + score37 + score52 + score67; // 조직
+        this.scoreA = score8 + score23 + score38 + score53 + score68; // 업계
+        this.scoreJ = score9 + score24 + score39 + score54 + score69; // 전문분야
 
-        this.scoreB = score10 + score25 + score40 + score55 + score70;
-        this.scoreM = score11 + score26 + score41 + score56 + score71;
-        this.scoreG = score12 + score27 + score42 + score57 + score72;
+        this.scoreB = score10 + score25 + score40 + score55 + score70; // 영역확장
+        this.scoreM = score11 + score26 + score41 + score56 + score71; // 영역개발
+        this.scoreG = score12 + score27 + score42 + score57 + score72; // 업무재조성
 
-        this.scoreH = score13 + score28 + score43 + score58 + score73;
-        this.scoreC = score14 + score29 + score44 + score59 + score74;
-        this.scoreK = score15 + score30 + score45 + score60 + score75;
+        this.scoreH = score13 + score28 + score43 + score58 + score73; // 지원개발
+        this.scoreC = score14 + score29 + score44 + score59 + score74; // 학습계획
+        this.scoreK = score15 + score30 + score45 + score60 + score75; // 실천
 
-        this.scoreW = score76 + score77 + score78 + score79 + score80;
+        this.scoreW = score76 + score77 + score78 + score79 + score80; // 월드지수
 
         this.scoreCharacter = scoreA + scoreB + scoreC;
         this.scoreConnection = scoreD + scoreE + scoreF;
