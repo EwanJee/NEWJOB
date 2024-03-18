@@ -6,7 +6,8 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Getter
+@Getter
+@Entity
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

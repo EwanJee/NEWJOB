@@ -1,23 +1,20 @@
 package com.newjob.consultant.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-@Entity @Getter
+@Getter
 @NoArgsConstructor
+@Entity
 public class Consultant{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
-
-    private String encoded;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -59,8 +56,6 @@ public class Consultant{
 
     private int numberOfAvailableCareerTests = 0;
     private int numberOfAvailableMrAndersonTests = 0;
-    private String imgUrl;
-    private String skey;
 
     private int isApproved = 0;
 

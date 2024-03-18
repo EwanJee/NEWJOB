@@ -3,8 +3,9 @@ package com.newjob.consultant.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-@Entity
+
 @Getter
+@Entity
 public class MemberConsultant {
 
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)

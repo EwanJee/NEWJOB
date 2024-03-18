@@ -2,15 +2,15 @@ package com.newjob.consultant.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Entity @Getter @Setter
+@Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
+@Entity
 public class CareerTestResult {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
