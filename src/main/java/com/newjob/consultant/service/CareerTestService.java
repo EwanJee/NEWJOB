@@ -4,7 +4,6 @@ import com.newjob.consultant.entity.CareerQuestion;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.repository.CareerQuestionRepository;
 import com.newjob.consultant.repository.CareerTestResultRepository;
-import com.newjob.consultant.repository.JdbcCareerTestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

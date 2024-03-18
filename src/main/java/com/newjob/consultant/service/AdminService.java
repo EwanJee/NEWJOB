@@ -1,6 +1,5 @@
 package com.newjob.consultant.service;
 
-import com.newjob.consultant.entity.Admin;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.repository.AdminRepository;
 import com.newjob.consultant.repository.ConsultantRepository;
@@ -8,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

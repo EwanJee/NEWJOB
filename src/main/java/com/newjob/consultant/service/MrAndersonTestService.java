@@ -5,7 +5,6 @@ import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.AndersonBlackboxRepository;
 import com.newjob.consultant.entity.AndersonQuestion;
 import com.newjob.consultant.repository.AndersonQuestionsRepository;
-import com.newjob.consultant.repository.JdbcMrAndersonTestRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
