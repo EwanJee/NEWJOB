@@ -2,9 +2,9 @@ package com.newjob.consultant.common.exception;
 
 
 public class ErrorResponse {
-    private int status;
-    private String message;
-    private String code;
+    private final int status;
+    private final String message;
+    private final String code;
 
     public ErrorResponse(ErrorCode errorCode) {
         this.status = errorCode.getStatus();
