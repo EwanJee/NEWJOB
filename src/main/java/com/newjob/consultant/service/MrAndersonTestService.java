@@ -1,5 +1,7 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.AndersonBlackbox;
 import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.AndersonBlackboxRepository;
@@ -31,7 +33,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateInfo(Long id, String job, String organization, String profession, String industry){
-        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         mrAndersonTestResult.setJob(job);
         mrAndersonTestResult.setOrganization2(organization);
         mrAndersonTestResult.setProfession(profession);
@@ -39,7 +42,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore1(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore1(i1-1);
         careerTestResult.setScore2(i2-1);
         careerTestResult.setScore3(i3-1);
@@ -51,7 +55,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore2(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore9(i1-1);
         careerTestResult.setScore10(i2-1);
         careerTestResult.setScore11(i3-1);
@@ -63,7 +68,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore3(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore17(i1-1);
         careerTestResult.setScore18(i2-1);
         careerTestResult.setScore19(i3-1);
@@ -75,7 +81,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore4(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore25(i1-1);
         careerTestResult.setScore26(i2-1);
         careerTestResult.setScore27(i3-1);
@@ -87,7 +94,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore5(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore33(i1-1);
         careerTestResult.setScore34(i2-1);
         careerTestResult.setScore35(i3-1);
@@ -99,7 +107,8 @@ public class MrAndersonTestService {
     }
     @Transactional
     public void updateScore6(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Anderson Test Not Found", ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore41(i1-1);
         careerTestResult.setScore42(i2-1);
         careerTestResult.setScore43(i3-1);
