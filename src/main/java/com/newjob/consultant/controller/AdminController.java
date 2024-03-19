@@ -44,8 +44,7 @@ public class AdminController {
     }
     @GetMapping("/admin/list/{id}/edit")
     public String editConsultant(@PathVariable("id")Long id, Model model){
-        Optional<Consultant> optionalConsultant = consultantService.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        Consultant consultant = consultantService.findById(id);
         ConsultantForm consultantForm = new ConsultantForm();
         consultantForm.setId(consultant.getId());
         consultantForm.setName(consultant.getName());

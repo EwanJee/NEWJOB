@@ -20,8 +20,7 @@ public class MrAndersonTestController {
 
     @GetMapping("/{id}/test/mranderson")
     public String linkMrAnderson(@PathVariable("id") Long id, Model model) {
-        Optional<Consultant> optionalConsultant = consultantService.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        Consultant consultant = consultantService.findById(id);
         MrAndersonTestResult mrAndersonTestResult = new MrAndersonTestResult();
         model.addAttribute("consultant", consultant);
         model.addAttribute("form", mrAndersonTestResult);
@@ -125,7 +124,7 @@ public class MrAndersonTestController {
     @PostMapping("/{id}/test/mrAnderson/{testId}/result")
     public String andersonResult(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") MrAndersonTestResultForm mrAndersonTestResultForm, Model model){
         mrAndersonTestService.updateScore6(testId,mrAndersonTestResultForm.getScore41(),mrAndersonTestResultForm.getScore42(),mrAndersonTestResultForm.getScore43(),mrAndersonTestResultForm.getScore44(),mrAndersonTestResultForm.getScore45(),mrAndersonTestResultForm.getScore46(),mrAndersonTestResultForm.getScore47(),mrAndersonTestResultForm.getScore48());
-        Consultant consultant = consultantService.findById(id).orElse(null);
+        Consultant consultant = consultantService.findById(id);
         consultantService.updateNumberOfUsedMrAndersonTests(id);
         consultantService.addMrAndersonTest(id,testId);
         return "redirect:/consultant/" + id + "/test/mrAnderson/finish/" + testId;

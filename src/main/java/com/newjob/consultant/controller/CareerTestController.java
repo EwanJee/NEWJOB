@@ -27,8 +27,7 @@ public class CareerTestController {
     private final PdfService pdfService;
     @GetMapping("/{id}/test/career")
     public String linkCareer(@PathVariable("id")Long id, Model model){
-        Optional<Consultant> optionalConsultant = consultantService.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        Consultant consultant = consultantService.findById(id);
         CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResult);
@@ -179,7 +178,6 @@ public class CareerTestController {
         //model.addAttribute("questions",careerTestService.getCareerQuestions());
         //CareerTestResult careerTestResult = careerTestService.mapQuestions(careerTestResultForm);
         consultantService.addCareerTest(id, testId);
-        Consultant consultant1 = consultantService.findById(id).orElse(null);
         consultantService.updateNumberOfUsedCareerTests(id);
         return "redirect:/consultant/" + id + "/test/career/finish/" + testId;
     }

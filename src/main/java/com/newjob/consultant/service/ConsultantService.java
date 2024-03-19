@@ -66,8 +66,9 @@ public class ConsultantService{
         return consultantRepository.findByEmailAndPassword(email,password)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
     }
-    public Optional<Consultant> findById(Long id){
-        return consultantRepository.findById(id);
+    public Consultant findById(Long id){
+        return consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
     }
     public List<Consultant> findAll(){
         return consultantRepository.findAll();
