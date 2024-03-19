@@ -1,5 +1,7 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.Admin;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.repository.AdminRepository;
@@ -24,8 +26,8 @@ public class AdminService {
     }
     @Transactional
     public void updateForm(Long id, int anderson, int career, int approved) {
-        Optional<Consultant> optionalConsultant = consultantRepository.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         consultant.setNumberOfAvailableMrAndersonTests(anderson);
         consultant.setNumberOfAvailableCareerTests(career);
         consultant.setApproved(approved);
