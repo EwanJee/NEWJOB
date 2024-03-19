@@ -1,6 +1,5 @@
 package com.newjob.consultant.controller;
 
-import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.service.ConsultantService;
@@ -26,7 +25,7 @@ public class MrAndersonTestController {
         MrAndersonTestResult mrAndersonTestResult = new MrAndersonTestResult();
         model.addAttribute("consultant", consultant);
         model.addAttribute("form", mrAndersonTestResult);
-        if (!consultantService.isValid4Test(consultant)) {
+        if (consultantService.isValid4Test(consultant)) {
             return "careerTest/false";
         } else if (consultant.getNumberOfAvailableMrAndersonTests() <= 0) {
             return "careerTest/invalid";

@@ -6,17 +6,13 @@ import com.newjob.consultant.service.CareerTestService;
 import com.newjob.consultant.service.ConsultantService;
 import com.newjob.consultant.service.DataMapper;
 import com.newjob.consultant.service.PdfService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +32,7 @@ public class CareerTestController {
         CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResult);
-        if(!consultantService.isValid4Test(consultant)){
+        if(consultantService.isValid4Test(consultant)){
             return "careerTest/false";
         }
         else if(consultant.getNumberOfAvailableCareerTests()<=0){
