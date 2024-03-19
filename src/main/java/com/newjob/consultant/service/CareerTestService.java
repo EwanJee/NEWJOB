@@ -161,8 +161,9 @@ public class CareerTestService {
 
         careerTestResult.matchingScore();
     }
-    public Optional<CareerTestResult> findById(Long id){
-        return careerTestResultRepository.findById(id);
+    public CareerTestResult findById(Long id){
+        return careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("CareerTest Not Found", ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));;
     }
     public List<String> getCareerQuestions(){
         return careerQuestionRepository.findAll()

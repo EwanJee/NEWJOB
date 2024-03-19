@@ -189,7 +189,7 @@ public class CareerTestController {
     }
     @GetMapping("/{id}/test/career/finish/{testId}")
     public String careerTestFinish(@PathVariable("id") Long id, @PathVariable("testId")Long testId, Model model){
-        CareerTestResult careerTestResult = careerTestService.findById(testId).orElse(null);
+        CareerTestResult careerTestResult = careerTestService.findById(testId);
         model.addAttribute("result",careerTestResult);
         model.addAttribute("consultantId",id);
         List<String> lowest2 = careerTestService.findLowest2(careerTestResult);
@@ -198,7 +198,7 @@ public class CareerTestController {
     }
     @PostMapping("/{id}/test/career/finish/{testId}")
     public String careerTestFinishPost(@PathVariable("id") Long id, @PathVariable("testId")Long testId, Model model){
-        CareerTestResult careerTestResult = careerTestService.findById(testId).orElse(null);
+        CareerTestResult careerTestResult = careerTestService.findById(testId);
         String html = null;
         Context context = dataMapper.setData(careerTestResult);
         html = springTemplateEngine.process("template",context);
