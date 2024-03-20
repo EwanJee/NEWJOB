@@ -1,7 +1,9 @@
 package com.newjob.consultant.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -9,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 public class CareerTestResult {
@@ -162,8 +165,19 @@ public class CareerTestResult {
     private int scoreMoveOn;
 
     @CreatedDate
-    @Column(updatable = false , nullable = true)
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+
+    public void updateScoreForPage1(int score1,int score2,int score3,int score4, int score5, int score6, int score7, int score8){
+        this.score1 = score1;
+        this.score2 = score2;
+        this.score3 = score3;
+        this.score4 = score4;
+        this.score5 = score5;
+        this.score6 = score6;
+        this.score7 = score7;
+        this.score8 = score8;
+    }
 
     public CareerTestResult(int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8, int score9, int score10, int score11, int score12, int score13, int score14, int score15, int score16, int score17, int score18, int score19, int score20, int score21, int score22, int score23, int score24, int score25, int score26, int score27, int score28, int score29, int score30, int score31, int score32, int score33, int score34, int score35, int score36, int score37, int score38, int score39, int score40, int score41, int score42, int score43, int score44, int score45, int score46, int score47, int score48, int score49, int score50, int score51, int score52, int score53, int score54, int score55, int score56, int score57, int score58, int score59, int score60, int score61, int score62, int score63, int score64, int score65, int score66, int score67, int score68, int score69, int score70, int score71, int score72, int score73, int score74, int score75, int score76, int score77, int score78, int score79, int score80) {
         this.score1 = score1;
@@ -246,10 +260,6 @@ public class CareerTestResult {
         this.score78 = score78;
         this.score79 = score79;
         this.score80 = score80;
-    }
-
-    public CareerTestResult() {
-
     }
 
     public void matchingScore(){

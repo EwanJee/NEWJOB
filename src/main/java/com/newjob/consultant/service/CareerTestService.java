@@ -2,6 +2,7 @@ package com.newjob.consultant.service;
 
 import com.newjob.consultant.common.exception.ErrorCode;
 import com.newjob.consultant.common.exception.NotFoundException;
+import com.newjob.consultant.controller.CareerTestResultForm;
 import com.newjob.consultant.entity.CareerQuestion;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.repository.CareerQuestionRepository;
@@ -30,17 +31,17 @@ public class CareerTestService {
         careerTestResult.setCareerLocation(location);
     }
     @Transactional
-    public void updateScore1(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
+    public void updateScore1(Long id, CareerTestResultForm careerTestResultForm){
         CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("CareerTest Not Found", ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
-        careerTestResult.setScore1(i1);
-        careerTestResult.setScore2(i2);
-        careerTestResult.setScore3(i3);
-        careerTestResult.setScore4(i4);
-        careerTestResult.setScore5(i5);
-        careerTestResult.setScore6(i6);
-        careerTestResult.setScore7(i7);
-        careerTestResult.setScore8(i8);
+        careerTestResult.updateScoreForPage1(careerTestResult.getScore1(),
+                                            careerTestResultForm.getScore2(),
+                                            careerTestResultForm.getScore3(),
+                                            careerTestResultForm.getScore4(),
+                                            careerTestResultForm.getScore5(),
+                                            careerTestResultForm.getScore6(),
+                                            careerTestResultForm.getScore7(),
+                                            careerTestResultForm.getScore8());
     }
     @Transactional
     public void updateScore2(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){

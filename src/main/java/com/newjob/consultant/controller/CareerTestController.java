@@ -81,7 +81,7 @@ public class CareerTestController {
     public String careerTestThird(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm,Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore1(testId,careerTestResultForm.getScore1(),careerTestResultForm.getScore2(),careerTestResultForm.getScore3(),careerTestResultForm.getScore4(),careerTestResultForm.getScore5(),careerTestResultForm.getScore6(),careerTestResultForm.getScore7(),careerTestResultForm.getScore8());
+        careerTestService.updateScore1(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         System.out.println(careerTestResultForm.getCareerLocation());

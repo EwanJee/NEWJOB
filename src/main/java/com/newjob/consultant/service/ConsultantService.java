@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -22,6 +21,18 @@ public class ConsultantService{
     private final ConsultantRepository consultantRepository;
     private final CareerTestResultRepository careerTestResultRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
+
+    @Transactional
+    public void updateForm(Long id, int anderson, int career, int approved) {
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
+        consultant.setNumberOfAvailableMrAndersonTests(anderson);
+        consultant.setNumberOfAvailableCareerTests(career);
+        consultant.setApproved(approved);
+    }
+    public void deleteForm(Long id){
+        consultantRepository.deleteById(id);
+    }
     public List<CareerTestResult> getCList(long id){
         Consultant c = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
