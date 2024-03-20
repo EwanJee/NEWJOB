@@ -10,9 +10,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Consultant{
+public class Consultant {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
 
@@ -22,22 +23,6 @@ public class Consultant{
     private String phoneNumber;
     private String password;
     private String company; //중경카 회사 소속
-
-    public void setNumberOfUsedCarerTests(int numberOfUsedCarerTests) {
-        this.numberOfUsedCarerTests = numberOfUsedCarerTests;
-    }
-
-    public void setNumberOfUsedMrAndersonTests(int numberOfUsedMrAndersonTests) {
-        this.numberOfUsedMrAndersonTests = numberOfUsedMrAndersonTests;
-    }
-
-    public void setNumberOfAvailableCareerTests(int numberOfAvailableCareerTests) {
-        this.numberOfAvailableCareerTests = numberOfAvailableCareerTests;
-    }
-
-    public void setNumberOfAvailableMrAndersonTests(int numberOfAvailableMrAndersonTests) {
-        this.numberOfAvailableMrAndersonTests = numberOfAvailableMrAndersonTests;
-    }
 
     public Consultant(String email, String name, String phoneNumber, String password, String company) {
         this.email = email;
@@ -50,10 +35,6 @@ public class Consultant{
     private int numberOfUsedCarerTests = 0;
     private int numberOfUsedMrAndersonTests = 0;
 
-    public void setApproved(int approved) {
-        isApproved = approved;
-    }
-
     private int numberOfAvailableCareerTests = 0;
     private int numberOfAvailableMrAndersonTests = 0;
 
@@ -65,13 +46,31 @@ public class Consultant{
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "consultant" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
     private List<MemberConsultant> memberConsultantList = new ArrayList<>();
 
-    public void putCareerTestResult(CareerTestResult careerTestResult){
+    public void putCareerTestResult(CareerTestResult careerTestResult) {
         this.careerTestResultList.add(careerTestResult);
     }
-    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult){
+
+    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult) {
         this.mrAndersonTestResultList.add(mrAndersonTestResult);
+    }
+
+    public void updateInitialForm(int anderson, int career, int approved) {
+        this.numberOfAvailableMrAndersonTests = anderson;
+        this.numberOfAvailableCareerTests = career;
+        this.isApproved = approved;
+    }
+
+
+    public void updateUsedCareerTestsAndAvailableCareerTests(int numberOfUsedCarerTests, int numberOfAvailableCareerTests) {
+        this.numberOfUsedCarerTests = numberOfUsedCarerTests;
+        this.numberOfAvailableCareerTests = numberOfAvailableCareerTests;
+    }
+
+    public void updateUsedMrAndersonTestsAndAvailableMrAndersonTests(int numberOfUsedMrAndersonTests, int numberOfAvailableMrAndersonTests) {
+        this.numberOfUsedMrAndersonTests = numberOfUsedMrAndersonTests;
+        this.numberOfAvailableMrAndersonTests = numberOfAvailableMrAndersonTests;
     }
 }

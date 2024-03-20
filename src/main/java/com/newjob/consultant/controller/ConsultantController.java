@@ -38,30 +38,21 @@ public class ConsultantController {
     }
     @GetMapping("{id}/welcome")
     public String welcome(@PathVariable("id")Long id, Model model){
-        Optional<Consultant> consultant = consultantService.findById(id);
-        Consultant c = consultant.orElse(null);
-        model.addAttribute("consultant",c);
+       Consultant consultant = consultantService.findById(id);
+        model.addAttribute("consultant",consultant);
         return "consultant/welcome";
     }
 
     @GetMapping("/{id}/mypage")
     public String myPage(@PathVariable("id")Long id, Model model){
-        Optional<Consultant> consultant = consultantService.findById(id);
-        Consultant c = consultant.orElse(null);
-        model.addAttribute("consultant",c);
+        Consultant consultant = consultantService.findById(id);
+        model.addAttribute("consultant",consultant);
         return "consultant/mypage";
     }
     @GetMapping("/{id}/client")
     public String myClientList(@PathVariable("id")Long id, Model model){
-        Consultant consultant = consultantService.findById(id).orElse(null);
-        /*model.addAttribute("careerTest",
-                consultantService.getCareerList());*/
         model.addAttribute("careerTest",consultantService.getCList(id));
-        //consultantService.findCareerTestResultList(id);
-        /*model.addAttribute("mrAndersonTest",
-                consultantService.getMrAndersonList());*/
         model.addAttribute("mrAndersonTest",consultantService.getMList(id));
-        //consultantService.findMrAndersonTestResultList(id);
         model.addAttribute("id",id);
         return "consultant/clientList";
     }
