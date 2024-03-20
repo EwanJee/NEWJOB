@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AdminService {
     private final AdminRepository adminRepository;
-    public boolean isAdmin(String id){
+
+    public boolean isAdmin(String id) {
         return (1 == adminRepository.findAll()
                 .stream()
                 .filter(e -> e.getId().equals(id))

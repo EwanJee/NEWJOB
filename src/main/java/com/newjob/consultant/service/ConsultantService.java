@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @Transactional(readOnly = true)
-public class ConsultantService{
+public class ConsultantService {
     private final ConsultantRepository consultantRepository;
     private final CareerTestResultRepository careerTestResultRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
@@ -26,33 +26,35 @@ public class ConsultantService{
     public void updateForm(Long id, int anderson, int career, int approved) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
-        consultant.setNumberOfAvailableMrAndersonTests(anderson);
-        consultant.setNumberOfAvailableCareerTests(career);
-        consultant.setApproved(approved);
+        consultant.updateInitialForm(anderson, career, approved);
     }
-    public void deleteForm(Long id){
+
+    public void deleteForm(Long id) {
         consultantRepository.deleteById(id);
     }
-    public List<CareerTestResult> getCList(long id){
+
+    public List<CareerTestResult> getCList(long id) {
         Consultant c = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         return c.getCareerTestResultList();
     }
-    public List<MrAndersonTestResult> getMList(long id){
+
+    public List<MrAndersonTestResult> getMList(long id) {
         Consultant c = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         return c.getMrAndersonTestResultList();
     }
 
     @Transactional
-    public Long join(Consultant consultant){
+    public Long join(Consultant consultant) {
         Consultant consultant2 = consultantRepository.findByEmail(consultant.getEmail())
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         consultantRepository.save(consultant2);
         return consultant2.getId();
     }
+
     @Transactional
-    public void addCareerTest(Long consultantId, Long testId){
+    public void addCareerTest(Long consultantId, Long testId) {
         Consultant consultant = consultantRepository.findById(consultantId)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         CareerTestResult careerTestResult = careerTestResultRepository.findById(testId)
@@ -62,8 +64,9 @@ public class ConsultantService{
         consultantRepository.save(consultant);
         careerTestResultRepository.save(careerTestResult);
     }
+
     @Transactional
-    public void addMrAndersonTest(Long id, Long testId){
+    public void addMrAndersonTest(Long id, Long testId) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId)
@@ -73,18 +76,22 @@ public class ConsultantService{
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
-    public Consultant findByEmailAndPassword(String email, String password){
-        return consultantRepository.findByEmailAndPassword(email,password)
+
+    public Consultant findByEmailAndPassword(String email, String password) {
+        return consultantRepository.findByEmailAndPassword(email, password)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
     }
-    public Consultant findById(Long id){
+
+    public Consultant findById(Long id) {
         return consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
     }
-    public List<Consultant> findAll(){
+
+    public List<Consultant> findAll() {
         return consultantRepository.findAll();
     }
-    public boolean isValid4Test(Consultant consultant){
+
+    public boolean isValid4Test(Consultant consultant) {
         int isApproved = consultant.getIsApproved();
         return isApproved == 0;
     }
@@ -93,19 +100,17 @@ public class ConsultantService{
     public void updateNumberOfUsedCareerTests(Long id) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
-        int used = consultant.getNumberOfUsedCarerTests();
-        consultant.setNumberOfUsedCarerTests(used+1);
-        int available = consultant.getNumberOfAvailableCareerTests();
-        consultant.setNumberOfAvailableCareerTests(available-1);
+        int numberOfUsedCarerTests = consultant.getNumberOfUsedCarerTests();
+        int numberOfAvailableCareerTests = consultant.getNumberOfAvailableCareerTests();
+        consultant.updateUsedCareerTestsAndAvailableCareerTests(numberOfUsedCarerTests + 1, numberOfAvailableCareerTests - 1);
     }
 
     @Transactional
     public void updateNumberOfUsedMrAndersonTests(Long id) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
-        int used = consultant.getNumberOfUsedMrAndersonTests();
-        consultant.setNumberOfUsedMrAndersonTests(used+1);
-        int available = consultant.getNumberOfAvailableMrAndersonTests();
-        consultant.setNumberOfAvailableMrAndersonTests(available-1);
+        int numberOfUsedMrAndersonTests = consultant.getNumberOfUsedMrAndersonTests();
+        int numberOfAvailableMrAndersonTests = consultant.getNumberOfAvailableMrAndersonTests();
+        consultant.updateUsedMrAndersonTestsAndAvailableMrAndersonTests(numberOfUsedMrAndersonTests + 1, numberOfAvailableMrAndersonTests - 1);
     }
 }

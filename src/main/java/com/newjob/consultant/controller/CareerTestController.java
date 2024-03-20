@@ -28,9 +28,7 @@ public class CareerTestController {
     @GetMapping("/{id}/test/career")
     public String linkCareer(@PathVariable("id")Long id, Model model){
         Consultant consultant = consultantService.findById(id);
-        CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant",consultant);
-        model.addAttribute("form",careerTestResult);
         if(consultantService.isValid4Test(consultant)){
             return "careerTest/false";
         }
@@ -92,7 +90,7 @@ public class CareerTestController {
     public String careerTestFourth(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm,Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore2(testId,careerTestResultForm.getScore9(),careerTestResultForm.getScore10(),careerTestResultForm.getScore11(),careerTestResultForm.getScore12(),careerTestResultForm.getScore13(),careerTestResultForm.getScore14(),careerTestResultForm.getScore15(),careerTestResultForm.getScore16());
+        careerTestService.updateScore2(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -102,7 +100,7 @@ public class CareerTestController {
     public String careerTestFifth(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm,Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore3(testId,careerTestResultForm.getScore17(),careerTestResultForm.getScore18(),careerTestResultForm.getScore19(),careerTestResultForm.getScore20(),careerTestResultForm.getScore21(),careerTestResultForm.getScore22(),careerTestResultForm.getScore23(),careerTestResultForm.getScore24());
+        careerTestService.updateScore3(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -112,7 +110,7 @@ public class CareerTestController {
     public String careerTestSixth(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm, Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore4(testId,careerTestResultForm.getScore25(),careerTestResultForm.getScore26(),careerTestResultForm.getScore27(),careerTestResultForm.getScore28(),careerTestResultForm.getScore29(),careerTestResultForm.getScore30(),careerTestResultForm.getScore31(),careerTestResultForm.getScore32());
+        careerTestService.updateScore4(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -122,7 +120,7 @@ public class CareerTestController {
     public String careerTestSeventh(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm, Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore5(testId,careerTestResultForm.getScore33(),careerTestResultForm.getScore34(),careerTestResultForm.getScore35(),careerTestResultForm.getScore36(),careerTestResultForm.getScore37(),careerTestResultForm.getScore38(),careerTestResultForm.getScore39(),careerTestResultForm.getScore40());
+        careerTestService.updateScore5(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -132,7 +130,7 @@ public class CareerTestController {
     public String careerTestEight(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm,Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore6(testId,careerTestResultForm.getScore41(),careerTestResultForm.getScore42(),careerTestResultForm.getScore43(),careerTestResultForm.getScore44(),careerTestResultForm.getScore45(),careerTestResultForm.getScore46(),careerTestResultForm.getScore47(),careerTestResultForm.getScore48());
+        careerTestService.updateScore6(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -142,7 +140,7 @@ public class CareerTestController {
     public String careerTestNineth(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm, Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore7(testId,careerTestResultForm.getScore49(),careerTestResultForm.getScore50(),careerTestResultForm.getScore51(),careerTestResultForm.getScore52(),careerTestResultForm.getScore53(),careerTestResultForm.getScore54(),careerTestResultForm.getScore55(),careerTestResultForm.getScore56());
+        careerTestService.updateScore7(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -152,7 +150,7 @@ public class CareerTestController {
     public String careerTestTenth(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm, Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore8(testId,careerTestResultForm.getScore57(),careerTestResultForm.getScore58(),careerTestResultForm.getScore59(),careerTestResultForm.getScore60(),careerTestResultForm.getScore61(),careerTestResultForm.getScore62(),careerTestResultForm.getScore63(),careerTestResultForm.getScore64());
+        careerTestService.updateScore8(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -162,7 +160,7 @@ public class CareerTestController {
     public String careerTest11th(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm,Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore9(testId,careerTestResultForm.getScore65(),careerTestResultForm.getScore66(),careerTestResultForm.getScore67(),careerTestResultForm.getScore68(),careerTestResultForm.getScore69(),careerTestResultForm.getScore70(),careerTestResultForm.getScore71(),careerTestResultForm.getScore72());
+        careerTestService.updateScore9(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         model.addAttribute("questions",careerTestService.getCareerQuestions());
@@ -172,7 +170,7 @@ public class CareerTestController {
     public String careerTestLast(@PathVariable("id") Long id,@PathVariable("testId") Long testId,@ModelAttribute("form")CareerTestResultForm careerTestResultForm, Model model){
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
-        careerTestService.updateScore10(testId,careerTestResultForm.getScore73(),careerTestResultForm.getScore74(),careerTestResultForm.getScore75(),careerTestResultForm.getScore76(),careerTestResultForm.getScore77(),careerTestResultForm.getScore78(),careerTestResultForm.getScore79(),careerTestResultForm.getScore80());
+        careerTestService.updateScore10(testId,careerTestResultForm);
         model.addAttribute("consultant",consultant);
         model.addAttribute("form",careerTestResultForm);
         //model.addAttribute("questions",careerTestService.getCareerQuestions());

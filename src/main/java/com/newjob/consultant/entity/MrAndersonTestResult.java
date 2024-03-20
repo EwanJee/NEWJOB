@@ -1,5 +1,6 @@
 package com.newjob.consultant.entity;
 
+import com.newjob.consultant.controller.MrAndersonTestResultForm;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,15 +10,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @Entity
 public class MrAndersonTestResult {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "consultant_id")
     private Consultant consultant;
@@ -130,7 +133,8 @@ public class MrAndersonTestResult {
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
-    public void matchScoreGroup(){
+
+    public void matchScoreGroup() {
         this.scoreAs = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8;
         this.scoreBs = score9 + score10 + score11 + score12 + score13 + score14 + score15 + score16;
         this.scoreCs = score17 + score18 + score19 + score20 + score21 + score22 + score23 + score24;
@@ -138,46 +142,141 @@ public class MrAndersonTestResult {
         this.scoreEs = score33 + score34 + score35 + score36 + score37 + score38 + score39 + score40;
         this.scoreFs = score41 + score42 + score43 + score44 + score45 + score46 + score47 + score48;
     }
-    public void matchColorA(){
-        if(this.scoreAs < 11) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 18) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 22) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 27) this.blackboxA_color = "BLUE";
-        else if(this.scoreAs < 33) this.blackboxA_color = "BLUE";
+
+    public void matchColorA() {
+        if (this.scoreAs < 11) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 18) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 22) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 27) this.blackboxA_color = "BLUE";
+        else if (this.scoreAs < 33) this.blackboxA_color = "BLUE";
     }
-    public void matchColorB(){
-        if(this.scoreBs < 11) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 18) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 22) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 27) this.blackboxB_color = "BLUE";
-        else if(this.scoreBs < 33) this.blackboxB_color = "BLUE";
+
+    public void matchColorB() {
+        if (this.scoreBs < 11) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 18) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 22) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 27) this.blackboxB_color = "BLUE";
+        else if (this.scoreBs < 33) this.blackboxB_color = "BLUE";
     }
-    public void matchColorC(){
-        if(this.scoreCs < 11) this.blackboxC_color = "RED";
-        else if(this.scoreCs < 18) this.blackboxC_color = "RED";
-        else if(this.scoreCs < 22) this.blackboxC_color = "BLUE";
-        else if(this.scoreCs < 27) this.blackboxC_color = "BLUE";
-        else if(this.scoreCs < 33) this.blackboxC_color = "SKYBLUE";
+
+    public void matchColorC() {
+        if (this.scoreCs < 11) this.blackboxC_color = "RED";
+        else if (this.scoreCs < 18) this.blackboxC_color = "RED";
+        else if (this.scoreCs < 22) this.blackboxC_color = "BLUE";
+        else if (this.scoreCs < 27) this.blackboxC_color = "BLUE";
+        else if (this.scoreCs < 33) this.blackboxC_color = "SKYBLUE";
     }
-    public void matchColorD(){
-        if(this.scoreDs < 11) this.blackboxD_color = "RED";
-        else if(this.scoreDs < 18) this.blackboxD_color = "RED";
-        else if(this.scoreDs < 22) this.blackboxD_color = "BLUE";
-        else if(this.scoreDs < 27) this.blackboxD_color = "BLUE";
-        else if(this.scoreDs < 33) this.blackboxD_color = "SKYBLUE";
+
+    public void matchColorD() {
+        if (this.scoreDs < 11) this.blackboxD_color = "RED";
+        else if (this.scoreDs < 18) this.blackboxD_color = "RED";
+        else if (this.scoreDs < 22) this.blackboxD_color = "BLUE";
+        else if (this.scoreDs < 27) this.blackboxD_color = "BLUE";
+        else if (this.scoreDs < 33) this.blackboxD_color = "SKYBLUE";
     }
-    public void matchColorE(){
-        if(this.scoreEs < 11) this.blackboxE_color = "RED";
-        else if(this.scoreEs < 18) this.blackboxE_color = "RED";
-        else if(this.scoreEs < 22) this.blackboxE_color = "BLUE";
-        else if(this.scoreEs < 27) this.blackboxE_color = "BLUE";
-        else if(this.scoreEs < 33) this.blackboxE_color = "SKYBLUE";
+
+    public void matchColorE() {
+        if (this.scoreEs < 11) this.blackboxE_color = "RED";
+        else if (this.scoreEs < 18) this.blackboxE_color = "RED";
+        else if (this.scoreEs < 22) this.blackboxE_color = "BLUE";
+        else if (this.scoreEs < 27) this.blackboxE_color = "BLUE";
+        else if (this.scoreEs < 33) this.blackboxE_color = "SKYBLUE";
     }
-    public void matchColorF(){
-        if(this.scoreFs < 11) this.blackboxF_color = "RED";
-        else if(this.scoreFs < 18) this.blackboxF_color = "RED";
-        else if(this.scoreFs < 22) this.blackboxF_color = "BLUE";
-        else if(this.scoreFs < 27) this.blackboxF_color = "BLUE";
-        else if(this.scoreFs < 33) this.blackboxF_color = "SKYBLUE";
+
+    public void matchColorF() {
+        if (this.scoreFs < 11) this.blackboxF_color = "RED";
+        else if (this.scoreFs < 18) this.blackboxF_color = "RED";
+        else if (this.scoreFs < 22) this.blackboxF_color = "BLUE";
+        else if (this.scoreFs < 27) this.blackboxF_color = "BLUE";
+        else if (this.scoreFs < 33) this.blackboxF_color = "SKYBLUE";
     }
+
+    public void updateInfo(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.organization2 = mrAndersonTestResultForm.getOrganization2();
+        this.profession = mrAndersonTestResultForm.getProfession();
+        this.industry = mrAndersonTestResultForm.getIndustry();
+        this.job = mrAndersonTestResultForm.getJob();
+    }
+
+    public void updateScoreForRound1(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score1 = mrAndersonTestResultForm.getScore1() - 1;
+        this.score2 = mrAndersonTestResultForm.getScore2() - 1;
+        this.score3 = mrAndersonTestResultForm.getScore3() - 1;
+        this.score4 = mrAndersonTestResultForm.getScore4() - 1;
+        this.score5 = mrAndersonTestResultForm.getScore5() - 1;
+        this.score6 = mrAndersonTestResultForm.getScore6() - 1;
+        this.score7 = mrAndersonTestResultForm.getScore7() - 1;
+        this.score8 = mrAndersonTestResultForm.getScore8() - 1;
+    }
+
+    public void updateScoreForRound2(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score9 = mrAndersonTestResultForm.getScore9() - 1;
+        this.score10 = mrAndersonTestResultForm.getScore10() - 1;
+        this.score11 = mrAndersonTestResultForm.getScore11() - 1;
+        this.score12 = mrAndersonTestResultForm.getScore12() - 1;
+        this.score13 = mrAndersonTestResultForm.getScore13() - 1;
+        this.score14 = mrAndersonTestResultForm.getScore14() - 1;
+        this.score15 = mrAndersonTestResultForm.getScore15() - 1;
+        this.score16 = mrAndersonTestResultForm.getScore16() - 1;
+    }
+
+    public void updateScoreForRound3(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score17 = mrAndersonTestResultForm.getScore17() - 1;
+        this.score18 = mrAndersonTestResultForm.getScore18() - 1;
+        this.score19 = mrAndersonTestResultForm.getScore19() - 1;
+        this.score20 = mrAndersonTestResultForm.getScore20() - 1;
+        this.score21 = mrAndersonTestResultForm.getScore21() - 1;
+        this.score22 = mrAndersonTestResultForm.getScore22() - 1;
+        this.score23 = mrAndersonTestResultForm.getScore23() - 1;
+        this.score24 = mrAndersonTestResultForm.getScore24() - 1;
+    }
+
+    public void updateScoreForRound4(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score25 = mrAndersonTestResultForm.getScore25() - 1;
+        this.score26 = mrAndersonTestResultForm.getScore26() - 1;
+        this.score27 = mrAndersonTestResultForm.getScore27() - 1;
+        this.score28 = mrAndersonTestResultForm.getScore28() - 1;
+        this.score29 = mrAndersonTestResultForm.getScore29() - 1;
+        this.score30 = mrAndersonTestResultForm.getScore30() - 1;
+        this.score31 = mrAndersonTestResultForm.getScore31() - 1;
+        this.score32 = mrAndersonTestResultForm.getScore32() - 1;
+    }
+
+    public void updateScoreForRound5(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score33 = mrAndersonTestResultForm.getScore33() - 1;
+        this.score34 = mrAndersonTestResultForm.getScore34() - 1;
+        this.score35 = mrAndersonTestResultForm.getScore35() - 1;
+        this.score36 = mrAndersonTestResultForm.getScore36() - 1;
+        this.score37 = mrAndersonTestResultForm.getScore37() - 1;
+        this.score38 = mrAndersonTestResultForm.getScore38() - 1;
+        this.score39 = mrAndersonTestResultForm.getScore39() - 1;
+        this.score40 = mrAndersonTestResultForm.getScore40() - 1;
+    }
+
+    public void updateScoreForRound6(MrAndersonTestResultForm mrAndersonTestResultForm) {
+        this.score41 = mrAndersonTestResultForm.getScore41() - 1;
+        this.score42 = mrAndersonTestResultForm.getScore42() - 1;
+        this.score43 = mrAndersonTestResultForm.getScore43() - 1;
+        this.score44 = mrAndersonTestResultForm.getScore44() - 1;
+        this.score45 = mrAndersonTestResultForm.getScore45() - 1;
+        this.score46 = mrAndersonTestResultForm.getScore46() - 1;
+        this.score47 = mrAndersonTestResultForm.getScore47() - 1;
+        this.score48 = mrAndersonTestResultForm.getScore48() - 1;
+    }
+
+    public void updateBlackBox(AndersonBlackbox blackboxA, AndersonBlackbox blackboxB, AndersonBlackbox blackboxC, AndersonBlackbox blackboxD, AndersonBlackbox blackboxE, AndersonBlackbox blackboxF) {
+        this.blackBoxA_letters = blackboxA.getType();
+        this.blackBoxB_letters = blackboxB.getType();
+        this.blackBoxC_letters = blackboxC.getType();
+        this.blackBoxD_letters = blackboxD.getType();
+        this.blackBoxE_letters = blackboxE.getType();
+        this.blackBoxF_letters = blackboxF.getType();
+        this.blackboxA_comment = blackboxA.getFieldA();
+        this.blackboxB_comment = blackboxB.getFieldB();
+        this.blackboxC_comment = blackboxC.getFieldC();
+        this.blackboxD_comment = blackboxD.getFieldD();
+        this.blackboxE_comment = blackboxE.getFieldE();
+        this.blackboxF_comment = blackboxF.getFieldF();
+    }
+
 }

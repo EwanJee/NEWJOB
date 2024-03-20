@@ -10,15 +10,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 public class CareerTestResult {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "consultant_id")
     private Consultant consultant;
@@ -168,7 +170,11 @@ public class CareerTestResult {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    public void updateScoreForPage1(int score1,int score2,int score3,int score4, int score5, int score6, int score7, int score8){
+    public void updateCareerLocation(String careerLocation) {
+        this.careerLocation = careerLocation;
+    }
+
+    public void updateScoreForPage1(int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8) {
         this.score1 = score1;
         this.score2 = score2;
         this.score3 = score3;
@@ -177,6 +183,105 @@ public class CareerTestResult {
         this.score6 = score6;
         this.score7 = score7;
         this.score8 = score8;
+    }
+
+    public void updateScoreForPage2(int score9, int score10, int score11, int score12, int score13, int score14, int score15, int score16) {
+        this.score9 = score9;
+        this.score10 = score10;
+        this.score11 = score11;
+        this.score12 = score12;
+        this.score13 = score13;
+        this.score14 = score14;
+        this.score15 = score15;
+        this.score16 = score16;
+    }
+
+    public void updateScoreForPage3(int score17, int score18, int score19, int score20, int score21, int score22, int score23, int score24) {
+        this.score17 = score17;
+        this.score18 = score18;
+        this.score19 = score19;
+        this.score20 = score20;
+        this.score21 = score21;
+        this.score22 = score22;
+        this.score23 = score23;
+        this.score24 = score24;
+    }
+
+    public void updateScoreForPage4(int score25, int score26, int score27, int score28, int score29, int score30, int score31, int score32) {
+        this.score25 = score25;
+        this.score26 = score26;
+        this.score27 = score27;
+        this.score28 = score28;
+        this.score29 = score29;
+        this.score30 = score30;
+        this.score31 = score31;
+        this.score32 = score32;
+    }
+
+    public void updateScoreForPage5(int score33, int score34, int score35, int score36, int score37, int score38, int score39, int score40) {
+        this.score33 = score33;
+        this.score34 = score34;
+        this.score35 = score35;
+        this.score36 = score36;
+        this.score37 = score37;
+        this.score38 = score38;
+        this.score39 = score39;
+        this.score40 = score40;
+    }
+
+    public void updateScoreForPage6(int score41, int score42, int score43, int score44, int score45, int score46, int score47, int score48) {
+        this.score41 = score41;
+        this.score42 = score42;
+        this.score43 = score43;
+        this.score44 = score44;
+        this.score45 = score45;
+        this.score46 = score46;
+        this.score47 = score47;
+        this.score48 = score48;
+    }
+
+    public void updateScoreForPage7(int score49, int score50, int score51, int score52, int score53, int score54, int score55, int score56) {
+        this.score49 = score49;
+        this.score50 = score50;
+        this.score51 = score51;
+        this.score52 = score52;
+        this.score53 = score53;
+        this.score54 = score54;
+        this.score55 = score55;
+        this.score56 = score56;
+    }
+
+    public void updateScoreForPage8(int score57, int score58, int score59, int score60, int score61, int score62, int score63, int score64) {
+        this.score57 = score57;
+        this.score58 = score58;
+        this.score59 = score59;
+        this.score60 = score60;
+        this.score61 = score61;
+        this.score62 = score62;
+        this.score63 = score63;
+        this.score64 = score64;
+    }
+
+    public void updateScoreForPage9(int score65, int score66, int score67, int score68, int score69, int score70, int score71, int score72) {
+        this.score65 = score65;
+        this.score66 = score66;
+        this.score67 = score67;
+        this.score68 = score68;
+        this.score69 = score69;
+        this.score70 = score70;
+        this.score71 = score71;
+        this.score72 = score72;
+    }
+
+    public void updateScoreForPage10(int score73, int score74, int score75, int score76, int score77, int score78, int score79, int score80) {
+        this.score73 = score73;
+        this.score74 = score74;
+        this.score75 = score75;
+        this.score76 = score76;
+        this.score77 = score77;
+        this.score78 = score78;
+        this.score79 = score79;
+        this.score80 = score80;
     }
 
     public CareerTestResult(int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8, int score9, int score10, int score11, int score12, int score13, int score14, int score15, int score16, int score17, int score18, int score19, int score20, int score21, int score22, int score23, int score24, int score25, int score26, int score27, int score28, int score29, int score30, int score31, int score32, int score33, int score34, int score35, int score36, int score37, int score38, int score39, int score40, int score41, int score42, int score43, int score44, int score45, int score46, int score47, int score48, int score49, int score50, int score51, int score52, int score53, int score54, int score55, int score56, int score57, int score58, int score59, int score60, int score61, int score62, int score63, int score64, int score65, int score66, int score67, int score68, int score69, int score70, int score71, int score72, int score73, int score74, int score75, int score76, int score77, int score78, int score79, int score80) {
@@ -262,7 +367,7 @@ public class CareerTestResult {
         this.score80 = score80;
     }
 
-    public void matchingScore(){
+    public void matchingScore() {
         this.scoreO = score1 + score16 + score31 + score46 + score61; // What
         this.scoreD = score2 + score17 + score32 + score47 + score62; // How
         this.scoreI = score3 + score18 + score33 + score48 + score63; // Why
@@ -295,11 +400,12 @@ public class CareerTestResult {
                 + score63 * 3 + score70 * 2 + score2 + score13 + score38 + score41
                 + score43 + score57 + score75 + scoreW;
 
-        this.scoreNetworkPower = score19*2 + score37*2 + score41*2 + score49*2 + score2
-                + score7 +score11 + score17 + score26 + score28 + score43 + score56
+        this.scoreNetworkPower = score19 * 2 + score37 * 2 + score41 * 2 + score49 * 2 + score2
+                + score7 + score11 + score17 + score26 + score28 + score43 + score56
                 + score60 + score62 + score69 + score71 + score74 + score75;
 
-        this.scoreMoveOn = (scoreAbility + scoreNetworkPower)/3 + score19 + score24
-                + score25 + score26 + score28 + score48 + score63 + score70 +score75;
+        this.scoreMoveOn = (scoreAbility + scoreNetworkPower) / 3 + score19 + score24
+                + score25 + score26 + score28 + score48 + score63 + score70 + score75;
     }
+
 }
