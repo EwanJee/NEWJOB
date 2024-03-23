@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  db:
+    image: mariadb:10.11.6
+    restart: always
+    container_name: database-newjob
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=demo
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=%
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - /Users/Shared/data/newjob:/var/lib/mariadb
