@@ -5,7 +5,7 @@
 컨설턴트는 고객들에게 링크를 보내 진단 테스트를 받게하고, 웹 사이트내에서 진단 결과를 확인하게 해주는 서비스입니다.
 
 # Tech:
-Spring MVC, Spring JPA, JDBC Thymeleaf, lombok, MariaDB
+Spring MVC, Spring JPA, JDBC Thymeleaf, lombok, MariaDB,Docker
 
 # Plans:
 Spring MVC를 이용한 레이어드 아키텍처를 구현하였습니다.
@@ -29,3 +29,7 @@ Spring MVC를 이용한 레이어드 아키텍처를 구현하였습니다.
 
 2. JPA로 쓸 수 있는 방법이 있을텐데, 방법을 찾지못해 JDBC를 사용했습니다.
 
+# 로컬 환경 실행 방법
+로컬환경 MariaDB 실행 docker-compose up -d  
+로컬환경 MariaDB 중지 docker-compose stop  
+VM Option ```-Dspring.profiles.active=local```
