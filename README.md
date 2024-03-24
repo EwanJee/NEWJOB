@@ -30,5 +30,6 @@ Spring MVC를 이용한 레이어드 아키텍처를 구현하였습니다.
 2. JPA로 쓸 수 있는 방법이 있을텐데, 방법을 찾지못해 JDBC를 사용했습니다.
 
 # 로컬 환경 실행 방법
-로컬환경 MariaDB 실행 docker-compose up -d
-로컬환경 MariaDB 중지 docker-compose stop
+로컬환경 MariaDB 실행 docker-compose up -d  
+로컬환경 MariaDB 중지 docker-compose stop  
+VM Option ```-Dspring.profiles.active=local```
