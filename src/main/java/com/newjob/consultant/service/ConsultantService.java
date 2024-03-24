@@ -62,8 +62,6 @@ public class ConsultantService{
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
-<<<<<<< HEAD
-=======
 
     private void isValidated(Consultant consultant){
         Optional<Consultant> consultant2 = consultantRepository.findByEmail(consultant.getEmail());
@@ -71,7 +69,6 @@ public class ConsultantService{
             throw new IllegalStateException("이미 존재하는 이메일 주소 입니다");
         }
     }
->>>>>>> origin
     public Consultant findByEmailAndPassword(String email, String password){
         return consultantRepository.findByEmailAndPassword(email,password)
                 .orElseThrow(() -> new NotFoundException("Consultant Not Found", ErrorCode.CONSULTANT_NOT_FOUND));
