@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>에러 페이지</title>
 </head>
 <body>
-    에러가 발생합니다. 뒤로가기를 눌러서 다시 시도해주세요
+<h1>에러 정보</h1>
+<p th:text="'Error Message: ' + ${ex.message}"></p>
+<p>뒤로가기를 눌러서 다시 시도해 주십시오</p>
 </body>
 </html>
