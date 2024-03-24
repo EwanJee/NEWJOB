@@ -21,7 +21,7 @@ class AdminTest {
     void 어드민_isAdmin이_잘_동작하는지(){
         //given
         String adminId = "not_admin";
-        Admin admin = adminRepository.findAll().get(0);
+        Admin admin = new Admin(1L,adminId,"1234");
 
         //given
         when(adminRepository.findAll())
