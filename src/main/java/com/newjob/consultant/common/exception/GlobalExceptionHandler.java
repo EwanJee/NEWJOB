@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler extends RuntimeException {
     @ExceptionHandler(NotFoundException.class)
     public String NotFoundException(NotFoundException ex) {
-        log.warn(ex.getMessage());
+        log.warn(ex.getErrorCode().getMessage());
         return "error/not_found.html";
     }
 

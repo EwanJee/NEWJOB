@@ -35,10 +35,8 @@ public class ConsultantService{
 
     @Transactional
     public Long join(Consultant consultant){
-        Consultant consultant2 = consultantRepository.findByEmail(consultant.getEmail())
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
-        consultantRepository.save(consultant2);
-        return consultant2.getId();
+        consultantRepository.save(consultant);
+        return consultant.getId();
     }
     @Transactional
     public void addCareerTest(Long consultantId, Long testId){

@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: local
   jpa:
     open-in-view: false
     hibernate:
@@ -9,23 +9,23 @@ spring:
       hibernate:
         format_sql: true
 
-  datasource:
-    url: ${dev.url}
-    driver-class-name: ${dev.driver-class-name}
-    username: ${dev.username}
-    password: ${dev.password}
+#  datasource:
+#    url: ${dev.url}
+#    driver-class-name: ${dev.driver-class-name}
+#    username: ${dev.username}
+#    password: ${dev.password}
 
 logging.level:
   org.hibernate.SQL: debug
 
 
-cloud:
-  aws:
-    region:
-      static: ap-northeast-2
-    s3:
-      bucket: bucket-newjob
-    stack:
-      auto: false
-    credentials:
+#cloud:
+#  aws:
+#    region:
+#      static: ap-northeast-2
+#    s3:
+#      bucket: bucket-newjob
+#    stack:
+#      auto: false
+#    credentials:
 
