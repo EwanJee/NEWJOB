@@ -1,10 +1,11 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.CareerQuestion;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.repository.CareerQuestionRepository;
 import com.newjob.consultant.repository.CareerTestResultRepository;
-import com.newjob.consultant.repository.JdbcCareerTestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,12 +25,14 @@ public class CareerTestService {
 
     @Transactional
     public void updateLocation(Long id, String location){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setCareerLocation(location);
     }
     @Transactional
     public void updateScore1(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore1(i1);
         careerTestResult.setScore2(i2);
         careerTestResult.setScore3(i3);
@@ -41,7 +44,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore2(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore9(i1);
         careerTestResult.setScore10(i2);
         careerTestResult.setScore11(i3);
@@ -53,7 +57,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore3(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore17(i1);
         careerTestResult.setScore18(i2);
         careerTestResult.setScore19(i3);
@@ -65,7 +70,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore4(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore25(i1);
         careerTestResult.setScore26(i2);
         careerTestResult.setScore27(i3);
@@ -77,7 +83,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore5(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore33(i1);
         careerTestResult.setScore34(i2);
         careerTestResult.setScore35(i3);
@@ -89,7 +96,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore6(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore41(i1);
         careerTestResult.setScore42(i2);
         careerTestResult.setScore43(i3);
@@ -101,7 +109,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore7(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore49(i1);
         careerTestResult.setScore50(i2);
         careerTestResult.setScore51(i3);
@@ -113,7 +122,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore8(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore57(i1);
         careerTestResult.setScore58(i2);
         careerTestResult.setScore59(i3);
@@ -125,7 +135,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore9(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore65(i1);
         careerTestResult.setScore66(i2);
         careerTestResult.setScore67(i3);
@@ -137,7 +148,8 @@ public class CareerTestService {
     }
     @Transactional
     public void updateScore10(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.setScore73(i1);
         careerTestResult.setScore74(i2);
         careerTestResult.setScore75(i3);
@@ -149,8 +161,9 @@ public class CareerTestService {
 
         careerTestResult.matchingScore();
     }
-    public Optional<CareerTestResult> findById(Long id){
-        return careerTestResultRepository.findById(id);
+    public CareerTestResult findById(Long id){
+        return careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
     }
     public List<String> getCareerQuestions(){
         return careerQuestionRepository.findAll()
