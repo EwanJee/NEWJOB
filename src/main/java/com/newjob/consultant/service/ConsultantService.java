@@ -55,9 +55,7 @@ public class ConsultantService{
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
-    public Consultant findByConsultant(String skey, String consultantName){
-        Optional<Consultant> consultant = consultantRepository.findBySkeyAndName(skey,consultantName);
-        return (Consultant) consultant.orElse(null);}
+
     private void isValidated(Consultant consultant){
         Optional<Consultant> consultant2 = consultantRepository.findByEmail(consultant.getEmail());
         if(consultant2.isPresent()){
