@@ -1,5 +1,7 @@
 package com.newjob.consultant.service;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.CareerTestResult;
 import com.newjob.consultant.entity.Consultant;
 import com.newjob.consultant.entity.MrAndersonTestResult;
@@ -21,26 +23,29 @@ public class ConsultantService{
     private final CareerTestResultRepository careerTestResultRepository;
     private final MrAndersonTestResultRepository mrAndersonTestResultRepository;
     public List<CareerTestResult> getCList(long id){
-        Consultant c = consultantRepository.findById(id).orElse(null);
-        List<CareerTestResult> list = c.getCareerTestResultList();
-        return list;
+        Consultant c = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        return c.getCareerTestResultList();
     }
     public List<MrAndersonTestResult> getMList(long id){
-        Consultant c = consultantRepository.findById(id).orElse(null);
-        List<MrAndersonTestResult> list = c.getMrAndersonTestResultList();
-        return list;
+        Consultant c = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        return c.getMrAndersonTestResultList();
     }
 
     @Transactional
     public Long join(Consultant consultant){
-        isValidated(consultant);
-        consultantRepository.save(consultant);
-        return consultant.getId();
+        Consultant consultant2 = consultantRepository.findByEmail(consultant.getEmail())
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        consultantRepository.save(consultant2);
+        return consultant2.getId();
     }
     @Transactional
     public void addCareerTest(Long consultantId, Long testId){
-        Consultant consultant = consultantRepository.findById(consultantId).orElse(null);
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(testId).orElse(null);
+        Consultant consultant = consultantRepository.findById(consultantId)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(testId)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         consultant.putCareerTestResult(careerTestResult);
         careerTestResult.setConsultant(consultant);
         consultantRepository.save(consultant);
@@ -48,43 +53,35 @@ public class ConsultantService{
     }
     @Transactional
     public void addMrAndersonTest(Long id, Long testId){
-        Consultant consultant = consultantRepository.findById(id).orElse(null);
-        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId).orElse(null);
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         consultant.putMrAndersonTestResult(mrAndersonTestResult);
         mrAndersonTestResult.setConsultant(consultant);
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }
-
-    private void isValidated(Consultant consultant){
-        Optional<Consultant> consultant2 = consultantRepository.findByEmail(consultant.getEmail());
-        if(consultant2.isPresent()){
-            throw new IllegalStateException("이미 존재하는 이메일 주소 입니다");
-        }
-    }
     public Consultant findByEmailAndPassword(String email, String password){
-        Optional<Consultant> consultant = consultantRepository.findByEmailAndPassword(email,password);
-        if(consultant.isEmpty()){
-            throw new IllegalStateException("이메일 주소나 비밀번호가 잘못 되었습니다");
-        }
-        else{
-            return consultant.orElse(null);
-        }
+        return consultantRepository.findByEmailAndPassword(email,password)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
     }
-    public Optional<Consultant> findById(Long id){
-        return consultantRepository.findById(id);
+    public Consultant findById(Long id){
+        return consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
     }
     public List<Consultant> findAll(){
         return consultantRepository.findAll();
     }
     public boolean isValid4Test(Consultant consultant){
         int isApproved = consultant.getIsApproved();
-        return isApproved != 0;
+        return isApproved == 0;
     }
 
     @Transactional
     public void updateNumberOfUsedCareerTests(Long id) {
-        Consultant consultant = consultantRepository.findById(id).orElse(null);
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
         int used = consultant.getNumberOfUsedCarerTests();
         consultant.setNumberOfUsedCarerTests(used+1);
         int available = consultant.getNumberOfAvailableCareerTests();
@@ -93,7 +90,8 @@ public class ConsultantService{
 
     @Transactional
     public void updateNumberOfUsedMrAndersonTests(Long id) {
-        Consultant consultant = consultantRepository.findById(id).orElse(null);
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
         int used = consultant.getNumberOfUsedMrAndersonTests();
         consultant.setNumberOfUsedMrAndersonTests(used+1);
         int available = consultant.getNumberOfAvailableMrAndersonTests();
