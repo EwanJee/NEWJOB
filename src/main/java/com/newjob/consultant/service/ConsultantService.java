@@ -62,7 +62,7 @@ public class ConsultantService{
     }
     public Consultant findByEmailAndPassword(String email, String password){
         return consultantRepository.findByEmailAndPassword(email,password)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+                .orElseThrow(() -> new NotFoundException(ErrorCode.LOGIN_FAILED));
     }
     public Consultant findById(Long id){
         return consultantRepository.findById(id)
