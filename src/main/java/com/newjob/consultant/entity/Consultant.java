@@ -10,9 +10,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Consultant{
+public class Consultant {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
 
@@ -65,13 +66,14 @@ public class Consultant{
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "consultant" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
     private List<MemberConsultant> memberConsultantList = new ArrayList<>();
 
-    public void putCareerTestResult(CareerTestResult careerTestResult){
+    public void putCareerTestResult(CareerTestResult careerTestResult) {
         this.careerTestResultList.add(careerTestResult);
     }
-    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult){
+
+    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult) {
         this.mrAndersonTestResultList.add(mrAndersonTestResult);
     }
 }

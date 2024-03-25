@@ -10,4 +10,4 @@ spring:
     url: jdbc:mariadb://localhost:3306/demo
     driver-class-name: org.mariadb.jdbc.Driver
     username: root
-    password: password
+    password: good8219
