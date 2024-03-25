@@ -8,7 +8,8 @@ import lombok.Getter;
 @Entity
 public class MemberConsultant {
 
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

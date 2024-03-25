@@ -12,19 +12,19 @@ import java.io.FileOutputStream;
 
 @Service
 public class PdfService {
-    public String html2Pdf(String html){
+    public String html2Pdf(String html) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-        try{
+        try {
             PdfWriter pdfWriter = new PdfWriter(byteArrayOutputStream);
 
-            DefaultFontProvider defaultFontProvider = new DefaultFontProvider(false,true,false);
+            DefaultFontProvider defaultFontProvider = new DefaultFontProvider(false, true, false);
 
             ConverterProperties converterProperties = new ConverterProperties();
 
             converterProperties.setFontProvider(defaultFontProvider);
 
-            HtmlConverter.convertToPdf(html,pdfWriter,converterProperties);
+            HtmlConverter.convertToPdf(html, pdfWriter, converterProperties);
 
             FileOutputStream fileOutputStream = new FileOutputStream("/Users/jeeewan/TestPdfs/Career");
 
@@ -35,7 +35,7 @@ public class PdfService {
             fileOutputStream.close();
 
             return null;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             /**
              * *exception occurred*/
 

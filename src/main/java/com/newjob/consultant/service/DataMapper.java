@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public class DataMapper {
 
-    public Context setData(CareerTestResult careerTestResult){
+    public Context setData(CareerTestResult careerTestResult) {
         Context context = new Context();
 
         Map<String, Object> data = new HashMap<>();
