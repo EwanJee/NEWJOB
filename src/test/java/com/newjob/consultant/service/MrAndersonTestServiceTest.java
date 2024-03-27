@@ -4,13 +4,17 @@ import com.newjob.consultant.entity.MrAndersonTestResult;
 import com.newjob.consultant.repository.AndersonBlackboxRepository;
 import com.newjob.consultant.repository.AndersonQuestionsRepository;
 import com.newjob.consultant.repository.MrAndersonTestResultRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 class MrAndersonTestServiceTest {
 
@@ -18,12 +22,13 @@ class MrAndersonTestServiceTest {
     private final AndersonBlackboxRepository andersonBlackboxRepository = mock(AndersonBlackboxRepository.class);
     private final AndersonQuestionsRepository andersonQuestionsRepository = mock(AndersonQuestionsRepository.class);
     private final MrAndersonTestService mrAndersonTestService = new MrAndersonTestService(mrAndersonTestResultRepository,andersonBlackboxRepository,andersonQuestionsRepository);
-    private static MrAndersonTestResult result;
+    private final MrAndersonTestResult result = mock(MrAndersonTestResult.class);
 
-    @BeforeAll
-    public static void init(){
-        result = new MrAndersonTestResult();
-    }
+//    @BeforeAll
+//    public static void init(){
+//        //given
+//        result = new MrAndersonTestResult();
+//    }
 
 
     @Test
@@ -31,20 +36,27 @@ class MrAndersonTestServiceTest {
         //given
         //when
         //then
-    }
-
-    @Test
-    void findById() {
-        //given
-        //when
-        //then
+        mrAndersonTestService.join(result);
+        verify(mrAndersonTestResultRepository,times(1)).save(result);
+//        Assertions.assertThat(mrAndersonTestResultRepository.findById(1L).get()).isEqualTo(result);
     }
 
     @Test
     void updateInfo() {
         //given
+        Long id = 1L;
+        String job = "job";
+        String organization = "organization";
+        String profession = "profession";
+        String industry = "industry";
+        when(mrAndersonTestResultRepository.findById(id))
+                .thenReturn(Optional.of(result));
         //when
+        mrAndersonTestService.updateInfo(id,job,organization,profession,industry);
         //then
+        verify(mrAndersonTestResultRepository,times(1)).findById(id);
+        verify(result,times(1)).setJob(job);
+//        Assertions.assertThat(job).isEqualTo(result.getJob());
     }
 
     @Test
