@@ -62,45 +62,20 @@ class MrAndersonTestServiceTest {
     @Test
     void updateScore1() {
         //given
+        when(mrAndersonTestResultRepository.findById(any()))
+                .thenReturn(Optional.of(result));
+        int point = 3;
         //when
+        mrAndersonTestService.updateScore1(null,point,point,point,point,point,point,point,point);
         //then
+        verify(mrAndersonTestResultRepository,times(1)).findById(any());
+//        Assertions.assertThat(mrAndersonTestResultRepository.findById(1L).get()).isEqualTo(result);
     }
 
-    @Test
-    void updateScore2() {
-        //given
-        //when
-        //then
-    }
-
-    @Test
-    void updateScore3() {
-        //given
-        //when
-        //then
-    }
-
-    @Test
-    void updateScore4() {
-        //given
-        //when
-        //then
-    }
-
-    @Test
-    void updateScore5() {
-        //given
-        //when
-        //then
-    }
-
-    @Test
-    void updateScore6() {
-        //given
-        //when
-        //then
-    }
-
+    /**
+     * 밑의 두 메서드들은
+     * DB에만 적재되어 있는 정보들을 가져와서 처리를 하는 메서드.
+     */
     @Test
     void getMrAndersonQuestions() {
         //given
