@@ -27,6 +27,10 @@ public class CareerTestResult {
     @JoinColumn(name = "consultant_id")
     private Consultant consultant;
 
+    public void updateConsultant(Consultant consultant) {
+        this.consultant = consultant;
+    }
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -42,7 +46,7 @@ public class CareerTestResult {
     private String careerLocation;
 
     @ElementCollection // @ElementCollection을 사용하면, 해당 필드는 별도의 테이블로 생성된다.
-    private List<Integer> questionScores = new ArrayList<>();
+    private final List<Integer> questionScores = new ArrayList<>();
 
     private int scoreO;
     private int scoreD;
@@ -79,6 +83,7 @@ public class CareerTestResult {
     @CreatedDate
     @Column(updatable = false, nullable = true)
     private LocalDateTime createdAt;
+
     public void updateCareerLocation(String careerLocation) {
         this.careerLocation = careerLocation;
     }

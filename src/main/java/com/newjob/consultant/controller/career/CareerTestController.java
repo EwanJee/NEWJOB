@@ -1,5 +1,6 @@
 package com.newjob.consultant.controller.career;
 
+import com.newjob.consultant.entity.career.dto.CareerTestFinishedResultForm;
 import com.newjob.consultant.entity.career.dto.CareerTestResultForm;
 import com.newjob.consultant.entity.career.CareerTestResult;
 import com.newjob.consultant.entity.consultant.Consultant;
@@ -183,17 +184,16 @@ public class CareerTestController {
         model.addAttribute("consultant", consultant);
         model.addAttribute("form", careerTestResultForm);
         consultantService.addCareerTest(id, testId);
-        Consultant consultant1 = consultantService.findById(id).orElse(null);
         consultantService.updateNumberOfUsedCareerTests(id);
         return "redirect:/consultant/" + id + "/test/career/finish/" + testId;
     }
 
     @GetMapping("/{id}/test/career/finish/{testId}")
     public String careerTestFinish(@PathVariable("id") Long id, @PathVariable("testId") Long testId, Model model) {
-        CareerTestResult careerTestResult = careerTestService.findById(testId).orElse(null);
-        model.addAttribute("result", careerTestResult);
+        CareerTestFinishedResultForm careerTestFinishedResultForm = careerTestService.findFinishedResult(testId);
+        List<String> lowest2 = careerTestService.findLowest2(id);
+        model.addAttribute("result", careerTestFinishedResultForm);
         model.addAttribute("consultantId", id);
-        List<String> lowest2 = careerTestService.findLowest2(careerTestResult);
         model.addAttribute("lowest", lowest2);
         return "careerTest/careerAssessment";
     }

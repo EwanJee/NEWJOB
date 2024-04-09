@@ -2,6 +2,7 @@ package com.newjob.consultant.service.career;
 
 import com.newjob.consultant.entity.career.CareerQuestion;
 import com.newjob.consultant.entity.career.CareerTestResult;
+import com.newjob.consultant.entity.career.dto.CareerTestFinishedResultForm;
 import com.newjob.consultant.entity.career.dto.CareerTestResultForm;
 import com.newjob.consultant.repository.career.CareerQuestionRepository;
 import com.newjob.consultant.repository.career.CareerTestResultRepository;
@@ -54,8 +55,35 @@ public class CareerTestService {
         }
     }
 
-    public Optional<CareerTestResult> findById(Long id) {
-        return careerTestResultRepository.findById(id);
+    public CareerTestFinishedResultForm findFinishedResult(Long id) {
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        return CareerTestFinishedResultForm.builder()
+                .memberName(careerTestResult.getMemberName())
+                .consultantName(careerTestResult.getConsultantName())
+                .scoreA(careerTestResult.getScoreA())
+                .scoreB(careerTestResult.getScoreB())
+                .scoreC(careerTestResult.getScoreC())
+                .scoreD(careerTestResult.getScoreD())
+                .scoreE(careerTestResult.getScoreE())
+                .scoreF(careerTestResult.getScoreF())
+                .scoreG(careerTestResult.getScoreG())
+                .scoreH(careerTestResult.getScoreH())
+                .scoreI(careerTestResult.getScoreI())
+                .scoreJ(careerTestResult.getScoreJ())
+                .scoreK(careerTestResult.getScoreK())
+                .scoreL(careerTestResult.getScoreL())
+                .scoreM(careerTestResult.getScoreM())
+                .scoreN(careerTestResult.getScoreN())
+                .scoreO(careerTestResult.getScoreO())
+                .scoreW(careerTestResult.getScoreW())
+                .scoreCharacter(careerTestResult.getScoreCharacter())
+                .scoreConnection(careerTestResult.getScoreConnection())
+                .scoreChallenge(careerTestResult.getScoreChallenge())
+                .scoreControl(careerTestResult.getScoreControl())
+                .scoreAbility(careerTestResult.getScoreAbility())
+                .scoreNetworkPower(careerTestResult.getScoreNetworkPower())
+                .scoreMoveOn(careerTestResult.getScoreMoveOn())
+                .build();
     }
 
     public List<String> getCareerQuestions() {
@@ -65,7 +93,8 @@ public class CareerTestService {
                 .toList();
     }
 
-    public List<String> findLowest2(CareerTestResult careerTestResult) {
+    public List<String> findLowest2(Long id) {
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
         Map<String, Integer> map = new HashMap<>();
         map.put("What", careerTestResult.getScoreO());
         map.put("Why", careerTestResult.getScoreI());
