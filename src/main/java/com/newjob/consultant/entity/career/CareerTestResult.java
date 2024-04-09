@@ -3,9 +3,7 @@ package com.newjob.consultant.entity.career;
 import com.newjob.consultant.entity.member.Member;
 import com.newjob.consultant.entity.consultant.Consultant;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,6 +14,7 @@ import java.util.List;
 @Getter
 @EntityListeners(AuditingEntityListener.class) // JPA Auditing을 사용하기 위해 EntityListeners를 추가한다.
 @NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 @Builder
 public class CareerTestResult {
@@ -80,6 +79,9 @@ public class CareerTestResult {
     @CreatedDate
     @Column(updatable = false, nullable = true)
     private LocalDateTime createdAt;
+    public void updateCareerLocation(String careerLocation) {
+        this.careerLocation = careerLocation;
+    }
 
     public void matchingScore() {
         this.scoreO = questionScores.get(0) + questionScores.get(15) + questionScores.get(30) + questionScores.get(45) + questionScores.get(60); // What
