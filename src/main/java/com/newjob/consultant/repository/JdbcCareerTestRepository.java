@@ -1,8 +1,5 @@
 package com.newjob.consultant.repository;
 
-import com.newjob.consultant.entity.CareerTestResult;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

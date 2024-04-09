@@ -1,11 +1,10 @@
 package com.newjob.consultant.service;
 
-import com.newjob.consultant.entity.CareerTestResult;
+import com.newjob.consultant.entity.career.CareerTestResult;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
