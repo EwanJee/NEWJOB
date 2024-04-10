@@ -2,7 +2,6 @@ package com.newjob.consultant.controller.admin;
 
 import com.newjob.consultant.entity.admin.dto.AdminForm;
 import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
-import com.newjob.consultant.entity.consultant.Consultant;
 import com.newjob.consultant.service.admin.AdminService;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import lombok.AllArgsConstructor;
@@ -12,9 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -31,7 +27,7 @@ public class AdminController {
     @PostMapping("/admin")
     public String isAdmin(@ModelAttribute("admin") AdminForm adminForm, Model model) {
         if (adminService.isAdmin(adminForm.getId())) {
-            model.addAttribute("consultantList",  consultantService.findAll());
+            model.addAttribute("consultantList", consultantService.findAll());
             return "admin/consultantList";
         } else {
             return "redirect:/admin";
@@ -40,7 +36,7 @@ public class AdminController {
 
     @GetMapping("/admin/list")
     public String consultantList(Model model) {
-        model.addAttribute("consultantList",  consultantService.findAll());
+        model.addAttribute("consultantList", consultantService.findAll());
         return "admin/consultantList";
     }
 
