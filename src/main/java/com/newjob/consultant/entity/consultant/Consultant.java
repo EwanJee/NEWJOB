@@ -4,6 +4,7 @@ import com.newjob.consultant.entity.career.CareerTestResult;
 import com.newjob.consultant.entity.member.MemberConsultant;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,9 +14,11 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Consultant{
+@Builder
+public class Consultant {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
     private Long id;
 
@@ -42,14 +45,6 @@ public class Consultant{
         this.numberOfAvailableMrAndersonTests = numberOfAvailableMrAndersonTests;
     }
 
-    public Consultant(String email, String name, String phoneNumber, String password, String company) {
-        this.email = email;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.company = company;
-    }
-
     private int numberOfUsedCarerTests = 0;
     private int numberOfUsedMrAndersonTests = 0;
 
@@ -68,13 +63,14 @@ public class Consultant{
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "consultant" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
     private List<MemberConsultant> memberConsultantList = new ArrayList<>();
 
-    public void putCareerTestResult(CareerTestResult careerTestResult){
+    public void putCareerTestResult(CareerTestResult careerTestResult) {
         this.careerTestResultList.add(careerTestResult);
     }
-    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult){
+
+    public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult) {
         this.mrAndersonTestResultList.add(mrAndersonTestResult);
     }
 }
