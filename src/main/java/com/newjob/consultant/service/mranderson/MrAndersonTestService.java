@@ -31,10 +31,7 @@ public class MrAndersonTestService {
     @Transactional
     public void updateInfo(Long id, String job, String organization, String profession, String industry){
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        mrAndersonTestResult.setJob(job);
-        mrAndersonTestResult.setOrganization2(organization);
-        mrAndersonTestResult.setProfession(profession);
-        mrAndersonTestResult.setIndustry(industry);
+        mrAndersonTestResult.updateInfo(job, organization, profession, industry);
     }
     @Transactional
     public void updateScore1(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
