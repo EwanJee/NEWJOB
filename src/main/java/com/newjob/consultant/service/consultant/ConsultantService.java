@@ -107,8 +107,21 @@ public class ConsultantService {
                 .build();
     }
 
-    public List<Consultant> findAll() {
-        return consultantRepository.findAll();
+    public List<ConsultantForm> findAll() {
+        List<Consultant> consultants = consultantRepository.findAll();
+        return consultants.stream()
+                .map(consultant -> ConsultantForm.builder()
+                        .email(consultant.getEmail())
+                        .name(consultant.getName())
+                        .phoneNumber(consultant.getPhoneNumber())
+                        .company(consultant.getCompany())
+                        .numberOfUsedCareerTests(consultant.getNumberOfUsedCarerTests())
+                        .numberOfAvailableCareerTests(consultant.getNumberOfAvailableCareerTests())
+                        .numberOfUsedMrAndersonTests(consultant.getNumberOfUsedMrAndersonTests())
+                        .numberOfAvailableMrAndersonTests(consultant.getNumberOfAvailableMrAndersonTests())
+                        .isApproved(consultant.getIsApproved())
+                        .build())
+                .toList();
     }
 
     public boolean isValid4Test(ConsultantForm consultantForm) {
