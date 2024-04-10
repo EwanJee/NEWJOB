@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/consultant")
@@ -53,15 +51,8 @@ public class ConsultantController {
 
     @GetMapping("/{id}/client")
     public String myClientList(@PathVariable("id") Long id, Model model) {
-        Consultant consultant = consultantService.findById(id).orElse(null);
-        /*model.addAttribute("careerTest",
-                consultantService.getCareerList());*/
         model.addAttribute("careerTest", consultantService.getCList(id));
-        //consultantService.findCareerTestResultList(id);
-        /*model.addAttribute("mrAndersonTest",
-                consultantService.getMrAndersonList());*/
         model.addAttribute("mrAndersonTest", consultantService.getMList(id));
-        //consultantService.findMrAndersonTestResultList(id);
         model.addAttribute("id", id);
         return "consultant/clientList";
     }
