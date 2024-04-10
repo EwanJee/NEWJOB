@@ -138,9 +138,6 @@ public class ConsultantService {
     @Transactional
     public void updateNumberOfUsedMrAndersonTests(Long id) {
         Consultant consultant = consultantRepository.findById(id).orElse(null);
-        int used = consultant.getNumberOfUsedMrAndersonTests();
-        consultant.setNumberOfUsedMrAndersonTests(used + 1);
-        int available = consultant.getNumberOfAvailableMrAndersonTests();
-        consultant.setNumberOfAvailableMrAndersonTests(available - 1);
+        consultant.updateUsedMrAndersonTestsAndAvailableMrAndersonTests();
     }
 }

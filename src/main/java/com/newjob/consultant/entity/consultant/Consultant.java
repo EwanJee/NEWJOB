@@ -53,4 +53,8 @@ public class Consultant {
         this.numberOfUsedCarerTests++;
         this.numberOfAvailableCareerTests--;
     }
+    public void updateUsedMrAndersonTestsAndAvailableMrAndersonTests() {
+        this.numberOfUsedMrAndersonTests++;
+        this.numberOfAvailableMrAndersonTests--;
+    }
 }
