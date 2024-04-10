@@ -41,8 +41,7 @@ public class AdminController {
 
     @GetMapping("/admin/list")
     public String consultantList(Model model) {
-        List<Consultant> consultantList = consultantService.findAll();
-        model.addAttribute("consultantList", consultantList);
+        model.addAttribute("consultantList",  consultantService.findAll());
         return "admin/consultantList";
     }
 
