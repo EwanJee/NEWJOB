@@ -28,30 +28,18 @@ public class Consultant {
     private String password;
     private String company; //중경카 회사 소속
 
-    public void setNumberOfUsedCarerTests(int numberOfUsedCarerTests) {
-        this.numberOfUsedCarerTests = numberOfUsedCarerTests;
-    }
-
-    public void setNumberOfUsedMrAndersonTests(int numberOfUsedMrAndersonTests) {
-        this.numberOfUsedMrAndersonTests = numberOfUsedMrAndersonTests;
-    }
-
-    public void setNumberOfAvailableCareerTests(int numberOfAvailableCareerTests) {
-        this.numberOfAvailableCareerTests = numberOfAvailableCareerTests;
-    }
-
-    public void setNumberOfAvailableMrAndersonTests(int numberOfAvailableMrAndersonTests) {
-        this.numberOfAvailableMrAndersonTests = numberOfAvailableMrAndersonTests;
-    }
-
+    @Setter
     private int numberOfUsedCarerTests = 0;
+    @Setter
     private int numberOfUsedMrAndersonTests = 0;
 
     public void setApproved(int approved) {
         isApproved = approved;
     }
 
+    @Setter
     private int numberOfAvailableCareerTests = 0;
+    @Setter
     private int numberOfAvailableMrAndersonTests = 0;
 
     private int isApproved = 0;
