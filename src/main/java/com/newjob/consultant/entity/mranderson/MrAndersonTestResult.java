@@ -8,6 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @EntityListeners(AuditingEntityListener.class)
@@ -48,58 +50,8 @@ public class MrAndersonTestResult {
     private String profession;
     private String industry;
 
-    private int score1;
-    private int score2;
-    private int score3;
-    private int score4;
-    private int score5;
-    private int score6;
-    private int score7;
-    private int score8;
-    private int score9;
-    private int score10;
-
-    private int score11;
-    private int score12;
-    private int score13;
-    private int score14;
-    private int score15;
-    private int score16;
-    private int score17;
-    private int score18;
-    private int score19;
-    private int score20;
-
-    private int score21;
-    private int score22;
-    private int score23;
-    private int score24;
-    private int score25;
-    private int score26;
-    private int score27;
-    private int score28;
-    private int score29;
-    private int score30;
-
-    private int score31;
-    private int score32;
-    private int score33;
-    private int score34;
-    private int score35;
-    private int score36;
-    private int score37;
-    private int score38;
-    private int score39;
-    private int score40;
-
-    private int score41;
-    private int score42;
-    private int score43;
-    private int score44;
-    private int score45;
-    private int score46;
-    private int score47;
-    private int score48;
+    @ElementCollection // @ElementCollection을 사용하면, 해당 필드는 별도의 테이블로 생성된다. 최대 사이즈 48
+    private final List<Integer> questionScores = new ArrayList<>();
 
     private int scoreAs;
     private int scoreBs;
