@@ -93,8 +93,20 @@ public class ConsultantService {
                 .build();
     }
 
-    public Optional<Consultant> findById(Long id) {
-        return consultantRepository.findById(id);
+    public ConsultantForm findById(Long id) {
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow();
+        return ConsultantForm.builder()
+                .email(consultant.getEmail())
+                .name(consultant.getName())
+                .phoneNumber(consultant.getPhoneNumber())
+                .company(consultant.getCompany())
+                .numberOfUsedCareerTests(consultant.getNumberOfUsedCarerTests())
+                .numberOfAvailableCareerTests(consultant.getNumberOfAvailableCareerTests())
+                .numberOfUsedMrAndersonTests(consultant.getNumberOfUsedMrAndersonTests())
+                .numberOfAvailableMrAndersonTests(consultant.getNumberOfAvailableMrAndersonTests())
+                .isApproved(consultant.getIsApproved())
+                .build();
     }
 
     public List<Consultant> findAll() {
