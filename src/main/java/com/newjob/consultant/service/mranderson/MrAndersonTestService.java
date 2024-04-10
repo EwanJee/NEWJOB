@@ -34,85 +34,26 @@ public class MrAndersonTestService {
         mrAndersonTestResult.updateInfo(job, organization, profession, industry);
     }
     @Transactional
-    public void updateScore1(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore1(i1-1);
-        careerTestResult.setScore2(i2-1);
-        careerTestResult.setScore3(i3-1);
-        careerTestResult.setScore4(i4-1);
-        careerTestResult.setScore5(i5-1);
-        careerTestResult.setScore6(i6-1);
-        careerTestResult.setScore7(i7-1);
-        careerTestResult.setScore8(i8-1);
-    }
-    @Transactional
-    public void updateScore2(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore9(i1-1);
-        careerTestResult.setScore10(i2-1);
-        careerTestResult.setScore11(i3-1);
-        careerTestResult.setScore12(i4-1);
-        careerTestResult.setScore13(i5-1);
-        careerTestResult.setScore14(i6-1);
-        careerTestResult.setScore15(i7-1);
-        careerTestResult.setScore16(i8-1);
-    }
-    @Transactional
-    public void updateScore3(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore17(i1-1);
-        careerTestResult.setScore18(i2-1);
-        careerTestResult.setScore19(i3-1);
-        careerTestResult.setScore20(i4-1);
-        careerTestResult.setScore21(i5-1);
-        careerTestResult.setScore22(i6-1);
-        careerTestResult.setScore23(i7-1);
-        careerTestResult.setScore24(i8-1);
-    }
-    @Transactional
-    public void updateScore4(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore25(i1-1);
-        careerTestResult.setScore26(i2-1);
-        careerTestResult.setScore27(i3-1);
-        careerTestResult.setScore28(i4-1);
-        careerTestResult.setScore29(i5-1);
-        careerTestResult.setScore30(i6-1);
-        careerTestResult.setScore31(i7-1);
-        careerTestResult.setScore32(i8-1);
-    }
-    @Transactional
-    public void updateScore5(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore33(i1-1);
-        careerTestResult.setScore34(i2-1);
-        careerTestResult.setScore35(i3-1);
-        careerTestResult.setScore36(i4-1);
-        careerTestResult.setScore37(i5-1);
-        careerTestResult.setScore38(i6-1);
-        careerTestResult.setScore39(i7-1);
-        careerTestResult.setScore40(i8-1);
-    }
-    @Transactional
-    public void updateScore6(Long id, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8){
-        MrAndersonTestResult careerTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
-        careerTestResult.setScore41(i1-1);
-        careerTestResult.setScore42(i2-1);
-        careerTestResult.setScore43(i3-1);
-        careerTestResult.setScore44(i4-1);
-        careerTestResult.setScore45(i5-1);
-        careerTestResult.setScore46(i6-1);
-        careerTestResult.setScore47(i7-1);
-        careerTestResult.setScore48(i8-1);
-        careerTestResult.matchScoreGroup();
-        careerTestResult.matchColorA();
-        careerTestResult.matchColorB();
-        careerTestResult.matchColorC();
-        careerTestResult.matchColorD();
-        careerTestResult.matchColorE();
-        careerTestResult.matchColorF();
-        getMyBlackBox(careerTestResult);
-
+    public void updateScore(Long id, int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8){
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        mrAndersonTestResult.getQuestionScores().add(score1-1);
+        mrAndersonTestResult.getQuestionScores().add(score2-1);
+        mrAndersonTestResult.getQuestionScores().add(score3-1);
+        mrAndersonTestResult.getQuestionScores().add(score4-1);
+        mrAndersonTestResult.getQuestionScores().add(score5-1);
+        mrAndersonTestResult.getQuestionScores().add(score6-1);
+        mrAndersonTestResult.getQuestionScores().add(score7-1);
+        mrAndersonTestResult.getQuestionScores().add(score8-1);
+        if(mrAndersonTestResult.getQuestionScores().size() == 48){
+            mrAndersonTestResult.matchScoreGroup();
+            mrAndersonTestResult.matchColorA();
+            mrAndersonTestResult.matchColorB();
+            mrAndersonTestResult.matchColorC();
+            mrAndersonTestResult.matchColorD();
+            mrAndersonTestResult.matchColorE();
+            mrAndersonTestResult.matchColorF();
+            getMyBlackBox(mrAndersonTestResult);
+        }
     }
     public List<String> getMrAndersonQuestions() {
         return andersonQuestionsRepository.findAll()
