@@ -19,50 +19,54 @@ import java.util.Optional;
 @RequestMapping("/consultant")
 public class ConsultantController {
     private final ConsultantService consultantService;
+
     @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("signupForm",new ConsultantForm());
-        model.addAttribute("loginForm",new ConsultantLoginForm());
+    public String login(Model model) {
+        model.addAttribute("signupForm", new ConsultantForm());
+        model.addAttribute("loginForm", new ConsultantLoginForm());
         return "consultant/login";
     }
+
     @PostMapping("/signup")
-    public String signUp(ConsultantForm consultantForm){
+    public String signUp(ConsultantForm consultantForm) {
         consultantService.join(consultantForm);
         return "redirect:/consultant/login";
     }
+
     @PostMapping("/welcome")
-    public String postLogin(ConsultantLoginForm consultantLoginForm, Model model){
-        Consultant consultant = consultantService.findByEmailAndPassword(consultantLoginForm.getEmail(), consultantLoginForm.getPassword());
-        model.addAttribute("consultant",consultant);
+    public String postLogin(ConsultantLoginForm consultantLoginForm, Model model) {
+        model.addAttribute("consultant", consultantService.findByEmailAndPassword(consultantLoginForm.getEmail(), consultantLoginForm.getPassword()));
         return "consultant/welcome";
     }
+
     @GetMapping("{id}/welcome")
-    public String welcome(@PathVariable("id")Long id, Model model){
+    public String welcome(@PathVariable("id") Long id, Model model) {
         Optional<Consultant> consultant = consultantService.findById(id);
         Consultant c = consultant.orElse(null);
-        model.addAttribute("consultant",c);
+        model.addAttribute("consultant", c);
         return "consultant/welcome";
     }
 
     @GetMapping("/{id}/mypage")
-    public String myPage(@PathVariable("id")Long id, Model model){
+    public String myPage(@PathVariable("id") Long id, Model model) {
         Optional<Consultant> consultant = consultantService.findById(id);
         Consultant c = consultant.orElse(null);
-        model.addAttribute("consultant",c);
+        model.addAttribute("consultant", c);
         return "consultant/mypage";
     }
+
     @GetMapping("/{id}/client")
-    public String myClientList(@PathVariable("id")Long id, Model model){
+    public String myClientList(@PathVariable("id") Long id, Model model) {
         Consultant consultant = consultantService.findById(id).orElse(null);
         /*model.addAttribute("careerTest",
                 consultantService.getCareerList());*/
-        model.addAttribute("careerTest",consultantService.getCList(id));
+        model.addAttribute("careerTest", consultantService.getCList(id));
         //consultantService.findCareerTestResultList(id);
         /*model.addAttribute("mrAndersonTest",
                 consultantService.getMrAndersonList());*/
-        model.addAttribute("mrAndersonTest",consultantService.getMList(id));
+        model.addAttribute("mrAndersonTest", consultantService.getMList(id));
         //consultantService.findMrAndersonTestResultList(id);
-        model.addAttribute("id",id);
+        model.addAttribute("id", id);
         return "consultant/clientList";
     }
 }

@@ -43,7 +43,7 @@ public class ConsultantService {
                 .password(consultantForm.getPassword())
                 .company(consultantForm.getCompany())
                 .build();
-        if(!isValidated(consultant)) {
+        if (!isValidated(consultant)) {
             throw new IllegalStateException("이미 가입된 이메일 주소입니다");
         }
         consultantRepository.save(consultant);
@@ -75,13 +75,22 @@ public class ConsultantService {
         return consultant2.isEmpty();
     }
 
-    public Consultant findByEmailAndPassword(String email, String password) {
+    public ConsultantForm findByEmailAndPassword(String email, String password) {
         Optional<Consultant> consultant = consultantRepository.findByEmailAndPassword(email, password);
         if (consultant.isEmpty()) {
             throw new IllegalStateException("이메일 주소나 비밀번호가 잘못 되었습니다");
-        } else {
-            return consultant.orElse(null);
         }
+        return ConsultantForm.builder()
+                .email(consultant.get().getEmail())
+                .name(consultant.get().getName())
+                .phoneNumber(consultant.get().getPhoneNumber())
+                .company(consultant.get().getCompany())
+                .numberOfUsedCareerTests(consultant.get().getNumberOfUsedCarerTests())
+                .numberOfAvailableCareerTests(consultant.get().getNumberOfAvailableCareerTests())
+                .numberOfUsedMrAndersonTests(consultant.get().getNumberOfUsedMrAndersonTests())
+                .numberOfAvailableMrAndersonTests(consultant.get().getNumberOfAvailableMrAndersonTests())
+                .isApproved(consultant.get().getIsApproved())
+                .build();
     }
 
     public Optional<Consultant> findById(Long id) {
