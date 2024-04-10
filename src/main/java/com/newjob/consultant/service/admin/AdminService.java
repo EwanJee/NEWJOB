@@ -21,12 +21,10 @@ public class AdminService {
                 .count());
     }
     @Transactional
-    public void updateForm(Long id, int anderson, int career, int approved) {
+    public void updateForm(Long id, int NumberOfAndersonTests, int NumberOfCareerTests, int approved) {
         Optional<Consultant> optionalConsultant = consultantRepository.findById(id);
         Consultant consultant = optionalConsultant.orElse(null);
-        consultant.setNumberOfAvailableMrAndersonTests(anderson);
-        consultant.setNumberOfAvailableCareerTests(career);
-        consultant.setApproved(approved);
+        consultant.updateTestsAndApproved(NumberOfAndersonTests, NumberOfCareerTests, approved);
     }
     public void deleteForm(Long id){
         consultantRepository.deleteById(id);

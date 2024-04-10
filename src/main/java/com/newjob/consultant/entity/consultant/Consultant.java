@@ -57,4 +57,9 @@ public class Consultant {
         this.numberOfUsedMrAndersonTests++;
         this.numberOfAvailableMrAndersonTests--;
     }
+    public void updateTestsAndApproved(int career, int anderson, int approved) {
+        this.numberOfAvailableCareerTests = career;
+        this.numberOfAvailableMrAndersonTests = anderson;
+        this.isApproved = approved;
+    }
 }
