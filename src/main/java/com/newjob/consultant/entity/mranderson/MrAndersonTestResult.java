@@ -5,19 +5,19 @@ import com.newjob.consultant.entity.consultant.Consultant;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @Entity
 public class MrAndersonTestResult {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -132,7 +132,8 @@ public class MrAndersonTestResult {
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
-    public void matchScoreGroup(){
+
+    public void matchScoreGroup() {
         this.scoreAs = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8;
         this.scoreBs = score9 + score10 + score11 + score12 + score13 + score14 + score15 + score16;
         this.scoreCs = score17 + score18 + score19 + score20 + score21 + score22 + score23 + score24;
@@ -140,46 +141,52 @@ public class MrAndersonTestResult {
         this.scoreEs = score33 + score34 + score35 + score36 + score37 + score38 + score39 + score40;
         this.scoreFs = score41 + score42 + score43 + score44 + score45 + score46 + score47 + score48;
     }
-    public void matchColorA(){
-        if(this.scoreAs < 11) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 18) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 22) this.blackboxA_color = "RED";
-        else if(this.scoreAs < 27) this.blackboxA_color = "BLUE";
-        else if(this.scoreAs < 33) this.blackboxA_color = "BLUE";
+
+    public void matchColorA() {
+        if (this.scoreAs < 11) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 18) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 22) this.blackboxA_color = "RED";
+        else if (this.scoreAs < 27) this.blackboxA_color = "BLUE";
+        else if (this.scoreAs < 33) this.blackboxA_color = "BLUE";
     }
-    public void matchColorB(){
-        if(this.scoreBs < 11) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 18) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 22) this.blackboxB_color = "RED";
-        else if(this.scoreBs < 27) this.blackboxB_color = "BLUE";
-        else if(this.scoreBs < 33) this.blackboxB_color = "BLUE";
+
+    public void matchColorB() {
+        if (this.scoreBs < 11) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 18) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 22) this.blackboxB_color = "RED";
+        else if (this.scoreBs < 27) this.blackboxB_color = "BLUE";
+        else if (this.scoreBs < 33) this.blackboxB_color = "BLUE";
     }
-    public void matchColorC(){
-        if(this.scoreCs < 11) this.blackboxC_color = "RED";
-        else if(this.scoreCs < 18) this.blackboxC_color = "RED";
-        else if(this.scoreCs < 22) this.blackboxC_color = "BLUE";
-        else if(this.scoreCs < 27) this.blackboxC_color = "BLUE";
-        else if(this.scoreCs < 33) this.blackboxC_color = "SKYBLUE";
+
+    public void matchColorC() {
+        if (this.scoreCs < 11) this.blackboxC_color = "RED";
+        else if (this.scoreCs < 18) this.blackboxC_color = "RED";
+        else if (this.scoreCs < 22) this.blackboxC_color = "BLUE";
+        else if (this.scoreCs < 27) this.blackboxC_color = "BLUE";
+        else if (this.scoreCs < 33) this.blackboxC_color = "SKYBLUE";
     }
-    public void matchColorD(){
-        if(this.scoreDs < 11) this.blackboxD_color = "RED";
-        else if(this.scoreDs < 18) this.blackboxD_color = "RED";
-        else if(this.scoreDs < 22) this.blackboxD_color = "BLUE";
-        else if(this.scoreDs < 27) this.blackboxD_color = "BLUE";
-        else if(this.scoreDs < 33) this.blackboxD_color = "SKYBLUE";
+
+    public void matchColorD() {
+        if (this.scoreDs < 11) this.blackboxD_color = "RED";
+        else if (this.scoreDs < 18) this.blackboxD_color = "RED";
+        else if (this.scoreDs < 22) this.blackboxD_color = "BLUE";
+        else if (this.scoreDs < 27) this.blackboxD_color = "BLUE";
+        else if (this.scoreDs < 33) this.blackboxD_color = "SKYBLUE";
     }
-    public void matchColorE(){
-        if(this.scoreEs < 11) this.blackboxE_color = "RED";
-        else if(this.scoreEs < 18) this.blackboxE_color = "RED";
-        else if(this.scoreEs < 22) this.blackboxE_color = "BLUE";
-        else if(this.scoreEs < 27) this.blackboxE_color = "BLUE";
-        else if(this.scoreEs < 33) this.blackboxE_color = "SKYBLUE";
+
+    public void matchColorE() {
+        if (this.scoreEs < 11) this.blackboxE_color = "RED";
+        else if (this.scoreEs < 18) this.blackboxE_color = "RED";
+        else if (this.scoreEs < 22) this.blackboxE_color = "BLUE";
+        else if (this.scoreEs < 27) this.blackboxE_color = "BLUE";
+        else if (this.scoreEs < 33) this.blackboxE_color = "SKYBLUE";
     }
-    public void matchColorF(){
-        if(this.scoreFs < 11) this.blackboxF_color = "RED";
-        else if(this.scoreFs < 18) this.blackboxF_color = "RED";
-        else if(this.scoreFs < 22) this.blackboxF_color = "BLUE";
-        else if(this.scoreFs < 27) this.blackboxF_color = "BLUE";
-        else if(this.scoreFs < 33) this.blackboxF_color = "SKYBLUE";
+
+    public void matchColorF() {
+        if (this.scoreFs < 11) this.blackboxF_color = "RED";
+        else if (this.scoreFs < 18) this.blackboxF_color = "RED";
+        else if (this.scoreFs < 22) this.blackboxF_color = "BLUE";
+        else if (this.scoreFs < 27) this.blackboxF_color = "BLUE";
+        else if (this.scoreFs < 33) this.blackboxF_color = "SKYBLUE";
     }
 }
