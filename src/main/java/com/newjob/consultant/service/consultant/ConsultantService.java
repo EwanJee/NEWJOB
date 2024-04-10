@@ -79,6 +79,7 @@ public class ConsultantService {
             throw new IllegalStateException("이메일 주소나 비밀번호가 잘못 되었습니다");
         }
         return ConsultantForm.builder()
+                .id(consultant.get().getId())
                 .email(consultant.get().getEmail())
                 .name(consultant.get().getName())
                 .phoneNumber(consultant.get().getPhoneNumber())
