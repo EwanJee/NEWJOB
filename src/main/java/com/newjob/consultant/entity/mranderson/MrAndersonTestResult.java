@@ -146,4 +146,20 @@ public class MrAndersonTestResult {
         this.profession = profession;
         this.industry = industry;
     }
+
+    public void updateBlackBox(AndersonBlackbox blackboxA, AndersonBlackbox blackboxB, AndersonBlackbox blackboxC, AndersonBlackbox blackboxD, AndersonBlackbox blackboxE, AndersonBlackbox blackboxF) {
+        this.blackBoxA_letters = blackboxA.getType();
+        this.blackBoxB_letters = blackboxB.getType();
+        this.blackBoxC_letters = blackboxC.getType();
+        this.blackBoxD_letters = blackboxD.getType();
+        this.blackBoxE_letters = blackboxE.getType();
+        this.blackBoxF_letters = blackboxF.getType();
+
+        this.blackboxA_comment = blackboxA.getFieldA();
+        this.blackboxB_comment = blackboxB.getFieldB();
+        this.blackboxC_comment = blackboxC.getFieldC();
+        this.blackboxD_comment = blackboxD.getFieldD();
+        this.blackboxE_comment = blackboxE.getFieldE();
+        this.blackboxF_comment = blackboxF.getFieldF();
+    }
 }

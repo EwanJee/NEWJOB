@@ -92,23 +92,7 @@ public class MrAndersonTestService {
         AndersonBlackbox blackboxE = andersonBlackboxRepository.findById(levelE).get();
         AndersonBlackbox blackboxF = andersonBlackboxRepository.findById(levelF).get();
 
-        mrAndersonTestResult.setBlackBoxA_letters(blackboxA.getType());
-        mrAndersonTestResult.setBlackboxA_comment(blackboxA.getFieldA());
-
-        mrAndersonTestResult.setBlackBoxB_letters(blackboxB.getType());
-        mrAndersonTestResult.setBlackboxB_comment(blackboxB.getFieldB());
-
-        mrAndersonTestResult.setBlackBoxC_letters(blackboxC.getType());
-        mrAndersonTestResult.setBlackboxC_comment(blackboxC.getFieldC());
-
-        mrAndersonTestResult.setBlackBoxD_letters(blackboxD.getType());
-        mrAndersonTestResult.setBlackboxD_comment(blackboxD.getFieldD());
-
-        mrAndersonTestResult.setBlackBoxE_letters(blackboxE.getType());
-        mrAndersonTestResult.setBlackboxE_comment(blackboxE.getFieldE());
-
-        mrAndersonTestResult.setBlackBoxF_letters(blackboxF.getType());
-        mrAndersonTestResult.setBlackboxF_comment(blackboxF.getFieldF());
+        mrAndersonTestResult.updateBlackBox(blackboxA, blackboxB, blackboxC, blackboxD, blackboxE, blackboxF);
 
         if (levelA <= 3) {
             list.add(blackboxA.getFieldA());
