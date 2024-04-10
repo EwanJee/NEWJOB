@@ -27,20 +27,25 @@ public class Consultant {
     private String phoneNumber;
     private String password;
     private String company; //중경카 회사 소속
+    @Builder.Default
     private int numberOfUsedCarerTests = 0;
+    @Builder.Default
     private int numberOfUsedMrAndersonTests = 0;
+    @Builder.Default
     private int numberOfAvailableCareerTests = 0;
+    @Builder.Default
     private int numberOfAvailableMrAndersonTests = 0;
+    @Builder.Default
     private int isApproved = 0;
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CareerTestResult> careerTestResultList = new ArrayList<>();
+    private final List<CareerTestResult> careerTestResultList = new ArrayList<>();
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
+    private final List<MrAndersonTestResult> mrAndersonTestResultList = new ArrayList<>();
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY)
-    private List<MemberConsultant> memberConsultantList = new ArrayList<>();
+    private final List<MemberConsultant> memberConsultantList = new ArrayList<>();
 
     public void putCareerTestResult(CareerTestResult careerTestResult) {
         this.careerTestResultList.add(careerTestResult);
