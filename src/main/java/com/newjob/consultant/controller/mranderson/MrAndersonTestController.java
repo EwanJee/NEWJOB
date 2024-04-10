@@ -20,9 +20,7 @@ public class MrAndersonTestController {
     @GetMapping("/{id}/test/mranderson")
     public String linkMrAnderson(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultantForm = consultantService.findById(id);
-        MrAndersonTestResult mrAndersonTestResult = new MrAndersonTestResult();
         model.addAttribute("consultant",consultantForm);
-        model.addAttribute("form", mrAndersonTestResult);
         if (!consultantService.isValid4Test(consultantForm)) {
             return "careerTest/false";
         } else if (consultantForm.getNumberOfAvailableMrAndersonTests() <= 0) {
