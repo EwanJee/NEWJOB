@@ -31,8 +31,7 @@ public class AdminController {
     @PostMapping("/admin")
     public String isAdmin(@ModelAttribute("admin") AdminForm adminForm, Model model) {
         if (adminService.isAdmin(adminForm.getId())) {
-            List<Consultant> consultantList = consultantService.findAll();
-            model.addAttribute("consultantList", consultantList);
+            model.addAttribute("consultantList",  consultantService.findAll());
             return "admin/consultantList";
         } else {
             return "redirect:/admin";
