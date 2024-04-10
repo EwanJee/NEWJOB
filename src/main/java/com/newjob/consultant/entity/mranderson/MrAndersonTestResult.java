@@ -80,12 +80,12 @@ public class MrAndersonTestResult {
     private LocalDateTime createdAt;
 
     public void matchScoreGroup() {
-        this.scoreAs = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8;
-        this.scoreBs = score9 + score10 + score11 + score12 + score13 + score14 + score15 + score16;
-        this.scoreCs = score17 + score18 + score19 + score20 + score21 + score22 + score23 + score24;
-        this.scoreDs = score25 + score26 + score27 + score28 + score29 + score30 + score31 + score32;
-        this.scoreEs = score33 + score34 + score35 + score36 + score37 + score38 + score39 + score40;
-        this.scoreFs = score41 + score42 + score43 + score44 + score45 + score46 + score47 + score48;
+        this.scoreAs = questionScores.get(0) + questionScores.get(1) + questionScores.get(2) + questionScores.get(3) + questionScores.get(4) + questionScores.get(5) + questionScores.get(6) + questionScores.get(7);
+        this.scoreBs = questionScores.get(8) + questionScores.get(9) + questionScores.get(10) + questionScores.get(11) + questionScores.get(12) + questionScores.get(13) + questionScores.get(14) + questionScores.get(15);
+        this.scoreCs = questionScores.get(16) + questionScores.get(17) + questionScores.get(18) + questionScores.get(19) + questionScores.get(20) + questionScores.get(21) + questionScores.get(22) + questionScores.get(23);
+        this.scoreDs = questionScores.get(24) + questionScores.get(25) + questionScores.get(26) + questionScores.get(27) + questionScores.get(28) + questionScores.get(29) + questionScores.get(30) + questionScores.get(31);
+        this.scoreEs = questionScores.get(32) + questionScores.get(33) + questionScores.get(34) + questionScores.get(35) + questionScores.get(36) + questionScores.get(37) + questionScores.get(38) + questionScores.get(39);
+        this.scoreFs = questionScores.get(40) + questionScores.get(41) + questionScores.get(42) + questionScores.get(43) + questionScores.get(44) + questionScores.get(45) + questionScores.get(46) + questionScores.get(47);
     }
 
     public void matchColorA() {
