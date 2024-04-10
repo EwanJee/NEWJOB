@@ -39,13 +39,6 @@ public class MrAndersonTestResult {
 
     private String job;
 
-    public MrAndersonTestResult(String memberName, String consultantName, String organization, String consultantCompany) {
-        this.memberName = memberName;
-        this.consultantName = consultantName;
-        this.organization = organization;
-        this.consultantCompany = consultantCompany;
-    }
-
     private String organization2;
     private String profession;
     private String industry;
