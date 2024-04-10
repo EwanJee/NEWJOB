@@ -63,7 +63,7 @@ public class ConsultantService {
         Consultant consultant = consultantRepository.findById(id).orElse(null);
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId).orElse(null);
         consultant.putMrAndersonTestResult(mrAndersonTestResult);
-        mrAndersonTestResult.setConsultant(consultant);
+        mrAndersonTestResult.updateConsultant(consultant);
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
     }

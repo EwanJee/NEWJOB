@@ -135,4 +135,7 @@ public class MrAndersonTestResult {
         else if (this.scoreFs < 27) this.blackboxF_color = "BLUE";
         else if (this.scoreFs < 33) this.blackboxF_color = "SKYBLUE";
     }
+    public void updateConsultant(Consultant consultant) {
+        this.consultant = consultant;
+    }
 }
