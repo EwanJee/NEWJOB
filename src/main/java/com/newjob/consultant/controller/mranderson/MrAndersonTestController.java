@@ -41,11 +41,10 @@ public class MrAndersonTestController {
 
     @PostMapping("/{id}/test/mrAnderson/track")
     public String andersonLocation(@PathVariable("id") Long id, @ModelAttribute("form") MrAndersonTestResultForm mrAndersonTestResultForm, Model model) {
-        MrAndersonTestResult mrAndersonTestResult = new MrAndersonTestResult(mrAndersonTestResultForm.getMemberName(), mrAndersonTestResultForm.getConsultantName(), mrAndersonTestResultForm.getOrganization(), mrAndersonTestResultForm.getConsultantCompany());
-        mrAndersonTestService.join(mrAndersonTestResult);
+        Long joined = mrAndersonTestService.join(mrAndersonTestResultForm);
         model.addAttribute("id", id);
         model.addAttribute("form", mrAndersonTestResultForm);
-        model.addAttribute("testId", mrAndersonTestResult.getId());
+        model.addAttribute("testId", joined);
         return "mrAnderson/andersonFirst";
     }
 
