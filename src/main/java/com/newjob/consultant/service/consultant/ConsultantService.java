@@ -96,6 +96,7 @@ public class ConsultantService {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow();
         return ConsultantForm.builder()
+                .id(consultant.getId())
                 .email(consultant.getEmail())
                 .name(consultant.getName())
                 .phoneNumber(consultant.getPhoneNumber())
