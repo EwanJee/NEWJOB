@@ -24,14 +24,12 @@ public class ConsultantService {
 
     public List<CareerTestResult> getCList(long id) {
         Consultant c = consultantRepository.findById(id).orElse(null);
-        List<CareerTestResult> list = c.getCareerTestResultList();
-        return list;
+        return c.getCareerTestResultList();
     }
 
     public List<MrAndersonTestResult> getMList(long id) {
         Consultant c = consultantRepository.findById(id).orElse(null);
-        List<MrAndersonTestResult> list = c.getMrAndersonTestResultList();
-        return list;
+        return c.getMrAndersonTestResultList();
     }
 
     @Transactional
