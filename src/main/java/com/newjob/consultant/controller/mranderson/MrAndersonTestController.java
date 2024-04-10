@@ -2,7 +2,6 @@ package com.newjob.consultant.controller.mranderson;
 
 import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
 import com.newjob.consultant.entity.mranderson.dto.MrAndersonTestResultForm;
-import com.newjob.consultant.entity.consultant.Consultant;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import com.newjob.consultant.service.mranderson.MrAndersonTestService;
@@ -10,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -126,7 +123,6 @@ public class MrAndersonTestController {
     @PostMapping("/{id}/test/mrAnderson/{testId}/result")
     public String andersonResult(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") MrAndersonTestResultForm mrAndersonTestResultForm, Model model){
         mrAndersonTestService.updateScore6(testId,mrAndersonTestResultForm.getScore41(),mrAndersonTestResultForm.getScore42(),mrAndersonTestResultForm.getScore43(),mrAndersonTestResultForm.getScore44(),mrAndersonTestResultForm.getScore45(),mrAndersonTestResultForm.getScore46(),mrAndersonTestResultForm.getScore47(),mrAndersonTestResultForm.getScore48());
-        Consultant consultant = consultantService.findById(id).orElse(null);
         consultantService.updateNumberOfUsedMrAndersonTests(id);
         consultantService.addMrAndersonTest(id,testId);
         return "redirect:/consultant/" + id + "/test/mrAnderson/finish/" + testId;
