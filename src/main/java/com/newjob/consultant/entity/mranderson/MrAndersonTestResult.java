@@ -3,8 +3,7 @@ package com.newjob.consultant.entity.mranderson;
 import com.newjob.consultant.entity.member.Member;
 import com.newjob.consultant.entity.consultant.Consultant;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,7 +12,9 @@ import java.time.LocalDateTime;
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Builder
 public class MrAndersonTestResult {
 
     @Id
