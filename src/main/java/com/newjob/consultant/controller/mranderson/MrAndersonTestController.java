@@ -1,5 +1,6 @@
 package com.newjob.consultant.controller.mranderson;
 
+import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
 import com.newjob.consultant.entity.mranderson.dto.MrAndersonTestResultForm;
 import com.newjob.consultant.entity.consultant.Consultant;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
@@ -21,14 +22,13 @@ public class MrAndersonTestController {
 
     @GetMapping("/{id}/test/mranderson")
     public String linkMrAnderson(@PathVariable("id") Long id, Model model) {
-        Optional<Consultant> optionalConsultant = consultantService.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        ConsultantForm consultantForm = consultantService.findById(id);
         MrAndersonTestResult mrAndersonTestResult = new MrAndersonTestResult();
-        model.addAttribute("consultant", consultant);
+        model.addAttribute("consultant",consultantForm);
         model.addAttribute("form", mrAndersonTestResult);
-        if (!consultantService.isValid4Test(consultant)) {
+        if (!consultantService.isValid4Test(consultantForm)) {
             return "careerTest/false";
-        } else if (consultant.getNumberOfAvailableMrAndersonTests() <= 0) {
+        } else if (consultantForm.getNumberOfAvailableMrAndersonTests() <= 0) {
             return "careerTest/invalid";
         } else {
             return "mrAnderson/andersonValid";
