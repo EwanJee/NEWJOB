@@ -113,8 +113,8 @@ public class ConsultantService {
         return consultantRepository.findAll();
     }
 
-    public boolean isValid4Test(Consultant consultant) {
-        int isApproved = consultant.getIsApproved();
+    public boolean isValid4Test(ConsultantForm consultantForm) {
+        int isApproved = consultantForm.getIsApproved();
         return isApproved != 0;
     }
 

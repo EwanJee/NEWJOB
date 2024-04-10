@@ -24,14 +24,13 @@ public class CareerTestController {
 
     @GetMapping("/{id}/test/career")
     public String linkCareer(@PathVariable("id") Long id, Model model) {
-        Optional<Consultant> optionalConsultant = consultantService.findById(id);
-        Consultant consultant = optionalConsultant.orElse(null);
+        ConsultantForm consultantForm = consultantService.findById(id);
         CareerTestResult careerTestResult = new CareerTestResult();
-        model.addAttribute("consultant", consultant);
+        model.addAttribute("consultant", consultantForm);
         model.addAttribute("form", careerTestResult);
-        if (!consultantService.isValid4Test(consultant)) {
+        if (!consultantService.isValid4Test(consultantForm)) {
             return "careerTest/false";
-        } else if (consultant.getNumberOfAvailableCareerTests() <= 0) {
+        } else if (consultantForm.getNumberOfAvailableCareerTests() <= 0) {
             return "careerTest/invalid";
         } else {
             //횟수가 나타나게 바구기..
