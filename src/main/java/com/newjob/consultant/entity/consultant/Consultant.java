@@ -49,4 +49,8 @@ public class Consultant {
     public void putMrAndersonTestResult(MrAndersonTestResult mrAndersonTestResult) {
         this.mrAndersonTestResultList.add(mrAndersonTestResult);
     }
+    public void updateUsedCareerTestsAndAvailableCareerTests() {
+        this.numberOfUsedCarerTests++;
+        this.numberOfAvailableCareerTests--;
+    }
 }

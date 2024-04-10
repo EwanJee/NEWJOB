@@ -132,10 +132,7 @@ public class ConsultantService {
     @Transactional
     public void updateNumberOfUsedCareerTests(Long id) {
         Consultant consultant = consultantRepository.findById(id).orElse(null);
-        int used = consultant.getNumberOfUsedCarerTests();
-        consultant.setNumberOfUsedCarerTests(used + 1);
-        int available = consultant.getNumberOfAvailableCareerTests();
-        consultant.setNumberOfAvailableCareerTests(available - 1);
+        consultant.updateUsedCareerTestsAndAvailableCareerTests();
     }
 
     @Transactional
