@@ -4,15 +4,14 @@ import com.newjob.consultant.entity.career.CareerTestResult;
 import com.newjob.consultant.entity.member.MemberConsultant;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Builder
 public class Consultant {

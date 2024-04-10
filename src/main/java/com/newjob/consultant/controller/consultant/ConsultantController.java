@@ -27,8 +27,7 @@ public class ConsultantController {
     }
     @PostMapping("/signup")
     public String signUp(ConsultantForm consultantForm){
-        Consultant consultant = new Consultant(consultantForm.getEmail(), consultantForm.getName(), consultantForm.getPhoneNumber(), consultantForm.getPassword(), consultantForm.getCompany());
-        consultantService.join(consultant);
+        consultantService.join(consultantForm);
         return "redirect:/consultant/login";
     }
     @PostMapping("/welcome")
