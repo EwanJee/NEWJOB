@@ -41,9 +41,7 @@ public class ConsultantController {
 
     @GetMapping("{id}/welcome")
     public String welcome(@PathVariable("id") Long id, Model model) {
-        Optional<Consultant> consultant = consultantService.findById(id);
-        Consultant c = consultant.orElse(null);
-        model.addAttribute("consultant", c);
+        model.addAttribute("consultant", consultantService.findById(id));
         return "consultant/welcome";
     }
 
