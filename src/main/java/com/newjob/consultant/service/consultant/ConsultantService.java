@@ -113,6 +113,7 @@ public class ConsultantService {
         List<Consultant> consultants = consultantRepository.findAll();
         return consultants.stream()
                 .map(consultant -> ConsultantForm.builder()
+                        .id(consultant.getId())
                         .email(consultant.getEmail())
                         .name(consultant.getName())
                         .phoneNumber(consultant.getPhoneNumber())
