@@ -27,21 +27,10 @@ public class Consultant {
     private String phoneNumber;
     private String password;
     private String company; //중경카 회사 소속
-
-    @Setter
     private int numberOfUsedCarerTests = 0;
-    @Setter
     private int numberOfUsedMrAndersonTests = 0;
-
-    public void setApproved(int approved) {
-        isApproved = approved;
-    }
-
-    @Setter
     private int numberOfAvailableCareerTests = 0;
-    @Setter
     private int numberOfAvailableMrAndersonTests = 0;
-
     private int isApproved = 0;
 
     @OneToMany(mappedBy = "consultant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
