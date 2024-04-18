@@ -34,6 +34,9 @@ public class ConsultantService {
 
     @Transactional
     public Long join(ConsultantForm consultantForm) {
+        if(consultantRepository.existsByEmail(consultantForm.getEmail())){
+            throw new IllegalStateException("이미 가입된 이메일 주소 입니다");
+        }
         Consultant consultant = Consultant.builder()
                 .email(consultantForm.getEmail())
                 .name(consultantForm.getName())
@@ -41,9 +44,6 @@ public class ConsultantService {
                 .password(consultantForm.getPassword())
                 .company(consultantForm.getCompany())
                 .build();
-        if (!isValidated(consultant)) {
-            throw new IllegalStateException("이미 가입된 이메일 주소입니다");
-        }
         consultantRepository.save(consultant);
         return consultant.getId();
     }
@@ -66,11 +66,6 @@ public class ConsultantService {
         mrAndersonTestResult.updateConsultant(consultant);
         consultantRepository.save(consultant);
         mrAndersonTestResultRepository.save(mrAndersonTestResult);
-    }
-
-    private boolean isValidated(Consultant consultant) {
-        Optional<Consultant> consultant2 = consultantRepository.findByEmail(consultant.getEmail());
-        return consultant2.isEmpty();
     }
 
     public ConsultantForm findByEmailAndPassword(String email, String password) {

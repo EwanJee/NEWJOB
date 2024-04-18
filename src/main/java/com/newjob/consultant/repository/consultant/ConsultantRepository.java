@@ -10,4 +10,5 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
     Optional<Consultant> findByEmail(String email);
 
     Optional<Consultant> findByEmailAndPassword(String email, String password);
+    boolean existsByEmail(String email);
 }
