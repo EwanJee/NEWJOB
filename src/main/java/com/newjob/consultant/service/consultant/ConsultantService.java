@@ -69,56 +69,21 @@ public class ConsultantService {
     }
 
     public ConsultantForm findByEmailAndPassword(String email, String password) {
-        Optional<Consultant> consultant = consultantRepository.findByEmailAndPassword(email, password);
-        if (consultant.isEmpty()) {
-            throw new IllegalStateException("이메일 주소나 비밀번호가 잘못 되었습니다");
-        }
-        return ConsultantForm.builder()
-                .id(consultant.get().getId())
-                .email(consultant.get().getEmail())
-                .name(consultant.get().getName())
-                .phoneNumber(consultant.get().getPhoneNumber())
-                .company(consultant.get().getCompany())
-                .numberOfUsedCareerTests(consultant.get().getNumberOfUsedCarerTests())
-                .numberOfAvailableCareerTests(consultant.get().getNumberOfAvailableCareerTests())
-                .numberOfUsedMrAndersonTests(consultant.get().getNumberOfUsedMrAndersonTests())
-                .numberOfAvailableMrAndersonTests(consultant.get().getNumberOfAvailableMrAndersonTests())
-                .isApproved(consultant.get().getIsApproved())
-                .build();
+        Consultant consultant = consultantRepository.findByEmailAndPassword(email, password)
+                .orElseThrow();
+        return ConsultantForm.of(consultant);
     }
 
     public ConsultantForm findById(Long id) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow();
-        return ConsultantForm.builder()
-                .id(consultant.getId())
-                .email(consultant.getEmail())
-                .name(consultant.getName())
-                .phoneNumber(consultant.getPhoneNumber())
-                .company(consultant.getCompany())
-                .numberOfUsedCareerTests(consultant.getNumberOfUsedCarerTests())
-                .numberOfAvailableCareerTests(consultant.getNumberOfAvailableCareerTests())
-                .numberOfUsedMrAndersonTests(consultant.getNumberOfUsedMrAndersonTests())
-                .numberOfAvailableMrAndersonTests(consultant.getNumberOfAvailableMrAndersonTests())
-                .isApproved(consultant.getIsApproved())
-                .build();
+        return ConsultantForm.of(consultant);
     }
 
     public List<ConsultantForm> findAll() {
         List<Consultant> consultants = consultantRepository.findAll();
         return consultants.stream()
-                .map(consultant -> ConsultantForm.builder()
-                        .id(consultant.getId())
-                        .email(consultant.getEmail())
-                        .name(consultant.getName())
-                        .phoneNumber(consultant.getPhoneNumber())
-                        .company(consultant.getCompany())
-                        .numberOfUsedCareerTests(consultant.getNumberOfUsedCarerTests())
-                        .numberOfAvailableCareerTests(consultant.getNumberOfAvailableCareerTests())
-                        .numberOfUsedMrAndersonTests(consultant.getNumberOfUsedMrAndersonTests())
-                        .numberOfAvailableMrAndersonTests(consultant.getNumberOfAvailableMrAndersonTests())
-                        .isApproved(consultant.getIsApproved())
-                        .build())
+                .map(ConsultantForm::of)
                 .toList();
     }
 

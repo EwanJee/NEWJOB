@@ -1,5 +1,6 @@
 package com.newjob.consultant.entity.consultant.dto;
 
+import com.newjob.consultant.entity.consultant.Consultant;
 import lombok.*;
 
 @Getter
@@ -19,4 +20,19 @@ public class ConsultantForm {
     private int numberOfUsedMrAndersonTests;
     private int numberOfAvailableMrAndersonTests;
     private int isApproved;
+
+    public static ConsultantForm of(Consultant consultant){
+        return ConsultantForm.builder()
+                .id(consultant.getId())
+                .email(consultant.getEmail())
+                .name(consultant.getName())
+                .phoneNumber(consultant.getPhoneNumber())
+                .company(consultant.getCompany())
+                .numberOfUsedCareerTests(consultant.getNumberOfUsedCarerTests())
+                .numberOfAvailableCareerTests(consultant.getNumberOfAvailableCareerTests())
+                .numberOfUsedMrAndersonTests(consultant.getNumberOfUsedMrAndersonTests())
+                .numberOfAvailableMrAndersonTests(consultant.getNumberOfAvailableMrAndersonTests())
+                .isApproved(consultant.getIsApproved())
+                .build();
+    }
 }
