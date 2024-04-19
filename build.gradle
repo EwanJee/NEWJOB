@@ -22,18 +22,15 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.itextpdf:html2pdf:4.0.3'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.amazonaws:aws-java-sdk-s3:1.11.901'
-	implementation 'com.itextpdf:html2pdf:4.0.3'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	implementation "com.querydsl:querydsl-jpa:5.0.0:jakarta"
