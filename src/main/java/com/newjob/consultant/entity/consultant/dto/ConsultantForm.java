@@ -35,4 +35,7 @@ public class ConsultantForm {
                 .isApproved(consultant.getIsApproved())
                 .build();
     }
+    public boolean isValid4Test(){
+        return isApproved != 0;
+    }
 }

@@ -87,11 +87,6 @@ public class ConsultantService {
                 .toList();
     }
 
-    public boolean isValid4Test(ConsultantForm consultantForm) {
-        int isApproved = consultantForm.getIsApproved();
-        return isApproved != 0;
-    }
-
     @Transactional
     public void updateNumberOfUsedCareerTests(Long id) {
         Consultant consultant = consultantRepository.findById(id).orElse(null);

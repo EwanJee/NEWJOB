@@ -28,7 +28,7 @@ public class CareerTestController {
         CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant", consultantForm);
         model.addAttribute("form", careerTestResult);
-        if (!consultantService.isValid4Test(consultantForm)) {
+        if (!consultantForm.isValid4Test()) {
             return "careerTest/false";
         } else if (consultantForm.getNumberOfAvailableCareerTests() <= 0) {
             return "careerTest/invalid";

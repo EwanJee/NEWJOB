@@ -21,7 +21,7 @@ public class MrAndersonTestController {
     public String linkMrAnderson(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultantForm = consultantService.findById(id);
         model.addAttribute("consultant",consultantForm);
-        if (!consultantService.isValid4Test(consultantForm)) {
+        if (!consultantForm.isValid4Test()) {
             return "careerTest/false";
         } else if (consultantForm.getNumberOfAvailableMrAndersonTests() <= 0) {
             return "careerTest/invalid";
