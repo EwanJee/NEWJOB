@@ -1,4 +1,4 @@
-package com.newjob.consultant.entity.admin.dto;
+package com.newjob.consultant.controller.consultant.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminForm {
-    private String id;
+public class ConsultantLoginForm {
+    private Long id;
+    private String email;
     private String password;
 }

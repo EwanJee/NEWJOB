@@ -1,4 +1,4 @@
-package com.newjob.consultant.entity.consultant.dto;
+package com.newjob.consultant.controller.consultant.dto;
 
 import com.newjob.consultant.entity.consultant.Consultant;
 import lombok.*;

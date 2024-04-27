@@ -1,10 +1,9 @@
 package com.newjob.consultant.controller.career;
 
-import com.newjob.consultant.entity.career.dto.CareerTestFinishedResultForm;
-import com.newjob.consultant.entity.career.dto.CareerTestResultForm;
+import com.newjob.consultant.controller.career.dto.CareerTestFinishedResultForm;
+import com.newjob.consultant.controller.career.dto.CareerTestResultForm;
 import com.newjob.consultant.entity.career.CareerTestResult;
-import com.newjob.consultant.entity.consultant.Consultant;
-import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
 import com.newjob.consultant.service.career.CareerTestService;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor

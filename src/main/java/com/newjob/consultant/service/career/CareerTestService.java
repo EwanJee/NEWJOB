@@ -2,8 +2,8 @@ package com.newjob.consultant.service.career;
 
 import com.newjob.consultant.entity.career.CareerQuestion;
 import com.newjob.consultant.entity.career.CareerTestResult;
-import com.newjob.consultant.entity.career.dto.CareerTestFinishedResultForm;
-import com.newjob.consultant.entity.career.dto.CareerTestResultForm;
+import com.newjob.consultant.controller.career.dto.CareerTestFinishedResultForm;
+import com.newjob.consultant.controller.career.dto.CareerTestResultForm;
 import com.newjob.consultant.repository.career.CareerQuestionRepository;
 import com.newjob.consultant.repository.career.CareerTestResultRepository;
 import lombok.AllArgsConstructor;

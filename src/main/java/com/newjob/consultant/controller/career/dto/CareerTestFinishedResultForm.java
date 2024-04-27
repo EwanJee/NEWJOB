@@ -1,4 +1,4 @@
-package com.newjob.consultant.entity.career.dto;
+package com.newjob.consultant.controller.career.dto;
 
 import lombok.Builder;
 import lombok.Getter;

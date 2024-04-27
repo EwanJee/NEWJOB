@@ -1,7 +1,7 @@
 package com.newjob.consultant.controller.mranderson;
 
-import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
-import com.newjob.consultant.entity.mranderson.dto.MrAndersonTestResultForm;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
+import com.newjob.consultant.controller.mranderson.dto.MrAndersonTestResultForm;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import com.newjob.consultant.service.mranderson.MrAndersonTestService;

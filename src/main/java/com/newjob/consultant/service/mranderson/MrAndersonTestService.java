@@ -2,7 +2,7 @@ package com.newjob.consultant.service.mranderson;
 
 import com.newjob.consultant.entity.mranderson.AndersonBlackbox;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
-import com.newjob.consultant.entity.mranderson.dto.MrAndersonTestResultForm;
+import com.newjob.consultant.controller.mranderson.dto.MrAndersonTestResultForm;
 import com.newjob.consultant.repository.mranderson.AndersonBlackboxRepository;
 import com.newjob.consultant.entity.mranderson.AndersonQuestion;
 import com.newjob.consultant.repository.mranderson.AndersonQuestionsRepository;

@@ -1,8 +1,7 @@
 package com.newjob.consultant.controller.consultant;
 
-import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
-import com.newjob.consultant.entity.consultant.dto.ConsultantLoginForm;
-import com.newjob.consultant.entity.consultant.Consultant;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
+import com.newjob.consultant.controller.consultant.dto.ConsultantLoginForm;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

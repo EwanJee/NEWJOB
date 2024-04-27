@@ -1,7 +1,7 @@
 package com.newjob.consultant.controller.admin;
 
-import com.newjob.consultant.entity.admin.dto.AdminForm;
-import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
+import com.newjob.consultant.controller.admin.dto.AdminForm;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
 import com.newjob.consultant.service.admin.AdminService;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import lombok.AllArgsConstructor;

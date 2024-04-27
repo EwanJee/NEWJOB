@@ -1,4 +1,4 @@
-package com.newjob.consultant.entity.mranderson.dto;
+package com.newjob.consultant.controller.mranderson.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

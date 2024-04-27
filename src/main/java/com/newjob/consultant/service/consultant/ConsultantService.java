@@ -2,7 +2,7 @@ package com.newjob.consultant.service.consultant;
 
 import com.newjob.consultant.entity.career.CareerTestResult;
 import com.newjob.consultant.entity.consultant.Consultant;
-import com.newjob.consultant.entity.consultant.dto.ConsultantForm;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import com.newjob.consultant.repository.career.CareerTestResultRepository;
 import com.newjob.consultant.repository.consultant.ConsultantRepository;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
