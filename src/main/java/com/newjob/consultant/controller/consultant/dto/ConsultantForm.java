@@ -38,4 +38,22 @@ public class ConsultantForm {
     public boolean isValid4Test(){
         return isApproved != 0;
     }
+    public static String directToMrAndersonView(ConsultantForm consultantForm){
+        if (!consultantForm.isValid4Test()) {
+            return "careerTest/false";
+        } else if (consultantForm.getNumberOfAvailableMrAndersonTests() <= 0) {
+            return "careerTest/invalid";
+        } else {
+            return "mrAnderson/andersonValid";
+        }
+    }
+    public static String directToCareerView(ConsultantForm consultantForm){
+        if (!consultantForm.isValid4Test()) {
+            return "careerTest/false";
+        } else if (consultantForm.getNumberOfAvailableCareerTests() <= 0) {
+            return "careerTest/invalid";
+        } else {
+            return "careerTest/careerValid";
+        }
+    }
 }

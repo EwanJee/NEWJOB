@@ -26,14 +26,7 @@ public class CareerTestController {
         CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant", consultantForm);
         model.addAttribute("form", careerTestResult);
-        if (!consultantForm.isValid4Test()) {
-            return "careerTest/false";
-        } else if (consultantForm.getNumberOfAvailableCareerTests() <= 0) {
-            return "careerTest/invalid";
-        } else {
-            //횟수가 나타나게 바구기..
-            return "careerTest/valid";
-        }
+        return ConsultantForm.directToCareerView(consultantForm);
     }
 
     @GetMapping("/{id}/test/career/result")
