@@ -1,5 +1,7 @@
 package com.newjob.consultant.service.career;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.career.CareerQuestion;
 import com.newjob.consultant.entity.career.CareerTestResult;
 import com.newjob.consultant.controller.career.dto.CareerTestFinishedResultForm;
@@ -34,13 +36,15 @@ public class CareerTestService {
 
     @Transactional
     public void updateLocation(Long id, String location) {
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.updateCareerLocation(location);
     }
 
     @Transactional
     public void updateScore(Long id, int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8) {
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         careerTestResult.getQuestionScores().add(score1);
         careerTestResult.getQuestionScores().add(score2);
         careerTestResult.getQuestionScores().add(score3);
@@ -56,7 +60,8 @@ public class CareerTestService {
     }
 
     public CareerTestFinishedResultForm findFinishedResult(Long id) {
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() ->new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         return CareerTestFinishedResultForm.builder()
                 .memberName(careerTestResult.getMemberName())
                 .consultantName(careerTestResult.getConsultantName())
@@ -94,7 +99,8 @@ public class CareerTestService {
     }
 
     public List<String> findLowest2(Long id) {
-        CareerTestResult careerTestResult = careerTestResultRepository.findById(id).orElse(null);
+        CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
         Map<String, Integer> map = new HashMap<>();
         map.put("What", careerTestResult.getScoreO());
         map.put("Why", careerTestResult.getScoreI());
