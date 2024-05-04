@@ -2,6 +2,7 @@ package com.newjob.consultant.service.admin;
 
 import com.newjob.consultant.common.exception.ErrorCode;
 import com.newjob.consultant.common.exception.NotFoundException;
+import com.newjob.consultant.controller.consultant.dto.ConsultantForm;
 import com.newjob.consultant.entity.consultant.Consultant;
 import com.newjob.consultant.repository.admin.AdminRepository;
 import com.newjob.consultant.repository.consultant.ConsultantRepository;
@@ -23,10 +24,10 @@ public class AdminService {
                 .count());
     }
     @Transactional
-    public void updateForm(Long id, int NumberOfAndersonTests, int NumberOfCareerTests, int approved) {
+    public void updateForm(Long id, ConsultantForm consultantForm) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
-        consultant.updateTestsAndApproved(NumberOfAndersonTests, NumberOfCareerTests, approved);
+        consultant.updateTestsAndApproved(consultantForm.getNumberOfAvailableCareerTests(),consultantForm.getNumberOfAvailableMrAndersonTests(), consultantForm.getIsApproved());
     }
     public void deleteForm(Long id){
         consultantRepository.deleteById(id);
