@@ -1,5 +1,7 @@
 package com.newjob.consultant.service.mranderson;
 
+import com.newjob.consultant.common.exception.ErrorCode;
+import com.newjob.consultant.common.exception.NotFoundException;
 import com.newjob.consultant.entity.mranderson.AndersonBlackbox;
 import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import com.newjob.consultant.controller.mranderson.dto.MrAndersonTestResultForm;
@@ -41,13 +43,15 @@ public class MrAndersonTestService {
 
     @Transactional
     public void updateInfo(Long id, String job, String organization, String profession, String industry) {
-        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
         mrAndersonTestResult.updateInfo(job, organization, profession, industry);
     }
 
     @Transactional
     public void updateScore(Long id, int score1, int score2, int score3, int score4, int score5, int score6, int score7, int score8) {
-        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id).orElse(null);
+        MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));;;
         mrAndersonTestResult.getQuestionScores().add(score1 - 1);
         mrAndersonTestResult.getQuestionScores().add(score2 - 1);
         mrAndersonTestResult.getQuestionScores().add(score3 - 1);
