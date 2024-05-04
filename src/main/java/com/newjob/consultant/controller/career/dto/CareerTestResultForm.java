@@ -1,5 +1,6 @@
 package com.newjob.consultant.controller.career.dto;
 
+import com.newjob.consultant.entity.career.CareerTestResult;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -107,4 +108,34 @@ public class CareerTestResultForm {
     private int score78;
     private int score79;
     private int score80;
+
+    public static CareerTestFinishedResultForm from(CareerTestResult careerTestResult) {
+        return CareerTestFinishedResultForm.builder()
+                .memberName(careerTestResult.getMemberName())
+                .consultantName(careerTestResult.getConsultantName())
+                .scoreA(careerTestResult.getScoreA())
+                .scoreB(careerTestResult.getScoreB())
+                .scoreC(careerTestResult.getScoreC())
+                .scoreD(careerTestResult.getScoreD())
+                .scoreE(careerTestResult.getScoreE())
+                .scoreF(careerTestResult.getScoreF())
+                .scoreG(careerTestResult.getScoreG())
+                .scoreH(careerTestResult.getScoreH())
+                .scoreI(careerTestResult.getScoreI())
+                .scoreJ(careerTestResult.getScoreJ())
+                .scoreK(careerTestResult.getScoreK())
+                .scoreL(careerTestResult.getScoreL())
+                .scoreM(careerTestResult.getScoreM())
+                .scoreN(careerTestResult.getScoreN())
+                .scoreO(careerTestResult.getScoreO())
+                .scoreW(careerTestResult.getScoreW())
+                .scoreCharacter(careerTestResult.getScoreCharacter())
+                .scoreConnection(careerTestResult.getScoreConnection())
+                .scoreChallenge(careerTestResult.getScoreChallenge())
+                .scoreControl(careerTestResult.getScoreControl())
+                .scoreAbility(careerTestResult.getScoreAbility())
+                .scoreNetworkPower(careerTestResult.getScoreNetworkPower())
+                .scoreMoveOn(careerTestResult.getScoreMoveOn())
+                .build();
+    }
 }

@@ -62,33 +62,7 @@ public class CareerTestService {
     public CareerTestFinishedResultForm findFinishedResult(Long id) {
         CareerTestResult careerTestResult = careerTestResultRepository.findById(id)
                 .orElseThrow(() ->new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
-        return CareerTestFinishedResultForm.builder()
-                .memberName(careerTestResult.getMemberName())
-                .consultantName(careerTestResult.getConsultantName())
-                .scoreA(careerTestResult.getScoreA())
-                .scoreB(careerTestResult.getScoreB())
-                .scoreC(careerTestResult.getScoreC())
-                .scoreD(careerTestResult.getScoreD())
-                .scoreE(careerTestResult.getScoreE())
-                .scoreF(careerTestResult.getScoreF())
-                .scoreG(careerTestResult.getScoreG())
-                .scoreH(careerTestResult.getScoreH())
-                .scoreI(careerTestResult.getScoreI())
-                .scoreJ(careerTestResult.getScoreJ())
-                .scoreK(careerTestResult.getScoreK())
-                .scoreL(careerTestResult.getScoreL())
-                .scoreM(careerTestResult.getScoreM())
-                .scoreN(careerTestResult.getScoreN())
-                .scoreO(careerTestResult.getScoreO())
-                .scoreW(careerTestResult.getScoreW())
-                .scoreCharacter(careerTestResult.getScoreCharacter())
-                .scoreConnection(careerTestResult.getScoreConnection())
-                .scoreChallenge(careerTestResult.getScoreChallenge())
-                .scoreControl(careerTestResult.getScoreControl())
-                .scoreAbility(careerTestResult.getScoreAbility())
-                .scoreNetworkPower(careerTestResult.getScoreNetworkPower())
-                .scoreMoveOn(careerTestResult.getScoreMoveOn())
-                .build();
+        return CareerTestResultForm.from(careerTestResult);
     }
 
     public List<String> getCareerQuestions() {
