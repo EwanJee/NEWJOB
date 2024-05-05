@@ -53,7 +53,7 @@ public class ConsultantForm {
         } else if (consultantForm.getNumberOfAvailableCareerTests() <= 0) {
             return "careerTest/invalid";
         } else {
-            return "careerTest/careerValid";
+            return "careerTest/valid";
         }
     }
 }
