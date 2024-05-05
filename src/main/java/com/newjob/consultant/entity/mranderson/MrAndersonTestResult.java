@@ -44,7 +44,8 @@ public class MrAndersonTestResult {
     private String profession;
     private String industry;
 
-    @ElementCollection // @ElementCollection을 사용하면, 해당 필드는 별도의 테이블로 생성된다. 최대 사이즈 48
+    @ElementCollection(fetch = FetchType.EAGER)
+    // @ElementCollection을 사용하면, 해당 필드는 별도의 테이블로 생성된다. 최대 사이즈 48
     private final List<Integer> questionScores = new ArrayList<>();
 
     private int scoreAs;

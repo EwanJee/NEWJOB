@@ -6,12 +6,14 @@ import com.newjob.consultant.entity.mranderson.MrAndersonTestResult;
 import com.newjob.consultant.service.consultant.ConsultantService;
 import com.newjob.consultant.service.mranderson.MrAndersonTestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/consultant")
 public class MrAndersonTestController {
     private final ConsultantService consultantService;
@@ -121,6 +123,7 @@ public class MrAndersonTestController {
     @GetMapping("/{id}/test/mrAnderson/finish/{testId}")
     public String andersonPage(@PathVariable("id")Long id, @PathVariable("testId")Long testId,Model model){
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestService.findById(testId).orElse(null);
+        log.info(mrAndersonTestResult.getQuestionScores().get(0).toString());
         model.addAttribute("result",mrAndersonTestResult);
         model.addAttribute("list",mrAndersonTestService.getMyBlackBox(mrAndersonTestResult));
         model.addAttribute("consultantId",id);
