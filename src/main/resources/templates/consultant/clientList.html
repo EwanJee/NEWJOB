@@ -1,161 +1,141 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>REMEMBER 상담센터</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="/css/styles.css" rel="stylesheet" />
-</head>
-<body id="page-top">
-<form>
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="#page-top">리멤버 상담센터</a>
-      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" th:href="@{/consultant/{id}/welcome (id=*{id})}">홈화면</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Masthead-->
-  <header class="masthead bg-primary text-white text-center">
-    <h3 class="masthead-heading text-uppercase mb-0">고객 정보</h3>
-    <!-- Icon Divider-->
-    <div class="divider-custom divider-light">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-line"></div>
-    </div>
-    <!-- Masthead Subheading-->
-    <div>
-      <a onclick ="showCareer()" class="btn-gradient red block" id="careerButton"
-         style="background: #82c8a0; display: inline-block; width: 10%; margin-left: auto;
+<div layout:fragment="content">
+    <form>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">리멤버 상담센터</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                                             th:href="@{/consultant/{id}/welcome (id=*{id})}">홈화면</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <h3 class="masthead-heading text-uppercase mb-0">고객 정보</h3>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <div>
+                <a onclick="showCareer()" class="btn-gradient red block" id="careerButton"
+                   style="background: #82c8a0; display: inline-block; width: 10%; margin-left: auto;
                 margin-right: 50px; text-align: center; text-decoration: none;
                 color: darkred; padding: 10px 6px; position:relative; border: 1px solid rgba(0,0,0,0.21);
                 border-bottom: 4px solid rgba(0,0,0,0.21); border-radius: 4px;
                 text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">경력 진단</a>
 
 
-      <a onclick="showAnderson()"  class="btn-gradient red block" id="andersonButton"
-         style="background: #82c8a0; display: inline-block; width: 10%; margin-left: 50px;
+                <a onclick="showAnderson()" class="btn-gradient red block" id="andersonButton"
+                   style="background: #82c8a0; display: inline-block; width: 10%; margin-left: 50px;
                 margin-right: auto; text-align: center; text-decoration: none;
                 color: white; padding: 10px 6px; position:relative; border: 1px solid rgba(0,0,0,0.21);
                 border-bottom: 4px solid rgba(0,0,0,0.21); border-radius: 4px;
                 text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">퇴직 진단</a>
-    </div>
+            </div>
 
 
-    <div class="container" id="careerList" style="display: block">
-      <div class="row">
-        <div class="col-xs-12">
-          <table class="table table-bordered table-hover dt-responsive">
-            <thead>
-            <tr>
-              <th>이름</th>
-              <th>소속</th>
-              <!--<th>번호</th>-->
-              <th>진단날짜</th>
-              <th>경력진단결과</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="career : ${careerTest}">
-              <td><span th:text="${career.memberName}"></span></td>
-              <td><span th:text="${career.organization}"></span></td>
-              <!--<td><span th:text="${career.phoneNumber}"></span></td>-->
-              <td><span th:text="${career.createdAt}"></span></td>
-              <td><a th:href="@{/consultant/{id}/test/career/finish/{testId} (id=${id} , testId=${career.id})}" style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;"> >>결과보기 </a></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="container" id="andersonList" style="display: none">
-      <div class="row">
-        <div class="col-xs-12">
-          <table class="table table-bordered table-hover dt-responsive">
-            <thead>
-            <tr>
-              <th>이름</th>
-              <th>소속</th>
-              <!--<th>번호</th>-->
-              <th>진단날짜</th>
-              <th>퇴직진단결과</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="mrAnderson : ${mrAndersonTest}">
-              <td><span th:text="${mrAnderson.memberName}"></span></td>
-              <td><span th:text="${mrAnderson.organization2}"></span></td>
-              <!--<td><span th:text="${mrAnderson.phoneNumber}"></span></td>-->
-              <td><span th:text="${mrAnderson.createdAt}"></span></td>
-              <td><a th:href="@{/consultant/{id}/test/mrAnderson/finish/{testId} (id=${id} , testId=${mrAnderson.id})}" style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;"> >>결과보기 </a></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </header>
-
-<!-- Footer-->
-<footer class="footer text-center">
-  <div class="container">
-
-    Copyright © 리멤버 상담센터 All rights reserved. / help@prediger.co.kr / 서울특별시 관악구 남부순환로 1820 에그엘로우15층 (우:08787) / www.newjob.co.kr
-  </div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-<script th:inline="javascript">
-  /*<![CDATA[*/
-  function showCareer(){
-    let color1 = document.getElementById("careerButton");
-    color1.style.color = 'red';
-    let color2 = document.getElementById("andersonButton");
-    color2.style.color = 'white';
-    let career = document.getElementById("careerList");
-    career.style.display = 'block';
-    let anderson = document.getElementById("andersonList");
-    anderson.style.display = 'none';
-  }
-  function showAnderson(){
-    let color1 = document.getElementById("careerButton");
-    color1.style.color = 'white';
-    let color2 = document.getElementById("andersonButton");
-    color2.style.color = 'red';
-    let career = document.getElementById("careerList");
-    career.style.display = 'none';
-    let anderson = document.getElementById("andersonList");
-    anderson.style.display = 'block';
-  }
-  /*]]>*/
-</script>
-</form>
-</body>
+            <div class="container" id="careerList" style="display: block">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered table-hover dt-responsive">
+                            <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>소속</th>
+                                <!--<th>번호</th>-->
+                                <th>진단날짜</th>
+                                <th>경력진단결과</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="career : ${careerTest}">
+                                <td><span th:text="${career.memberName}"></span></td>
+                                <td><span th:text="${career.organization}"></span></td>
+                                <!--<td><span th:text="${career.phoneNumber}"></span></td>-->
+                                <td><span th:text="${career.createdAt}"></span></td>
+                                <td>
+                                    <a th:href="@{/consultant/{id}/test/career/finish/{testId} (id=${id} , testId=${career.id})}"
+                                       style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;">
+                                        >>결과보기 </a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="andersonList" style="display: none">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered table-hover dt-responsive">
+                            <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>소속</th>
+                                <!--<th>번호</th>-->
+                                <th>진단날짜</th>
+                                <th>퇴직진단결과</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="mrAnderson : ${mrAndersonTest}">
+                                <td><span th:text="${mrAnderson.memberName}"></span></td>
+                                <td><span th:text="${mrAnderson.organization2}"></span></td>
+                                <!--<td><span th:text="${mrAnderson.phoneNumber}"></span></td>-->
+                                <td><span th:text="${mrAnderson.createdAt}"></span></td>
+                                <td>
+                                    <a th:href="@{/consultant/{id}/test/mrAnderson/finish/{testId} (id=${id} , testId=${mrAnderson.id})}"
+                                       style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;">
+                                        >>결과보기 </a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <th:block layout:fragment="script">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                function showCareer(){
+                  let color1 = document.getElementById("careerButton");
+                  color1.style.color = 'red';
+                  let color2 = document.getElementById("andersonButton");
+                  color2.style.color = 'white';
+                  let career = document.getElementById("careerList");
+                  career.style.display = 'block';
+                  let anderson = document.getElementById("andersonList");
+                  anderson.style.display = 'none';
+                }
+                function showAnderson(){
+                  let color1 = document.getElementById("careerButton");
+                  color1.style.color = 'white';
+                  let color2 = document.getElementById("andersonButton");
+                  color2.style.color = 'red';
+                  let career = document.getElementById("careerList");
+                  career.style.display = 'none';
+                  let anderson = document.getElementById("andersonList");
+                  anderson.style.display = 'block';
+                }
+                /*]]>*/
+            </script>
+        </th:block>
+    </form>
+</div>
 </html>
