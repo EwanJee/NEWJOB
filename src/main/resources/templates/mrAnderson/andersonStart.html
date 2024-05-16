@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/anderson/andersonTest.html}">
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="/css/survey1.css">
-</head>
-
+<div layout:fragment="content">
 <body>
 <main>
   <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/track (id=${id})}">
@@ -39,6 +36,6 @@
     </div>
   </form>
 </main>
-<div th:replace="fragments/anderson/script :: scriptFragment"></div>
 </body>
+</div>
 </html>
