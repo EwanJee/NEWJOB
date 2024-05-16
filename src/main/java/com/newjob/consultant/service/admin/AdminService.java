@@ -17,19 +17,22 @@ import java.util.Optional;
 public class AdminService {
     private final AdminRepository adminRepository;
     private final ConsultantRepository consultantRepository;
-    public boolean isAdmin(String id){
+
+    public boolean isAdmin(String id) {
         return (1 == adminRepository.findAll()
                 .stream()
                 .filter(e -> e.getId().equals(id))
                 .count());
     }
+
     @Transactional
     public void updateForm(Long id, ConsultantForm consultantForm) {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
-        consultant.updateTestsAndApproved(consultantForm.getNumberOfAvailableCareerTests(),consultantForm.getNumberOfAvailableMrAndersonTests(), consultantForm.getIsApproved());
+        consultant.updateTestsAndApproved(consultantForm.getNumberOfAvailableCareerTests(), consultantForm.getNumberOfAvailableMrAndersonTests(), consultantForm.getIsApproved());
     }
-    public void deleteForm(Long id){
+
+    public void deleteForm(Long id) {
         consultantRepository.deleteById(id);
     }
 }
