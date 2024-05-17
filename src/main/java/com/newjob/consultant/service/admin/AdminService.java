@@ -19,10 +19,7 @@ public class AdminService {
     private final ConsultantRepository consultantRepository;
 
     public boolean isAdmin(String id) {
-        return (1 == adminRepository.findAll()
-                .stream()
-                .filter(e -> e.getId().equals(id))
-                .count());
+        return adminRepository.existsById(id);
     }
 
     @Transactional
