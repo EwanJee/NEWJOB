@@ -48,13 +48,13 @@ public class AdminController {
 
     @PostMapping("/admin/list/{id}/edit")
     public String editedConsultant(@PathVariable("id") Long id, @ModelAttribute("consultantForm") ConsultantForm consultantForm) {
-        adminService.updateForm(id, consultantForm);
+        consultantService.updateForm(id, consultantForm);
         return "redirect:/admin/list";
     }
 
     @GetMapping("/admin/list/{id}/delete")
     public String deletedConsultant(@PathVariable("id") Long id) {
-        adminService.deleteForm(id);
+        consultantService.deleteForm(id);
         return "redirect:/admin/list";
     }
 }

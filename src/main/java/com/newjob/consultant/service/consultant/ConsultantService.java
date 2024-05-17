@@ -31,13 +31,14 @@ public class ConsultantService {
 
     public List<MrAndersonTestResult> getMList(long id) {
         Consultant c = consultantRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));;
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        ;
         return c.getMrAndersonTestResultList();
     }
 
     @Transactional
     public Long join(ConsultantForm consultantForm) {
-        if(consultantRepository.existsByEmail(consultantForm.getEmail())){
+        if (consultantRepository.existsByEmail(consultantForm.getEmail())) {
             throw new NotFoundException(ErrorCode.MEMBER_ALREADY_EXISTS);
         }
         Consultant consultant = Consultant.builder()
@@ -54,9 +55,11 @@ public class ConsultantService {
     @Transactional
     public void addCareerTest(Long consultantId, Long testId) {
         Consultant consultant = consultantRepository.findById(consultantId)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));;
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        ;
         CareerTestResult careerTestResult = careerTestResultRepository.findById(testId)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));;
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CAREER_TEST_RESULT_NOT_FOUND));
+        ;
         consultant.putCareerTestResult(careerTestResult);
         careerTestResult.updateConsultant(consultant);
         consultantRepository.save(consultant);
@@ -66,9 +69,11 @@ public class ConsultantService {
     @Transactional
     public void addMrAndersonTest(Long id, Long testId) {
         Consultant consultant = consultantRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));;
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        ;
         MrAndersonTestResult mrAndersonTestResult = mrAndersonTestResultRepository.findById(testId)
-                .orElseThrow(() -> new NotFoundException(ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));;
+                .orElseThrow(() -> new NotFoundException(ErrorCode.ANDERSON_TEST_RESULT_NOT_FOUND));
+        ;
         consultant.putMrAndersonTestResult(mrAndersonTestResult);
         mrAndersonTestResult.updateConsultant(consultant);
         consultantRepository.save(consultant);
@@ -106,5 +111,16 @@ public class ConsultantService {
         Consultant consultant = consultantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
         consultant.updateUsedMrAndersonTestsAndAvailableMrAndersonTests();
+    }
+
+    @Transactional
+    public void updateForm(Long id, ConsultantForm consultantForm) {
+        Consultant consultant = consultantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.CONSULTANT_NOT_FOUND));
+        consultant.updateTestsAndApproved(consultantForm.getNumberOfAvailableCareerTests(), consultantForm.getNumberOfAvailableMrAndersonTests(), consultantForm.getIsApproved());
+    }
+
+    public void deleteForm(Long id) {
+        consultantRepository.deleteById(id);
     }
 }
