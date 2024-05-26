@@ -4,38 +4,38 @@
       layout:decorate="~{layout/anderson/andersonTest.html}">
 <html lang="ko">
 <div layout:fragment="content">
-<body>
-<main>
-  <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/track (id=${id})}">
+    <body>
+    <main>
+        <form id="survey" method="post" th:action="@{/consultant/{id}/test/mrAnderson/track (id=${id})}">
 
-    <header>
-      <h1 id="title">미스터 앤더슨 진단 (Mr Anderson Assessment)</h1>
-      <p id="description">본 테스트는 15분이 소요 됩니다 </p>
-    </header>
+            <header>
+                <h1 id="title">미스터 앤더슨 진단 (Mr Anderson Assessment)</h1>
+                <p id="description">본 테스트는 15분이 소요 됩니다 </p>
+            </header>
 
-    <div class="form-group">
-      <label id="name-label" for="name">이름</label>
-      <input type="text" id="name" placeholder="이름을 입력하세요" th:field="${form.memberName}" required>
-    </div>
-    <div class="form-group">
-      <label for="organization">소속</label>
-      <input type="text" id="organization" placeholder="소속을 입력하세요" th:field="${form.organization}">
-    </div>
-    <div class="form-group">
-      <label>담당 컨설턴트 이름 </label>
-      <input type="text" placeholder="컨설턴트 이름을 입력하세요" th:field="${form.consultantName}" required>
-    </div>
-    <div class="form-group">
-      <label>컨설팅 담당 기관 </label>
-      <input type="text" placeholder="컨설팅 담당 기관 이름을 입력하세요" th:field="${form.consultantCompany}">
-    </div>
-    <div class="form-group">
-      <button type="submit" id="submit" class="submit-button">
-        진단 시작하기
-      </button>
-    </div>
-  </form>
-</main>
-</body>
+            <div class="form-group">
+                <label id="name-label" for="name">이름</label>
+                <input type="text" id="name" placeholder="이름을 입력하세요" th:field="${form.memberName}" required>
+            </div>
+            <div class="form-group">
+                <label for="organization">소속</label>
+                <input type="text" id="organization" placeholder="소속을 입력하세요" th:field="${form.organization}">
+            </div>
+            <div class="form-group">
+                <label>담당 컨설턴트 이름 </label>
+                <input type="text" placeholder="컨설턴트 이름을 입력하세요" th:field="${form.consultantName}" required>
+            </div>
+            <div class="form-group">
+                <label>컨설팅 담당 기관 </label>
+                <input type="text" placeholder="컨설팅 담당 기관 이름을 입력하세요" th:field="${form.consultantCompany}">
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit" class="submit-button">
+                    진단 시작하기
+                </button>
+            </div>
+        </form>
+    </main>
+    </body>
 </div>
 </html>
