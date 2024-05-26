@@ -4,72 +4,77 @@
       layout:decorate="~{layout/default}">
 <html lang="ko">
 <div layout:fragment="content">
-<body id="page-top" style="background: #1abc9c">
-<form th:object="${consultant}">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="#page-top">리멤버 상담센터</a>
-      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" th:href="@{/consultant/{id}/welcome (id=*{id})}">홈화면</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Masthead-->
-  <header class="masthead bg-primary text-white text-center">
-    <h1 class="masthead-heading text-uppercase mb-0">경력 진단</h1>
-    <!-- Icon Divider-->
-    <div class="divider-custom divider-light">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-line"></div>
-    </div>
-    <h4><span th:text="*{name}"></span> 컨설턴트님, 경력 진단 링크를 복사해 고객님께 공유하시길 바랍니다</h4>
-    <div>
-      <a class="btn-gradient red block"
-         style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
+    <body id="page-top" style="background: #1abc9c">
+    <form th:object="${consultant}">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">리멤버 상담센터</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                                             th:href="@{/consultant/{id}/welcome (id=*{id})}">홈화면</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <h1 class="masthead-heading text-uppercase mb-0">경력 진단</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h4><span th:text="*{name}"></span> 컨설턴트님, 경력 진단 링크를 복사해 고객님께 공유하시길 바랍니다</h4>
+            <div>
+                <a class="btn-gradient red block"
+                   style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
                 margin-right: auto; text-align: center; text-decoration: none;
                 color: white; padding: 10px 30px; position:relative; border: 1px solid rgba(0,0,0,0.21);
                 border-bottom: 4px solid rgba(0,0,0,0.21); border-radius: 4px;
                 text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">
-        www.newjob.co.kr/consultant/<span th:text="*{id}"></span>/test/career/start
-      </a>
-    </div>
-    <br>
-    <div>
-      <a th:href="@{/consultant/{id}/test/mranderson (id=*{id})}"  class="btn-gradient red block"
-         style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
+                    www.newjob.co.kr/consultant/<span th:text="*{id}"></span>/test/career/start
+                </a>
+            </div>
+            <br>
+            <div>
+                <a th:href="@{/consultant/{id}/test/mranderson (id=*{id})}" class="btn-gradient red block"
+                   style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
                 margin-right: auto; text-align: center; text-decoration: none;
                 color: white; padding: 10px 30px; position:relative; border: 1px solid rgba(0,0,0,0.21);
                 border-bottom: 4px solid rgba(0,0,0,0.21); border-radius: 4px;
-                text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">Mr.Anderson 진단 테스트</a>
-    </div>
-  </header>
-  </header>
-  <!-- About Section-->
-  <section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-      <h2 class="page-section-heading text-center text-uppercase text-white">고객 진단 결과</h2>
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-line"></div>
-      </div>
-      <div>
-        <a th:href="@{/consultant/{id}/client (id=*{id})}" class="btn-gradient red block"
-           style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
+                text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">Mr.Anderson 진단
+                    테스트</a>
+            </div>
+        </header>
+        </header>
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <h2 class="page-section-heading text-center text-uppercase text-white">고객 진단 결과</h2>
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <div>
+                    <a th:href="@{/consultant/{id}/client (id=*{id})}" class="btn-gradient red block"
+                       style="background: #82c8a0; display: block; width: 60%; margin-left: auto;
             margin-right: auto; text-align: center; text-decoration: none;
             color: white; padding: 10px 30px; position:relative; border: 1px solid rgba(0,0,0,0.21);
             border-bottom: 4px solid rgba(0,0,0,0.21); border-radius: 4px;
             text-shadow: 0 1px 0 rgba(0,0,0,0.15); font-family: 'Lato',sans-serif; font-size: 25px;">바로보기</a>
-      </div>
-    </div>
-  </section>
-</form>
-</body>
+                </div>
+            </div>
+        </section>
+    </form>
+    </body>
 </div>
 </html>

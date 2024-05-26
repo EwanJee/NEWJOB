@@ -4,155 +4,156 @@
       layout:decorate="~{layout/careerTest/careerTestDefault}">
 <html lang="ko">
 <div layout:fragment="content">
-<body>
-<main>
-  <form id="survey" th:object="${consultant}" method="post" th:action="@{/consultant/{id}/test/career/{testId}/nineth (id=${consultant.id} , testId=${testId})}">
-    <div class="form-group">
-      <p th:text="'49. '+${questions.get(48)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score49}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score49}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score49}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score49}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score49}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
-    <div class="form-group">
-      <p th:text="'50. '+${questions.get(49)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score50}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score50}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score50}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score50}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score50}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
-    <div class="form-group">
-      <p th:text="'51. '+${questions.get(50)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score51}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score51}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score51}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score51}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score51}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
+    <body>
+    <main>
+        <form id="survey" th:object="${consultant}" method="post"
+              th:action="@{/consultant/{id}/test/career/{testId}/nineth (id=${consultant.id} , testId=${testId})}">
+            <div class="form-group">
+                <p th:text="'49. '+${questions.get(48)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score49}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score49}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score49}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score49}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score49}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
+            <div class="form-group">
+                <p th:text="'50. '+${questions.get(49)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score50}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score50}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score50}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score50}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score50}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
+            <div class="form-group">
+                <p th:text="'51. '+${questions.get(50)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score51}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score51}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score51}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score51}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score51}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
 
-    <div class="form-group">
-      <p th:text="'52. '+${questions.get(51)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score52}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score52}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score52}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score52}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score52}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
-    <div class="form-group">
-      <p th:text="'53. '+${questions.get(52)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score53}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score53}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score53}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score53}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score53}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
-    <div class="form-group">
-      <p th:text="'54. '+${questions.get(53)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score54}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score54}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score54}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score54}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score54}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
+            <div class="form-group">
+                <p th:text="'52. '+${questions.get(51)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score52}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score52}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score52}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score52}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score52}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
+            <div class="form-group">
+                <p th:text="'53. '+${questions.get(52)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score53}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score53}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score53}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score53}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score53}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
+            <div class="form-group">
+                <p th:text="'54. '+${questions.get(53)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score54}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score54}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score54}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score54}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score54}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
 
-    <div class="form-group">
-      <p th:text="'55. '+${questions.get(54)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score55}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score55}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score55}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score55}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score55}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
+            <div class="form-group">
+                <p th:text="'55. '+${questions.get(54)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score55}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score55}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score55}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score55}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score55}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
 
-    <div class="form-group">
-      <p th:text="'56. '+${questions.get(55)}"></p>
-      전혀 그렇지 않다 <----
-      <label> <input type="radio" class="radio-btn"  th:field="${form.score56}"
-                     value=1> 1</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score56}"
-                     value=2>
-        2 </label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score56}"
-                     value=3>
-        3</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score56}" value=4>
-        4</label>
-      <label> <input type="radio" class="radio-btn" th:field="${form.score56}" value=5>
-        5</label>
-      ----> 매우 그렇다
-    </div>
-    <div class="form-group">
-      <button type="submit" id="submit" class="submit-button" >
-        다음으로 (7/10)
-      </button>
-    </div>
-  </form>
-</main>
-</body>
+            <div class="form-group">
+                <p th:text="'56. '+${questions.get(55)}"></p>
+                전혀 그렇지 않다 <----
+                <label> <input type="radio" class="radio-btn" th:field="${form.score56}"
+                               value=1> 1</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score56}"
+                               value=2>
+                    2 </label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score56}"
+                               value=3>
+                    3</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score56}" value=4>
+                    4</label>
+                <label> <input type="radio" class="radio-btn" th:field="${form.score56}" value=5>
+                    5</label>
+                ----> 매우 그렇다
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit" class="submit-button">
+                    다음으로 (7/10)
+                </button>
+            </div>
+        </form>
+    </main>
+    </body>
 </div>
 </html>
