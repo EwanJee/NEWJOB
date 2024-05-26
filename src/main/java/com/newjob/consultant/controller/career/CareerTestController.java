@@ -20,8 +20,8 @@ public class CareerTestController {
     private final ConsultantService consultantService;
     private final CareerTestService careerTestService;
 
-    @GetMapping("/{id}/test/career")
-    public String linkCareer(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/{id}/career-test/check")
+    public String checkCareerTestValidity(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultantForm = consultantService.findById(id);
         CareerTestResult careerTestResult = new CareerTestResult();
         model.addAttribute("consultant", consultantForm);
