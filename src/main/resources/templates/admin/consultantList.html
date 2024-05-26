@@ -4,60 +4,65 @@
       layout:decorate="~{layout/default}">
 <html lang="ko">
 <div layout:fragment="content">
-<body id="page-top">
-<form th:object="${consultantList}">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="#page-top">리멤버 상담센터 관리자 페이지</a>
-    </div>
-  </nav>
-  <!-- Masthead-->
-  <header class="masthead bg-primary text-white text-center">
-    <h2>컨설턴트 정보</h2>
+    <body id="page-top">
+    <form th:object="${consultantList}">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">리멤버 상담센터 관리자 페이지</a>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <h2>컨설턴트 정보</h2>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <table class="table table-bordered table-hover dt-responsive">
-            <thead>
-            <tr>
-              <th>승인여부</th>
-              <th>이름</th>
-              <th>소속</th>
-              <th>번호</th>
-              <th>이메일</th>
-              <th>비밀번호</th>
-              <th>경력진단 쓴 횟수</th>
-              <th>경력진단 남은 횟수</th>
-              <th>Mr.Anderon 쓴 횟수</th>
-              <th>Mr.Anderson 남은 횟수</th>
-              <th>수정</th>
-              <th>회원삭제</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="consultant : ${consultantList}">
-              <td><span th:text="${consultant.isApproved}"></span></td>
-              <td><span th:text="${consultant.name}"></span></td>
-              <td><span th:text="${consultant.company}"></span></td>
-              <td><span th:text="${consultant.phoneNumber}"></span></td>
-              <td><span th:text="${consultant.email}"></span></td>
-              <td><span th:text="${consultant.password}"></span></td>
-              <td><span th:text="${consultant.numberOfUsedCareerTests}"></span></td>
-              <td><span th:text="${consultant.numberOfAvailableCareerTests}"></span></td>
-              <td><span th:text="${consultant.numberOfUsedMrAndersonTests}"></span></td>
-              <td><span th:text="${consultant.numberOfAvailableMrAndersonTests}"></span></td>
-              <td><a th:href="@{/admin/list/{id}/edit (id=${consultant.id})}" style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;"> >>수정 </a></td>
-              <td><a onclick="return confirm('삭제하겠습니까?')" th:href="@{/admin/list/{id}/delete (id=${consultant.id})}" style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;"> >>삭제 </a></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-</header>
-</form>
-</body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered table-hover dt-responsive">
+                            <thead>
+                            <tr>
+                                <th>승인여부</th>
+                                <th>이름</th>
+                                <th>소속</th>
+                                <th>번호</th>
+                                <th>이메일</th>
+                                <th>비밀번호</th>
+                                <th>경력진단 쓴 횟수</th>
+                                <th>경력진단 남은 횟수</th>
+                                <th>Mr.Anderon 쓴 횟수</th>
+                                <th>Mr.Anderson 남은 횟수</th>
+                                <th>수정</th>
+                                <th>회원삭제</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="consultant : ${consultantList}">
+                                <td><span th:text="${consultant.isApproved}"></span></td>
+                                <td><span th:text="${consultant.name}"></span></td>
+                                <td><span th:text="${consultant.company}"></span></td>
+                                <td><span th:text="${consultant.phoneNumber}"></span></td>
+                                <td><span th:text="${consultant.email}"></span></td>
+                                <td><span th:text="${consultant.password}"></span></td>
+                                <td><span th:text="${consultant.numberOfUsedCareerTests}"></span></td>
+                                <td><span th:text="${consultant.numberOfAvailableCareerTests}"></span></td>
+                                <td><span th:text="${consultant.numberOfUsedMrAndersonTests}"></span></td>
+                                <td><span th:text="${consultant.numberOfAvailableMrAndersonTests}"></span></td>
+                                <td><a th:href="@{/admin/list/{id}/edit (id=${consultant.id})}"
+                                       style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;">
+                                    >>수정 </a></td>
+                                <td><a onclick="return confirm('삭제하겠습니까?')"
+                                       th:href="@{/admin/list/{id}/delete (id=${consultant.id})}"
+                                       style="display:inline-block ; box-sizing: border-box; color: #fff; background-color: black;">
+                                    >>삭제 </a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </form>
+    </body>
 </div>
 </html>
