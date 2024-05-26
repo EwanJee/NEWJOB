@@ -1,103 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>REMEMBER 상담센터</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="/css/styles.css" rel="stylesheet" />
-</head>
-<body id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="#page-top">리멤버 상담센터 관리자 페이지</a>
-    </div>
-  </nav>
-  <!-- Masthead-->
-  <header class="masthead bg-primary text-white text-center">
-    <h2>컨설턴트 정보</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <table class="table table-bordered table-hover dt-responsive">
-            <thead>
-            <tr>
-              <th>이름</th>
-              <th>소속</th>
-              <th>번호</th>
-              <th>이메일</th>
-              <th>경력진단 쓴 횟수</th>
-              <th>경력진단 남은 횟수</th>
-              <th>Mr.Anderon 쓴 횟수</th>
-              <th>Mr.Anderson 남은 횟수</th>
-              <th>수정완료</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td><span th:text="${consultant.name}"></span></td>
-              <td><span th:text="${consultant.company}"></span></td>
-              <td><span th:text="${consultant.phoneNumber}"></span></td>
-              <td><span th:text="${consultant.email}"></span></td>
-              <td><span th:text="${consultant.numberOfUsedCareerTests}"></span></td>
-              <td><span th:text="${consultant.numberOfAvailableCareerTests}"></span></td>
-              <td><span th:text="${consultant.numberOfUsedMrAndersonTests}"></span></td>
-              <td><span th:text="${consultant.numberOfAvailableMrAndersonTests}"></span></td>
-            </tr>
-            </tbody>
-          </table>
-          <form th:object="${consultant}" method="post" th:action="@{/admin/list/{id}/edit (id=*{id})}">
-            <div class="form-group">
-              <label th:for="isApproved">승인 여부 설정 (0이 아닌 숫자 => 승인)</label>
-              <label>
-                <input type="number" th:field="*{isApproved}" class="form-control"  placeholder="0이 아닌 숫자를 입력하시면 승인이 됩니다" />
-              </label>
-            </div>
-            <div class="form-group">
-              <label th:for="numberOfAvailableCareerTests">경력진단 남은 횟수 설정</label>
-              <label>
-                <input type="number" th:field="*{numberOfAvailableCareerTests}" class="form-control"  placeholder="경력진단 횟수를 설정하세요" />
-              </label>
-            </div>
-            <div class="form-group">
-              <label th:for="numberOfAvailableMrAndersonTests">Mr.Anderson 남은 횟수 설정</label>
-              <label>
-                <input type="number" th:field="*{numberOfAvailableMrAndersonTests}" class="form-control"  placeholder="Mr.Anderson 횟수를 설정하세요" />
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+<div layout:fragment="content">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">리멤버 상담센터 관리자 페이지</a>
         </div>
-      </div>
-    </div>
-  </header>
-<!-- Footer-->
-<footer class="footer text-center">
-  <div class="container">
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+        <h2>컨설턴트 정보</h2>
 
-    Copyright © 리멤버 상담센터 All rights reserved. / help@prediger.co.kr / 서울특별시 관악구 남부순환로 1820 에그엘로우15층 (우:08787) / www.newjob.co.kr
-  </div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-bordered table-hover dt-responsive">
+                        <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>소속</th>
+                            <th>번호</th>
+                            <th>이메일</th>
+                            <th>경력진단 쓴 횟수</th>
+                            <th>경력진단 남은 횟수</th>
+                            <th>Mr.Anderon 쓴 횟수</th>
+                            <th>Mr.Anderson 남은 횟수</th>
+                            <th>수정완료</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span th:text="${consultant.name}"></span></td>
+                            <td><span th:text="${consultant.company}"></span></td>
+                            <td><span th:text="${consultant.phoneNumber}"></span></td>
+                            <td><span th:text="${consultant.email}"></span></td>
+                            <td><span th:text="${consultant.numberOfUsedCareerTests}"></span></td>
+                            <td><span th:text="${consultant.numberOfAvailableCareerTests}"></span></td>
+                            <td><span th:text="${consultant.numberOfUsedMrAndersonTests}"></span></td>
+                            <td><span th:text="${consultant.numberOfAvailableMrAndersonTests}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form th:object="${consultant}" method="post" th:action="@{/admin/list/{id}/edit (id=*{id})}">
+                        <div class="form-group">
+                            <label th:for="isApproved">승인 여부 설정 (0이 아닌 숫자 => 승인)</label>
+                            <label>
+                                <input type="number" th:field="*{isApproved}" class="form-control"
+                                       placeholder="0이 아닌 숫자를 입력하시면 승인이 됩니다"/>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label th:for="numberOfAvailableCareerTests">경력진단 남은 횟수 설정</label>
+                            <label>
+                                <input type="number" th:field="*{numberOfAvailableCareerTests}" class="form-control"
+                                       placeholder="경력진단 횟수를 설정하세요"/>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label th:for="numberOfAvailableMrAndersonTests">Mr.Anderson 남은 횟수 설정</label>
+                            <label>
+                                <input type="number" th:field="*{numberOfAvailableMrAndersonTests}" class="form-control"
+                                       placeholder="Mr.Anderson 횟수를 설정하세요"/>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
 </html>
