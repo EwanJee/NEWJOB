@@ -36,7 +36,7 @@ public class CareerTestController {
     }
 
     @GetMapping("/{id}/career-test/info")
-    public String careerTestLocation(@PathVariable("id") Long id, Model model) {
+    public String registerInfo(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
         model.addAttribute("consultant", consultant);
@@ -45,7 +45,7 @@ public class CareerTestController {
     }
 
     @PostMapping("/{id}/career-test/location")
-    public String careerTestStart(@PathVariable("id") Long id, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
+    public String registerLocation(@PathVariable("id") Long id, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
         Long careerTestId = careerTestService.join(careerTestResultForm);
@@ -56,7 +56,7 @@ public class CareerTestController {
     }
 
     @PostMapping("/{id}/career-test/{testId}/1")
-    public String careerTestSecond(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
+    public String careerTest1stPage(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
         careerTestService.updateLocation(testId, careerTestResultForm.getCareerLocation());
@@ -67,8 +67,8 @@ public class CareerTestController {
         return "careerTest/careerSecond";
     }
 
-    @PostMapping("/{id}/test/career/{testId}/third")
-    public String careerTestThird(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
+    @PostMapping("/{id}/career-test/{testId}/2")
+    public String careerTest2ndPage(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
         careerTestService.updateScore(testId, careerTestResultForm.getScore1(), careerTestResultForm.getScore2(), careerTestResultForm.getScore3(), careerTestResultForm.getScore4(), careerTestResultForm.getScore5(), careerTestResultForm.getScore6(), careerTestResultForm.getScore7(), careerTestResultForm.getScore8());
@@ -78,8 +78,8 @@ public class CareerTestController {
         return "careerTest/careerThird";
     }
 
-    @PostMapping("/{id}/test/career/{testId}/fourth")
-    public String careerTestFourth(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
+    @PostMapping("/{id}/career-test/{testId}/3")
+    public String careerTest3rdPage(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
         careerTestService.updateScore(testId, careerTestResultForm.getScore9(), careerTestResultForm.getScore10(), careerTestResultForm.getScore11(), careerTestResultForm.getScore12(), careerTestResultForm.getScore13(), careerTestResultForm.getScore14(), careerTestResultForm.getScore15(), careerTestResultForm.getScore16());

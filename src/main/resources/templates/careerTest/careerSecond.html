@@ -7,7 +7,7 @@
     <body>
     <main>
         <form id="survey" th:object="${consultant}" method="post"
-              th:action="@{/consultant/{id}/test/career/{testId}/third (id=${consultant.id} , testId=${testId})}">
+              th:action="@{/consultant/{id}/career-test/{testId}/2 (id=${consultant.id} , testId=${testId})}">
             <div class="form-group" id="questionGroup1">
                 <p th:text="'1. ' + ${questions.get(0)}"></p>
                 전혀 그렇지 않다 <----
