@@ -35,7 +35,7 @@ public class CareerTestController {
         return careerTestResultForm;
     }
 
-    @GetMapping("/{id}/career-test/1")
+    @GetMapping("/{id}/career-test/info")
     public String careerTestLocation(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
@@ -44,7 +44,7 @@ public class CareerTestController {
         return "careerTest/careerStart";
     }
 
-    @PostMapping("/{id}/career-test/2")
+    @PostMapping("/{id}/career-test/location")
     public String careerTestStart(@PathVariable("id") Long id, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
@@ -55,7 +55,7 @@ public class CareerTestController {
         return "careerTest/careerLocation";
     }
 
-    @PostMapping("/{id}/test/career/{testId}/second")
+    @PostMapping("/{id}/career-test/{testId}/1")
     public String careerTestSecond(@PathVariable("id") Long id, @PathVariable("testId") Long testId, @ModelAttribute("form") CareerTestResultForm careerTestResultForm, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);

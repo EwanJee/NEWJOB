@@ -7,7 +7,7 @@
     <body>
     <main>
         <form id="survey" th:object="${consultant}" method="post"
-              th:action="@{/consultant/{id}/test/career/{testId}/second (id=${consultant.id} , testId=${testId})}">
+              th:action="@{/consultant/{id}/career-test/{testId}/1 (id=${consultant.id} , testId=${testId})}">
             <div class="form-group">
                 <h2>당신의 현재 경력 등고선 위치는 어디인가요?</h2>
                 <img src="/assets/img/career_contour_line.jpg" alt="careerLocation">
