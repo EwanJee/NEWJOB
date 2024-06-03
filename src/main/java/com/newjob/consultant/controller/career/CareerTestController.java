@@ -35,7 +35,7 @@ public class CareerTestController {
         return careerTestResultForm;
     }
 
-    @GetMapping("/{id}/test/career/start")
+    @GetMapping("/{id}/career-test/1")
     public String careerTestLocation(@PathVariable("id") Long id, Model model) {
         ConsultantForm consultant = new ConsultantForm();
         consultant.setId(id);
