@@ -4,6 +4,11 @@
 컨설턴트에게 경력/퇴직 진단 링크가 주어집니다. 
 컨설턴트는 고객들에게 링크를 보내 진단 테스트를 받게하고, 웹 사이트내에서 진단 결과를 확인하게 해주는 서비스입니다.
 
+# 상표권
+
+https://doi.org/10.8080/4020230143141
+
+
 # Tech:
 Spring MVC, Spring JPA, JDBC Thymeleaf, lombok, MariaDB,Docker
 
